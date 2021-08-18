@@ -1,0 +1,46 @@
+{
+  "name": "adamo-components",
+  "version": "0.0.1",
+  "description": "Suite de componentes para el proyecto de Adamo",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/squadmakers/adamo/adamo-components.git"
+  },
+  "keywords": [],
+  "author": "Isidro Gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/squadmakers/adamo/adamo-components/issues"
+  },
+  "homepage": "https://gitlab.com/squadmakers/adamo/adamo-components#readme",
+  "dependencies": {
+    "buefy": "^0.9.8",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vue/test-utils": "^1.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "typescript": "~4.1.5",
+    "vue-cli-plugin-i18n": "~2.1.2",
+    "vue-property-decorator": "^9.1.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "_moduleAliases": {
+    "@": "src"
+  }
+}
