@@ -2,8 +2,8 @@
 
 import _Vue from 'vue'
 import ANotification from '../../components/notification/ANotification.vue'
-import { mutations } from '../../store'
-import { NotificationMessage } from '../../types'
+import { mutations } from '../store'
+import { NotificationMessage } from '../types'
 
 const hideNotification = () => (mutations.notification.setActive(false))
 

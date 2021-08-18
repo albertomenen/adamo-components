@@ -2,8 +2,8 @@
 
 import _Vue from 'vue'
 import AModal from '../../components/modal/AModal.vue'
-import { ModalInterface } from '../../types'
-import { mutations } from '../../store'
+import { ModalInterface } from '../types'
+import { mutations } from '../store'
 
 const ModalPlugin = (Vue: typeof _Vue): void => {
   Vue.component('AModal', AModal)
