@@ -39,8 +39,5 @@
     "vue-cli-plugin-i18n": "~2.1.2",
     "vue-property-decorator": "^9.1.2",
     "vue-template-compiler": "^2.6.11"
-  },
-  "_moduleAliases": {
-    "@": "src"
   }
 }
