@@ -1,0 +1,19 @@
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+margin-left: 10px;
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $gray;
+  border-radius: 10px;
+  border: 2px solid $card-gray;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: $card-gray;
+}

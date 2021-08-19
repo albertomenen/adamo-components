@@ -1,0 +1,24 @@
+.is-adamo-card {
+  border-radius: 5px;
+  background-color: $light-gray;
+  padding: 1.5rem;
+}
+
+.is-adamo-card-dark {
+  border-radius: 5px;
+  background-color: $list-gray;
+  padding: 1.5rem;
+}
+
+.is-page-card {
+  margin: 0 73px;
+  min-height: 87vh;
+  position: relative;
+}
+
+.is-page-card-centered {
+  margin: 30px 58px;
+  min-height: 83vh;
+  border-radius: 1rem;
+  position: relative;
+}

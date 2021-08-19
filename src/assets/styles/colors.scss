@@ -1,0 +1,73 @@
+// 1. Import the initial variables
+@import "bulma/sass/utilities/initial-variables";
+@import "bulma/sass/utilities/functions";
+@import "bulma/sass/utilities/derived-variables";
+
+$dark-blue: #0C518C;
+$dark-blue-invert: findColorInvert($dark-blue);
+
+$medium-blue: #1D70B7;
+$medium-blue-invert: findColorInvert($medium-blue);
+
+$blue: #009EE2;
+$blue-invert: findColorInvert($blue);
+
+$orange: #FFB142;
+$orange-invert: findColorInvert($orange);
+
+$light-orange: #FFC77A;
+$light-orange-invert: findColorInvert($light-orange);
+
+$faint-orange: rgba(255, 199, 121, 0.2);
+$faint-orange-invert: findColorInvert($faint-orange);
+
+$black: #1D1D1D;
+$black-invert: findColorInvert($black);
+
+$dark-gray: #BCBCBC;
+$dark-gray-invert: findColorInvert($dark-gray);
+
+$gray: #DBDBDB;
+$gray-invert: findColorInvert($gray);
+
+$light-gray: #F6F6F6;
+$light-gray-invert: findColorInvert($light-gray);
+
+$list-gray: #F0F0F0;
+$list-gray-invert: findColorInvert($list-gray);
+
+$card-gray: #EDEDED;
+$card-gray-invert: findColorInvert($card-gray);
+
+$title: #7C7C7C;
+$title-invert: findColorInvert($title);
+
+$green: #28B52E;
+$green-invert: findColorInvert($green);
+
+$red: red;
+$red-invert: findColorInvert($red);
+
+// Primary
+$primary: $orange;
+
+
+$addColors: (
+  "dark-blue":($dark-blue, $dark-blue-invert),
+  "medium-blue":($medium-blue, $medium-blue-invert),
+  "blue":($blue, $blue-invert),
+  "orange":($orange, $orange-invert),
+  "light-orange":($light-orange, $light-orange-invert),
+  "faint-orange":($faint-orange, $faint-orange-invert),
+  "black":($black, $black-invert),
+  "dark-gray":($dark-gray, $dark-gray-invert),
+  "gray":($gray, $gray-invert),
+  "light-gray":($light-gray, $light-gray-invert),
+  "list-gray": ($list-gray, $list-gray-invert),
+  "card-gray": ($card-gray, $card-gray-invert),
+  "title":($title, $title-invert),
+  "green":($green, $green-invert),
+  "red":($red, $red-invert),
+);
+
+$colors: map-merge($colors, $addColors);

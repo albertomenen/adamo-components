@@ -1,0 +1,51 @@
+$adamo-fonts: (
+  h1: (
+    font-family: 'Comfortaa',
+    font-style: normal,
+    font-weight: bold,
+    font-size: 24px,
+    line-height: 27px
+  ),
+  h2: (
+    font-family: 'Comfortaa',
+    font-style: normal,
+    font-weight: bold,
+    font-size: 20px,
+    line-height: 22px
+  ),
+  h3: (
+    font-family: 'Montserrat',
+    font-style: normal,
+    font-weight: 500,
+    font-size: 18px,
+    line-height: 22px
+  ),
+  h4: (
+    font-family: 'Montserrat',
+    font-style: normal,
+    font-weight: 500,
+    font-size: 14px,
+    line-height: 17px
+  ),
+  p: (
+    font-family: 'Montserrat',
+    font-style: normal,
+    font-weight: normal,
+    font-size: 0.85rem, // En figma: 16px
+    line-height: 20px
+  )
+);
+
+@mixin font-modifiers($prefix: '-', $separator: '-') {
+  @each $name, $font in $adamo-fonts {
+    &#{$prefix}#{$name} {
+      @each $attribute, $value in $font {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
+
+.is-text {
+  @include font-modifiers;
+}

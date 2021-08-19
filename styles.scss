@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "./src/assets/styles/colors.scss";
+@import "./src/assets/styles/spacing.scss";
+@import "./src/assets/styles/typography.scss";
+@import "./src/assets/styles/cards.scss";
+@import "./src/assets/styles/scrollbar.scss";
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+html {
+  background: $light-gray;
+}
+
+body, button, input, optgroup, select, textarea {
+  font-family: 'Montserrat'
+}
+
+.breadcrumb a {
+  color: #ffffff;
+}
+
+// Importante para que el datepicker no se coloque por debajo del título de los modales
+.modal .animation-content .modal-card {
+  overflow: visible !important;
+}
+
+.modal-card-body {
+  overflow: visible !important;
+}
+
+
+.circle {
+  width: 52px !important;
+  height: 52px !important;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: $medium-blue;
+}
+
+.is-medium > input, .is-medium > button {
+  padding: 1.5rem;
+}
+
+.is-small > input, .is-small > button {
+  padding: 1.15rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.max-height {
+  height: 100vh;
+}
+
+.column.is-vcentered {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.has-vertical-gap > * {
+  margin: 30px 0;
+}
+
+.has-font-comfortaa {
+  font-family: 'Comfortaa';
+}
+
+.is-round {
+  border-radius: 100%;
+}
+
+.has-border-rounded {
+  border-radius: 9999px;
+
+  textarea {
+    border-radius: 20px;
+  }
+}
+
+.has-shadow {
+  box-shadow: 0px 4px 6px rgba(108, 108, 108, 0.1);
+}
+
+.select-shadow {
+  filter: drop-shadow(0px 4px 6px rgba(108, 108, 108, 0.1));
+}
+
+.is-separator {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+}
+
+.is-fit-content {
+  width: fit-content;
+}
+
+.is-absolute {
+  position: absolute
+}
+
+.is-adamo-table {
+  .table {
+    border: 1px solid $light-gray;
+    background-color: transparent;
+  }
+
+  background-color: $light-gray;
+
+  input[type=checkbox]:checked + .check,
+  input[type=radio]:checked + .check {
+    border: 2px solid $orange !important;
+  }
+
+  input[type=checkbox]:checked + .check,
+  input[type=radio]:checked + .check:before {
+    background-color: $orange !important;
+  }
+
+  tr {
+    background-color: $list-gray;
+
+    &.is-checked, &.is-selected {
+      color: black;
+      background-color: $faint-orange;
+    }
+
+  }
+
+  td {
+    height: 62px;
+    vertical-align: middle;
+    padding: 0 13px;
+    border-top: 3px solid $light-gray;
+    border-bottom: 3px solid $light-gray;
+  }
+
+  thead > tr {
+    background-color: $light-gray;
+
+    th {
+      padding: 10px auto;
+      border-top: 1px solid $gray;
+    }
+  }
+
+  tbody {
+    background: $light-gray;
+  }
+}
+
+.has-left-table-padding {
+  td:first-child, th:first-child {
+    padding-left: 3rem;
+  }
+}
+
+.is-adamo-pagination {
+  bottom: 5px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+
+  .pagination-link {
+    border: none;
+
+    &.is-current {
+      background: $orange;
+      border-color: $orange;
+    }
+
+    &.pagination-previous, &.pagination-next {
+      color: $orange;
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      opacity: 1;
+      font-size: 1em;
+    }
+  }
+}
+
+
+.is-adamo-stepper {
+  .steps .step-items  {
+    .step-item {
+      .step-marker {
+        background: $dark-gray;
+        color: white;
+        border: none;
+      }
+
+      .step-details .step-title {
+        display: none;
+      }
+
+      &.is-active, &.is-previous {
+        .step-marker {
+            background: $orange;
+            border: none;
+            color: white
+        }
+      }
+
+      &.is-active .step-details .step-title {
+        display: block;
+        font-size: 14px;
+        color: $title;
+      }
+    }
+  }
+}

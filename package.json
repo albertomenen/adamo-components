@@ -19,7 +19,6 @@
   },
   "homepage": "https://gitlab.com/squadmakers/adamo/adamo-components#readme",
   "dependencies": {
-    "buefy": "^0.9.8",
     "vue": "^2.6.11"
   },
   "devDependencies": {
