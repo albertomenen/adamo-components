@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 import _Vue from 'vue'
-import ANotification from '../../components/notification/ANotification.vue'
+import ANotification from '../components/notification/ANotification.vue'
 import { mutations } from '../store'
 import { NotificationMessage } from '../types'
 

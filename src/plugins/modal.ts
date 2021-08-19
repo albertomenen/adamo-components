@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 import _Vue from 'vue'
-import AModal from '../../components/modal/AModal.vue'
+import AModal from '../components/modal/AModal.vue'
 import { ModalInterface } from '../types'
 import { mutations } from '../store'
 
