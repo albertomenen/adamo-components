@@ -14,6 +14,9 @@ import ACalendar from './src/components/calendar/ACalendar.vue'
 // Modals
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
 
+// Forms
+import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
+
 // Plugins
 import PortalVue from 'portal-vue'
 
@@ -33,6 +36,9 @@ export default {
 
     // Register modals
     Vue.component('AModalSchedule', AModalSchedule)
+
+    // Register forms
+    Vue.component("AFormUserSteps", AFormUserSteps);
 
     // Register plugins
     Vue.use(PortalVue)
