@@ -19,10 +19,11 @@
   },
   "homepage": "https://gitlab.com/squadmakers/adamo/adamo-components#readme",
   "dependencies": {
-    "vue": "^2.6.11",
     "kalendar-vue": "^2.1.1",
     "moment": "^2.29.1",
-    "portal-vue": "2.1.7"
+    "portal-vue": "2.1.7",
+    "vue": "^2.6.11",
+    "vue-lottie": "^0.2.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
