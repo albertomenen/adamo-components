@@ -9,11 +9,11 @@
 </template>
 <style lang="scss">
 .is-adamo-input.has-icons-left .icon.is-left {
-  top: 11px;
-  left: 14px;
+  top: 11px !important;
+  left: 14px !important;
 }
 .is-adamo-input.has-icons-right .icon.is-right {
-  top: 11px;
-  right: 14px;
+  top: 11px !important;
+  right: 14px !important;
 }
 </style>
