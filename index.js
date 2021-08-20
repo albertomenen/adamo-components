@@ -22,6 +22,7 @@ import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPa
 
 // Plugins
 import PortalVue from 'portal-vue'
+import ALottie from './src/components/lottie/ALottie.vue'
 
 
 export default {
@@ -43,10 +44,11 @@ export default {
     Vue.component('AModalThermographicImage', AModalThermographicImage)
 
     // Register forms
-    Vue.component("AFormUserSteps", AFormUserSteps);
-    Vue.component("AFormPatientSteps", AFormPatientSteps);
+    Vue.component('AFormUserSteps', AFormUserSteps);
+    Vue.component('AFormPatientSteps', AFormPatientSteps);
 
     // Register plugins
     Vue.use(PortalVue)
+    Vue.component('ALottie', ALottie)
   }
 }
