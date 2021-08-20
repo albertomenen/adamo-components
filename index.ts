@@ -11,13 +11,20 @@ import ADropdownItem from './src/components/dropdown-item/ADropdownItem.vue'
 import ATableMenu from './src/components/table-menu/ATableMenu.vue'
 import AStepper from './src/components/stepper/AStepper.vue'
 import ACalendar from './src/components/calendar/ACalendar.vue'
+import ALottie from './src/components/lottie/ALottie.vue'
 
 // Modals
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
+import AModalObservations from './src/components/modals/observations-modal/AModalObservations.vue'
+import AModalThermographicImage from './src/components/modals/thermographic-image-modal/AModalThermographicImage.vue'
+import AModalCaptureImages from './src/components/modals/capture-images-modal/AModalCaptureImages.vue'
 
 // Forms
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
 import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPatientSteps.vue'
+
+// Card
+import AModalContentBox from './src/components/cards/modal-content-box/AModalContentBox.vue'
 
 // Plugins
 import PortalVue from 'portal-vue'
@@ -35,15 +42,22 @@ export default {
     Vue.component('ATableMenu', ATableMenu)
     Vue.component('AStepper', AStepper)
     Vue.component('ACalendar', ACalendar)
+    Vue.component('ALottie', ALottie)
 
     // Register modals
     Vue.component('AModalSchedule', AModalSchedule)
+    Vue.component('AModalObservations', AModalObservations)
+    Vue.component('AModalThermographicImage', AModalThermographicImage)
+    Vue.component('AModalCaptureImages', AModalCaptureImages)
+
+    // Register cards
+    Vue.component('AModalContentBox', AModalContentBox)
 
     // Register forms
     Vue.component('AFormUserSteps', AFormUserSteps)
     Vue.component('AFormPatientSteps', AFormPatientSteps)
 
-    // Register plugins
+    // Register third party plugins
     Vue.use(PortalVue)
   }
 }
