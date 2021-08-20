@@ -16,6 +16,7 @@ import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedul
 
 // Forms
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
+import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPatientSteps.vue'
 
 // Plugins
 import PortalVue from 'portal-vue'
@@ -39,6 +40,7 @@ export default {
 
     // Register forms
     Vue.component("AFormUserSteps", AFormUserSteps);
+    Vue.component("AFormPatientSteps", AFormPatientSteps);
 
     // Register plugins
     Vue.use(PortalVue)
