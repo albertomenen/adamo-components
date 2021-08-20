@@ -1,5 +1,5 @@
 
-import { NotificationMessage } from 'src/types'
+import { NotificationMessage } from '../../types'
 import { Component, Vue } from 'vue-property-decorator'
 import { getters } from '../../store'
 

@@ -2,7 +2,7 @@
   "name": "adamo-components",
   "version": "0.0.1",
   "description": "Suite de componentes para el proyecto de Adamo",
-  "main": "index.js",
+  "main": "index.ts",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

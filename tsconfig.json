@@ -29,7 +29,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.vue",
-    "index.js",
+    "index.ts",
   ],
   "exclude": [
     "node_modules"
