@@ -9,7 +9,7 @@ export interface Patient {
   phone: string
   profession: string
   observations: string
-  birthdate: string
+  birthdate: Date | string
   identification: string
   email: string
   name: string
@@ -18,7 +18,7 @@ export interface Patient {
   user: User
 
   // TODO: Back
-  treatments: Treatment[]
+  treatments: Treatment[] // TODO: Ver si se toma aparte o dentro del request de paciente
   id_type: string
   country: string
   gender: string
@@ -37,7 +37,7 @@ export interface PatientCreate {
   town: string
   phone: string
   email: string
-  birthdate: string
+  birthdate: Date | string | null
   name: string
   last_name: string
   identification: string
@@ -54,6 +54,7 @@ export interface PatientCreate {
   weight: number
   allergies: string
   medication: string
+  specialist: string // TODO: Preguntar para qué es esta columna
 }
 
 export interface PatientList {
@@ -63,4 +64,7 @@ export interface PatientList {
   last_name: string
   active_treatments: number
   id_user: string
+
+  // TODO: Back
+  phone: string
 }

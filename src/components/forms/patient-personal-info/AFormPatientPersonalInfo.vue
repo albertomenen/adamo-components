@@ -2,13 +2,13 @@
 <section>
   <div class="columns is-multiline">
     <AInput
-      v-model="formData.firstname"
+      v-model="formData.name"
       class="column is-full"
       :placeholder="$t('fields.name')"
       type="text"
     />
     <AInput
-      v-model="formData.lastname"
+      v-model="formData.last_name"
       class="column is-full"
       :placeholder="$tc('fields.lastNames', 2)"
       type="text"
@@ -22,14 +22,14 @@
     >
     </BSelect>
     <AInput
-      v-model="formData.id_number"
+      v-model="formData.identification"
       class="column is-half"
       :placeholder="$t('fields.identification')"
       type="number"
     />
     <BDatepicker
       v-model="formData.birthdate"
-      class="column is-three-quarters"
+      class="column is-full"
       icon-pack="fas"
       :locale="$i18n.locale"
       :mobile-native="false"
@@ -39,16 +39,8 @@
       trap-focus
     >
     </BDatepicker>
-    <BSelect
-      v-model="formData.age"
-      class="column is-one-quarter"
-      expanded
-      :placeholder="$t('fields.age')"
-      rounded
-    >
-    </BSelect>
     <AInput
-      v-model="formData.ocupation"
+      v-model="formData.profession"
       class="column is-half"
       :placeholder="$t('fields.ocupation')"
       type="text"
