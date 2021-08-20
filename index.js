@@ -15,10 +15,14 @@ import ACalendar from './src/components/calendar/ACalendar.vue'
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
 import AModalObservations from './src/components/modals/observations-modal/AModalObservations.vue'
 import AModalThermographicImage from './src/components/modals/thermographic-image-modal/AModalThermographicImage.vue'
+import AModalCaptureImages from './src/components/modals/capture-images-modal/AModalCaptureImages.vue'
 
 // Forms
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
 import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPatientSteps.vue'
+
+// Card
+import AModalContentBox from './src/components/cards/modal-content-box/AModalContentBox.vue'
 
 // Plugins
 import PortalVue from 'portal-vue'
@@ -42,6 +46,10 @@ export default {
     Vue.component('AModalSchedule', AModalSchedule)
     Vue.component('AModalObservations', AModalObservations)
     Vue.component('AModalThermographicImage', AModalThermographicImage)
+    Vue.component('AModalCaptureImages', AModalCaptureImages)
+
+    // Register cards
+    Vue.component('AModalContentBox', AModalContentBox)
 
     // Register forms
     Vue.component('AFormUserSteps', AFormUserSteps);
