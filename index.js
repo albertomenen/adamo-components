@@ -13,6 +13,7 @@ import ACalendar from './src/components/calendar/ACalendar.vue'
 
 // Modals
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
+import AModalObservations from './src/components/modals/observations-modal/AModalObservations.vue'
 
 // Forms
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
@@ -37,6 +38,7 @@ export default {
 
     // Register modals
     Vue.component('AModalSchedule', AModalSchedule)
+    Vue.component('AModalObservations', AModalObservations)
 
     // Register forms
     Vue.component("AFormUserSteps", AFormUserSteps);
