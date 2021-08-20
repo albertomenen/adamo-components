@@ -1,0 +1,34 @@
+@import '../../../assets/styles/colors.scss';
+
+$available: rgba(0, 158, 226, 0.4);
+
+.modal-card-head {
+  background-color: $medium-blue;
+}
+.modal-card-body {
+  background-color: $light-gray;
+}
+.button {
+  border: none;
+}
+.available {
+  background-color: $available;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.selected {
+  background-color: $blue;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.bar-top {
+  border-top: 2px solid $gray;
+}
+
+.datepicker-background-color {
+  background: black !important;
+}
