@@ -7,6 +7,7 @@ import { mutations } from '../store'
 
 const ModalPlugin = (Vue: typeof _Vue): void => {
   Vue.component('AModal', AModal)
+
   Vue.prototype.$modal = (data: ModalInterface): void => {
 
     const resetData = () => {

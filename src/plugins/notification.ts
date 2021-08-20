@@ -28,6 +28,7 @@ const sendNotification = ({ message, icon }: Notification): void => {
 
 const NotificationPlugin = (Vue: typeof _Vue): void => {
   Vue.component('ANotification', ANotification)
+
   Vue.prototype.$notify = {
 
     show: sendNotification,
