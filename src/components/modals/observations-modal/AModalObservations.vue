@@ -36,6 +36,6 @@
 </BModal>
 </template>
 
-<script src="./AModalObservations.ts"></script>
+<script src="./AModalObservations.ts" lang="ts"></script>
 
 <style src="./AModalObservations.scss" lang="scss" scoped></style>
