@@ -22,7 +22,7 @@
           @click="$emit('cancel')"
         />
       </header>
-      <section class="modal-card-body py-10">
+      <section class="modal-card-body has-background-light-gray py-10">
         <BCarousel
           :autoplay="false"
           icon-pack="fas"
