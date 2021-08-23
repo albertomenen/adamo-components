@@ -67,9 +67,7 @@
             class="pt-2"
             size="is-small"
             type="is-blue"
-            :value="percentage"
           />
-          <h2 class="ml-3 has-font-comfortaa is-size-5">{{ percentage }}%</h2>
         </div>
         <ALottie
           :animationData="loadingAnimation"
