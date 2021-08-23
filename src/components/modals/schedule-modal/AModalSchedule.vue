@@ -8,7 +8,7 @@
 >
   <template #default="">
     <div class="modal-card">
-      <header class="modal-card-head has-text-centered">
+      <header class="modal-card-head has-background-medium-blue has-text-centered">
         <p class="modal-card-title has-text-white has-font-comfortaa">
           {{ $t('scheduleNextSession') }}
         </p>
@@ -19,7 +19,7 @@
           @click="$emit('cancel')"
         />
       </header>
-      <section class="modal-card-body">
+      <section class="modal-card-body has-background-light-gray">
         <div class="columns is-multiline mb-0">
           <BDatepicker
             class="column is-three-fifths"
