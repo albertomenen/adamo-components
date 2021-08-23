@@ -20,7 +20,7 @@
           @click="$emit('cancel')"
         />
       </header>
-      <section class="modal-card-body has-background-orange">
+      <section class="modal-card-body has-background-light-gray">
         <div class="columns">
           <div class="column my-6 mx-6">
             <div class="card">
