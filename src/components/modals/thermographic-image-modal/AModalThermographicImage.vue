@@ -47,7 +47,7 @@
                         {{ $t('date') }}
                       </p>
                       <AInput
-                        class="input-text-centered"
+                        class="input-text-centered thermographic-input"
                         icon="calendar-check"
                         icon-pack="far"
                         placeholder="DD / MM / AAAA"
@@ -59,7 +59,7 @@
                         {{ $t('hour') }}
                       </p>
                       <AInput
-                        class="input-text-centered"
+                        class="input-text-centered thermographic-input"
                         icon="clock"
                         icon-pack="far"
                         :placeholder="$t('fields.hour')"
@@ -71,7 +71,7 @@
                         {{ $t('fields.temperature') }}
                       </p>
                       <AInput
-                        class="input-text-centered"
+                        class="input-text-centered thermographic-input"
                         icon="thermometer-quarter"
                         icon-pack="fas"
                         placeholder="Media"
@@ -83,7 +83,7 @@
                         {{ $t('fields.pointsNumber') }}
                       </p>
                       <AInput
-                        class="input-text-centered"
+                        class="input-text-centered thermographic-input"
                         icon="map-pin"
                         icon-pack="fas"
                         placeholder="4"
