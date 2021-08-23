@@ -30,3 +30,23 @@ export interface UserList {
   last_name: string
   id_group: string
 }
+
+export interface AuthUser {
+  country: string
+  email: string
+  id_group: string
+  id_location: string
+  id_user: string
+  last_name: string
+  name: string
+  phone: string
+  user_name: string
+  role: Role[]
+}
+
+export interface AuthResponse {
+  Authorization: string
+  message: string
+  status: string
+  user: AuthUser
+}
