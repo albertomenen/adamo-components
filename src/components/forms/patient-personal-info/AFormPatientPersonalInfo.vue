@@ -13,23 +13,23 @@
       :placeholder="$tc('fields.lastNames', 2)"
       type="text"
     />
-    <BSelect
+    <!-- <BSelect
       v-model="formData.id_type"
       class="column is-half"
       expanded
       :placeholder="$t('fields.identificationType')"
       rounded
     >
-    </BSelect>
+    </BSelect> -->
     <AInput
       v-model="formData.identification"
-      class="column is-half"
+      class="column is-full"
       :placeholder="$t('fields.identification')"
       type="number"
     />
     <BDatepicker
       v-model="formData.birthdate"
-      class="column is-full"
+      class="column is-half"
       icon-pack="fas"
       :locale="$i18n.locale"
       :mobile-native="false"
@@ -45,14 +45,26 @@
       :placeholder="$t('fields.ocupation')"
       type="text"
     />
-    <BSelect
+    <!-- <BSelect
       v-model="formData.specialist"
       class="column is-half"
       expanded
       :placeholder="$t('fields.specialist')"
       rounded
     >
-    </BSelect>
+    </BSelect> -->
+    <AInput
+      v-model="formData.user_name"
+      class="column is-half"
+      :placeholder="$t('fields.user')"
+      type="text"
+    />
+    <AInput
+      v-model="formData.password"
+      class="column is-half"
+      :placeholder="$t('fields.password')"
+      type="text"
+    />
   </div>
 </section>
 </template>

@@ -55,6 +55,8 @@ export interface PatientCreate {
   allergies: string
   medication: string
   specialist: string // TODO: Preguntar para qué es esta columna
+  user_name: string
+  password: string
 }
 
 export interface PatientList {

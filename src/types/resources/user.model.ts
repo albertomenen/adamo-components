@@ -8,7 +8,8 @@ export interface User {
   email: string
   name: string
   last_name: string
-  role: Role[]
+  role: Role[],
+  id_location: string
 }
 
 export interface UserCreate {

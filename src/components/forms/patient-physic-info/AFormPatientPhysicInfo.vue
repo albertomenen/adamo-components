@@ -1,7 +1,7 @@
 <template>
 <section>
   <div class="columns is-multiline">
-    <BSelect
+    <!-- <BSelect
       v-model="formData.gender"
       class="column is-half"
       expanded
@@ -16,7 +16,17 @@
       :placeholder="$t('fields.race')"
       rounded
     >
-    </BSelect>
+    </BSelect> -->
+    <AInput
+      v-model="formData.gender"
+      class="column is-half"
+      :placeholder="$t('fields.sex')"
+    />
+    <AInput
+      v-model="formData.race"
+      class="column is-half"
+      :placeholder="$t('fields.race')"
+    />
     <AInput
       v-model="formData.complexity"
       class="column is-full"
@@ -33,7 +43,7 @@
       :placeholder="$t('fields.height')"
     />
     <AInput
-      v-model="formData.weight"
+      v-model="formData.width"
       class="column is-half"
       icon="weight-hanging"
       icon-pack="fas"

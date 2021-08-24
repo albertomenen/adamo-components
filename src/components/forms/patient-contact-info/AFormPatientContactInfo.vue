@@ -17,7 +17,7 @@
       :placeholder="$t('fields.contactPhone')"
       type="text"
     />
-    <BSelect
+    <!-- <BSelect
       v-model="formData.country"
       class="column is-half"
       expanded
@@ -32,7 +32,17 @@
       :placeholder="$t('fields.city')"
       rounded
     >
-    </BSelect>
+    </BSelect> -->
+    <AInput
+      v-model="formData.country"
+      class="column is-half"
+      :placeholder="$t('fields.country')"
+    />
+    <AInput
+      v-model="formData.city"
+      class="column is-half"
+      :placeholder="$t('fields.city')"
+    />
     <AInput
       v-model="formData.address"
       class="column is-full"
