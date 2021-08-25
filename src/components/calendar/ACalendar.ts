@@ -3,7 +3,7 @@ import { Month, Year } from '../../models/dates.model'
 import moment from 'moment'
 import { Kalendar } from 'kalendar-vue'
 import { PropType } from 'vue'
-import { StationShowEvent } from 'src/types/resources/station.model'
+import { StationShowEvent } from '../../types/resources/station.model'
 
 
 @Component({
