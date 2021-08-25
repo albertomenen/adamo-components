@@ -50,8 +50,8 @@ export interface PatientCreate {
   gender: string
   race: string
   complexity: string
-  height: number
-  weight: number
+  height: number | string
+  weight: number | string
   allergies: string
   medication: string
   specialist: string // TODO: Preguntar para qué es esta columna

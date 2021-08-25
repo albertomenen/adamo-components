@@ -43,7 +43,7 @@
       :placeholder="$t('fields.height')"
     />
     <AInput
-      v-model="formData.width"
+      v-model="formData.weight"
       class="column is-half"
       icon="weight-hanging"
       icon-pack="fas"
