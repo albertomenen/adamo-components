@@ -63,7 +63,7 @@
       v-model="formData.password"
       class="column is-half"
       :placeholder="$t('fields.password')"
-      type="text"
+      type="password"
     />
   </div>
 </section>

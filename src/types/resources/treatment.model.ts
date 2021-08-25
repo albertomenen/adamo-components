@@ -44,7 +44,7 @@ export interface Treatment {
 
   // TODO: Faltan en el back
   type: TreatmentTypes
-  status: TreatmentStatus
+  state: TreatmentStatus
   last_session_date: Date | string
 }
 
