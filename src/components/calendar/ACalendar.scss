@@ -151,6 +151,7 @@ $occupied-color: #c4c4c4;
 .created-event  {
   padding: 0px !important;
   background-color: transparent !important;
+  width: auto;
 }
 .created-event .current-user {
   background-color: $orange !important;
@@ -165,3 +166,11 @@ $occupied-color: #c4c4c4;
 .event-card.inspecting .created-event {
   box-shadow: none !important;
 }
+.kalendar-cell.has-events {
+  width: auto !important;
+}
+.kalendar-cell.selected {
+  background: none;
+}
+
+

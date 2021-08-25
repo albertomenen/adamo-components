@@ -2,11 +2,19 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Month, Year } from '../../models/dates.model'
 import moment from 'moment'
 import { Kalendar } from 'kalendar-vue'
+import { PropType } from 'vue'
+import { StationShowEvent, StationShowEventClass } from 'src/types/resources/station.model'
 
 
 @Component({
   components: {
     Kalendar
+  },
+  props: {
+    events: {
+      type: Array as () => PropType<StationShowEvent[]>,
+      default: () => []
+    }
   }
 })
 export default class ACalendar extends Vue {
@@ -37,29 +45,6 @@ export default class ACalendar extends Vue {
     past_event_creation: false,
     start_day: ''
   }
-
-  events = [
-    {
-      from: '2021-08-12T10:00:00Z',
-      to: '2021-08-12T10:30:00Z',
-      data: {
-        title: 'Event 1',
-        description: '',
-        id: 'asdasdas1',
-        class: 'current-user'
-      }
-    },
-    {
-      from: '2021-08-13T11:00:00Z',
-      to: '2021-08-13T11:30:00Z',
-      data: {
-        title: 'Olive & Friends',
-        description: '',
-        id: 'asdasdas2',
-        class: 'other-user'
-      }
-    }
-  ]
 
   /**
    * Valor para poder refrescar el conponente Kalendar
@@ -127,6 +112,11 @@ export default class ACalendar extends Vue {
   @Watch('dateSelected')
   onValueChange (value: string): void {
     this.changeDayKalendar(new Date(value).toISOString())
-    this.$emit('dateSelected', this.dateSelected)
+    this.$emit('dateSelected', value)
+  }
+
+  @Watch('events')
+  onChangeEvents (): void {
+    this.componentKey++
   }
 }
