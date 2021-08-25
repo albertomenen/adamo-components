@@ -7,9 +7,10 @@ export enum TreatmentTypes {
 }
 
 export enum TreatmentStatus {
-  Active = 'active',
+  Active = 'started',
   New = 'new',
-  Finished = 'finished'
+  Finished = 'finished',
+  Canceled = 'canceled'
 }
 
 /**
