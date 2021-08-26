@@ -19,6 +19,7 @@ export enum TreatmentStatus {
 export interface Treatment {
   id_treatment: string
   medic_name: string
+  medic: string
   name: string
   sessions_number: number
   current_session_number: number
@@ -29,7 +30,7 @@ export interface Treatment {
   points: string
   ts_next_session: number
   ts_end: number
-  width: number
+  weight: number
   height: number
   ppx: number
   ppy: number
@@ -39,13 +40,16 @@ export interface Treatment {
   coeff: string
   depth_scale: number
   mode: string
-  extrinsics: string
+  extrinsics: number
   next_session_station_id: string
 
   // TODO: Faltan en el back
   type: TreatmentTypes
   state: TreatmentStatus
   last_session_date: Date | string
+  injury: boolean
+  injury_kind: string
+  injury_cause: string
 }
 
 export interface TreatmentList {
