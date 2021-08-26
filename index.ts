@@ -17,7 +17,6 @@ import ALottie from './src/components/lottie/ALottie.vue'
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
 import AModalObservations from './src/components/modals/observations-modal/AModalObservations.vue'
 import AModalThermographicImage from './src/components/modals/thermographic-image-modal/AModalThermographicImage.vue'
-import AModalCaptureImages from './src/components/modals/capture-images-modal/AModalCaptureImages.vue'
 
 // Forms
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
@@ -48,7 +47,6 @@ export default {
     Vue.component('AModalSchedule', AModalSchedule)
     Vue.component('AModalObservations', AModalObservations)
     Vue.component('AModalThermographicImage', AModalThermographicImage)
-    Vue.component('AModalCaptureImages', AModalCaptureImages)
 
     // Register cards
     Vue.component('AModalContentBox', AModalContentBox)
