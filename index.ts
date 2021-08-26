@@ -22,9 +22,6 @@ import AModalThermographicImage from './src/components/modals/thermographic-imag
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
 import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPatientSteps.vue'
 
-// Card
-import AModalContentBox from './src/components/cards/modal-content-box/AModalContentBox.vue'
-
 // Plugins
 import PortalVue from 'portal-vue'
 
@@ -47,9 +44,6 @@ export default {
     Vue.component('AModalSchedule', AModalSchedule)
     Vue.component('AModalObservations', AModalObservations)
     Vue.component('AModalThermographicImage', AModalThermographicImage)
-
-    // Register cards
-    Vue.component('AModalContentBox', AModalContentBox)
 
     // Register forms
     Vue.component('AFormUserSteps', AFormUserSteps)
