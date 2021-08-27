@@ -18,7 +18,6 @@ export enum TreatmentStatus {
  */
 export interface Treatment {
   id_treatment: string
-  id_patient: string
   medic_name: string
   medic: string
   name: string
