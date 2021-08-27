@@ -1,14 +1,18 @@
+import { Device, DeviceList } from "./device.model";
+
 export enum StationShowEventClass {
   Mine = 'current-user',
   Other = 'other-user'
 }
+
 export interface Station {
   id_station: string
   id_location: string
   station_name: string
   placed: string
   installation_date: Date
-  version: string
+  version: string,
+  device: DeviceList[]
 }
 
 export interface StationList {
