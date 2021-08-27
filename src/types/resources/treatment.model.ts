@@ -42,6 +42,7 @@ export interface Treatment {
   mode: string
   extrinsics: number
   next_session_station_id: string
+  move: string
 
   // TODO: Faltan en el back
   type: TreatmentTypes
