@@ -13,15 +13,20 @@ import moment from 'moment';
     treatment: {
       type: Object as () => PropType<Treatment>,
       default: () => null
-    }
+    },
+    session: Number
   }
 })
 export default class AModalThermographicImage extends Vue {
+
+  startSession = 0
 
   carousels: Session[] | [] = []
 
   created (): void {
     this.carousels = this.$props.treatment.sessions
+    this.startSession = this.$props.treatment.sessions
+      .findIndex(s => s.session_number === this.$props.session)
   }
 
   formatDate (date: string): string {

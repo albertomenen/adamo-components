@@ -24,6 +24,7 @@
       </header>
       <section class="modal-card-body has-background-light-gray py-10">
         <BCarousel
+          v-model="startSession"
           :autoplay="false"
           icon-pack="fas"
           :repeat="true"
