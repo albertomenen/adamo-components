@@ -93,6 +93,7 @@
                         icon="map-pin"
                         icon-pack="fas"
                         placeholder="4"
+                        :value="formatPoint(session.points)"
                         readonly
                       />
                     </div>

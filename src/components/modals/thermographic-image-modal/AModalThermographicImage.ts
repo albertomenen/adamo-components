@@ -36,4 +36,8 @@ export default class AModalThermographicImage extends Vue {
   formatHour (date: string): string {
     return moment(date).format('HH:mm')
   }
+
+  formatPoint (point: []): number {
+    return point.length
+  }
 }

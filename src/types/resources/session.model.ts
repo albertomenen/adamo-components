@@ -9,7 +9,8 @@ export interface Session {
   ts_creation_date: Date
   heating_duration: number
   points: string
-  station: Station
+  station: Station,
+  pressure: number
 }
 
 export interface SessionList {
