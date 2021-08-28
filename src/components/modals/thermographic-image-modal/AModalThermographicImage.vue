@@ -28,7 +28,10 @@
           icon-pack="fas"
           :repeat="true"
         >
-          <BCarouselItem>
+          <BCarouselItem
+            v-for="(session, index) in carousels"
+            :key="index"
+          >
             <section :class="`hero is-medium`">
               <div class="hero-body p-0 px-7">
                 <div class="is-flex is-justify-content-space-evenly">
@@ -40,7 +43,7 @@
                   </div>
                   <div class="column-right p-4">
                     <p class="has-text-medium-blue has-font-comfortaa">
-                      {{ $t('session') }} 3 {{ $t('prepositions.of') }} 10
+                      {{ $t('session') }} {{ session.session_number }} {{ $t('prepositions.of') }} {{ treatment.sessions_number }}
                     </p>
                     <div class="mt-5">
                       <p class="has-text-medium-blue has-font-comfortaa mb-1">
@@ -51,6 +54,7 @@
                         icon="calendar-check"
                         icon-pack="far"
                         placeholder="DD / MM / AAAA"
+                        :value="formatDate(session.ts_creation_date)"
                         readonly
                       />
                     </div>
@@ -63,6 +67,7 @@
                         icon="clock"
                         icon-pack="far"
                         :placeholder="$t('fields.hour')"
+                        :value="formatHour(session.ts_creation_date)"
                         readonly
                       />
                     </div>
