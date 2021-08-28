@@ -1,3 +1,5 @@
+import { Session } from "./session.model";
+
 /**
  * Tipos de tratamiento que se le puede hacer a un paciente
  */
@@ -43,6 +45,7 @@ export interface Treatment {
   extrinsics: number
   next_session_station_id: string
   move: string
+  sessions: Session[]
 
   // TODO: Faltan en el back
   type: TreatmentTypes
