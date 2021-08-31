@@ -17,6 +17,7 @@ import ALottie from './src/components/lottie/ALottie.vue'
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
 import AModalObservations from './src/components/modals/observations-modal/AModalObservations.vue'
 import AModalThermographicImage from './src/components/modals/thermographic-image-modal/AModalThermographicImage.vue'
+import AModalRecoverPass from './src/components/modals/recover-pass-modal/AModalRecoverPass.vue'
 
 // Forms
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
@@ -44,6 +45,7 @@ export default {
     Vue.component('AModalSchedule', AModalSchedule)
     Vue.component('AModalObservations', AModalObservations)
     Vue.component('AModalThermographicImage', AModalThermographicImage)
+    Vue.component('AModalRecoverPass', AModalRecoverPass)
 
     // Register forms
     Vue.component('AFormUserSteps', AFormUserSteps)
