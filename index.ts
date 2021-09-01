@@ -26,6 +26,9 @@ import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPa
 // Breadcrumb
 import ABreadcrumb from './src/components/breadcrumb/ABreadcrumb.vue'
 
+// Menu
+import AMenuUser from './src/components/user-menu/AMenuUser.vue'
+
 // Plugins
 import PortalVue from 'portal-vue'
 
@@ -56,6 +59,9 @@ export default {
 
     // Breadcrumb
     Vue.component('ABreadcrumb', ABreadcrumb)
+
+    // Menu
+    Vue.component('AMenuUser', AMenuUser)
 
     // Register third party plugins
     Vue.use(PortalVue)
