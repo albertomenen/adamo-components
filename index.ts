@@ -23,6 +23,9 @@ import AModalRecoverPass from './src/components/modals/recover-pass-modal/AModal
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
 import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPatientSteps.vue'
 
+// Breadcrumb
+import ABreadcrumb from './src/components/breadcrumb/ABreadcrumb.vue'
+
 // Plugins
 import PortalVue from 'portal-vue'
 
@@ -50,6 +53,9 @@ export default {
     // Register forms
     Vue.component('AFormUserSteps', AFormUserSteps)
     Vue.component('AFormPatientSteps', AFormPatientSteps)
+
+    // Breadcrumb
+    Vue.component('ABreadcrumb', ABreadcrumb)
 
     // Register third party plugins
     Vue.use(PortalVue)
