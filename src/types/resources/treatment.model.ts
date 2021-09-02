@@ -52,12 +52,12 @@ export interface Treatment {
   injury: boolean
   injury_kind: string
   injury_cause: string
-  image_3D: string
-  image_thermic: string
-  image_thermic_width: number
-  image_thermic_height: number
-  image_thermic_depth: number
-  image_thermic_data: string
+  image_3D: string | null
+  image_thermic: string | null
+  image_thermic_width: number | null
+  image_thermic_height: number | null
+  image_thermic_depth: number | null
+  image_thermic_data: string | null
 }
 
 export interface TreatmentList {
