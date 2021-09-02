@@ -1,4 +1,4 @@
-import { Session } from "./session.model";
+import { Session } from './session.model'
 
 /**
  * Tipos de tratamiento que se le puede hacer a un paciente
@@ -46,14 +46,18 @@ export interface Treatment {
   next_session_station_id: string
   move: string
   sessions: Session[]
-
-  // TODO: Faltan en el back
   type: TreatmentTypes
   state: TreatmentStatus
   last_session_date: Date | string
   injury: boolean
   injury_kind: string
   injury_cause: string
+  image_3D: string
+  image_thermic: string
+  image_thermic_width: number
+  image_thermic_height: number
+  image_thermic_depth: number
+  image_thermic_data: string
 }
 
 export interface TreatmentList {
