@@ -29,6 +29,9 @@ import ABreadcrumb from './src/components/breadcrumb/ABreadcrumb.vue'
 // Menu
 import AMenuUser from './src/components/user-menu/AMenuUser.vue'
 
+// Tables
+import ATablePatients from './src/components/tables/table-patients/ATablePatients.vue'
+
 // Plugins
 import PortalVue from 'portal-vue'
 
@@ -62,6 +65,9 @@ export default {
 
     // Menu
     Vue.component('AMenuUser', AMenuUser)
+
+    // Tables
+    Vue.component('ATablePatients', ATablePatients)
 
     // Register third party plugins
     Vue.use(PortalVue)
