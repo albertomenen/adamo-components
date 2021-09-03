@@ -33,6 +33,7 @@ import AMenuUser from './src/components/user-menu/AMenuUser.vue'
 
 // Tables
 import ATablePatients from './src/components/tables/table-patients/ATablePatients.vue'
+import ATableEmpty from './src/components/tables/empty-table/ATableEmpty.vue'
 
 // Plugins
 import PortalVue from 'portal-vue'
@@ -72,6 +73,7 @@ export default {
 
     // Tables
     Vue.component('ATablePatients', ATablePatients)
+    Vue.component('ATableEmpty', ATableEmpty)
 
     // Register third party plugins
     Vue.use(PortalVue)
