@@ -34,6 +34,10 @@ import AMenuUser from './src/components/user-menu/AMenuUser.vue'
 // Tables
 import ATablePatients from './src/components/tables/table-patients/ATablePatients.vue'
 import ATableEmpty from './src/components/tables/empty-table/ATableEmpty.vue'
+import ATableTreatments from './src/components/tables/table-treatments/ATableTreatments.vue'
+
+// Pagination
+import APagination from './src/components/pagination/APagination.vue'
 
 // Plugins
 import PortalVue from 'portal-vue'
@@ -74,6 +78,10 @@ export default {
     // Tables
     Vue.component('ATablePatients', ATablePatients)
     Vue.component('ATableEmpty', ATableEmpty)
+    Vue.component('ATableTreatments', ATableTreatments)
+
+    // Pagination
+    Vue.component('APagination', APagination)
 
     // Register third party plugins
     Vue.use(PortalVue)
