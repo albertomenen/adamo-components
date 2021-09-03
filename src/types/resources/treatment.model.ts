@@ -65,6 +65,7 @@ export interface Treatment {
  */
 export interface TreatmentCreate {
   name: string
+  medic: string
   sessions_number: number
   notes: string
   temperature: number
