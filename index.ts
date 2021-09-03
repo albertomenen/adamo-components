@@ -12,6 +12,8 @@ import ATableMenu from './src/components/table-menu/ATableMenu.vue'
 import AStepper from './src/components/stepper/AStepper.vue'
 import ACalendar from './src/components/calendar/ACalendar.vue'
 import ALottie from './src/components/lottie/ALottie.vue'
+import ATreatmentConfigurationField from './src/components/treatment-configuration-field/ATreatmentConfigurationField.vue'
+import ARoundIcon from './src/components/round-icon/ARoundIcon.vue'
 
 // Modals
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
@@ -56,6 +58,8 @@ export default {
     Vue.component('AStepper', AStepper)
     Vue.component('ACalendar', ACalendar)
     Vue.component('ALottie', ALottie)
+    Vue.component('ATreatmentConfigurationField', ATreatmentConfigurationField)
+    Vue.component('ARoundIcon', ARoundIcon)
 
     // Register modals
     Vue.component('AModalSchedule', AModalSchedule)
