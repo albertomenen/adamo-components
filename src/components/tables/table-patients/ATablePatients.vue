@@ -57,6 +57,9 @@
       />
     </ATableMenu>
   </BTableColumn>
+  <template #empty>
+    <ATableEmpty />
+  </template>
 </BTable>
 </template>
 
