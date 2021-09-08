@@ -7,6 +7,7 @@ export interface Group {
   phone: string
   contact_name: string
   email: string
+  logo?: string
 }
 
 export interface GroupList {
