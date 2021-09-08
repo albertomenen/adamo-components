@@ -1,3 +1,5 @@
+import { Location } from "./location.model";
+
 export interface Group {
   id_group: string
   group_name: string
@@ -8,6 +10,7 @@ export interface Group {
   contact_name: string
   email: string
   logo?: string
+  locations?: Location[]
 }
 
 export interface GroupList {
