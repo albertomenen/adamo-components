@@ -32,7 +32,7 @@ export interface Treatment {
   points: string
   ts_next_session: number
   ts_end: number
-  weight: number
+  width: number
   height: number
   ppx: number
   ppy: number
@@ -73,7 +73,7 @@ export interface TreatmentCreate {
   heating_duration: number
   points: string
   ts_end: number
-  weight: number
+  width: number
   height: number
   ppx: number
   ppy: number
