@@ -14,6 +14,14 @@ export default class ATableTreatments extends Vue {
   }) private readonly data!: Treatment[]
 
   /**
+   * Bandera para ocultar funcionalidades en el manager
+   */
+  @Prop({
+    type: Boolean,
+    default: false
+  }) admin
+
+  /**
    * Fila seleccionada con el Radio Button
    */
   selectedTreatment: Treatment | null = null

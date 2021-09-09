@@ -79,11 +79,13 @@
           @click="showTreatment(props.row)"
         />
         <ADropdownItem
+          v-if="!admin"
           icon="pen"
           :label="$t('actions.edit')"
           @click="editTreatment(props.row)"
         />
         <ADropdownItem
+          v-if="!admin"
           icon="eye"
           :label="$t('actions.delete')"
           @click="deleteTreatment(props.row)"
