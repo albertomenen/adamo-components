@@ -52,7 +52,8 @@ export interface Treatment {
   injury: boolean
   injury_kind: string
   injury_cause: string
-  image_3D: string | null
+  image_3D_depth: string | null
+  image_3D_color: string | null
   image_thermic: string | null
   image_thermic_width: number | null
   image_thermic_height: number | null
@@ -91,7 +92,8 @@ export interface TreatmentCreate {
   injury: boolean
   injury_kind: string
   injury_cause: string
-  image_3D: string | null
+  image_3D_depth: string | null
+  image_3D_color: string | null
   image_thermic: string | null
   image_thermic_width: number | null
   image_thermic_height: number | null
