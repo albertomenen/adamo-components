@@ -12,6 +12,9 @@
   >
     <AFormUserPersonalInfo
       class="p-5"
+      :form-data="formData"
+      :groups="groups"
+      :roles="roles"
     />
   </BStepItem>
   <BStepItem
@@ -22,6 +25,7 @@
   >
     <AFormUserRegister
       class="p-5"
+      :form-data="formData"
     />
   </BStepItem>
   <template #navigation="{previous, next}">

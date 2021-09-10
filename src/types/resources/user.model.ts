@@ -13,14 +13,16 @@ export interface User {
 }
 
 export interface UserCreate {
-  id_group: string
+  id_group: string | null
   user_name: string
   phone: string
   email: string
   password: string
   name: string
   last_name: string
-  role_id: string
+  role_id: string | null
+  id_location: string | null
+  country: string
 }
 
 export interface UserList {

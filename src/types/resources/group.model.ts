@@ -10,7 +10,7 @@ export interface Group {
   contact_name: string
   email: string
   logo?: string
-  locations?: Location[]
+  locations: Location[]
 }
 
 export interface GroupList {
