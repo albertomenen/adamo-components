@@ -18,3 +18,13 @@ export interface DeviceList {
   group?: Group
   station?: StationListDevice
 }
+
+export interface DeviceCreate {
+  group_id: string | null
+  mac: string
+  station_id: string| null
+  serial_number: string
+  hw_version: string
+  sw_version: string
+  device_name: string
+}
