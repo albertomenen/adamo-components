@@ -1,4 +1,5 @@
-import { Device, DeviceList } from "./device.model";
+import { LocationList } from './location.model';
+import { DeviceList } from './device.model';
 
 export enum StationShowEventClass {
   Mine = 'current-user',
@@ -38,4 +39,10 @@ export interface StationShowEvent {
     id: string
     class: StationShowEventClass
   }
+}
+
+export interface StationListDevice {
+  id_station: string
+  station_name: string
+  location: LocationList
 }

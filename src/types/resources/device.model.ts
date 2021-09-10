@@ -1,3 +1,5 @@
+import { Group } from './group.model'
+import { StationListDevice } from './station.model'
 import { StationList } from './station.model'
 
 export interface Device {
@@ -12,5 +14,7 @@ export interface Device {
 
 export interface DeviceList {
   id_device: string
-  device_name: string
+  device_name: string,
+  group?: Group
+  station?: StationListDevice
 }
