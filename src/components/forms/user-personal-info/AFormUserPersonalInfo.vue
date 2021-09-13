@@ -20,8 +20,13 @@
       icon-pack="fas"
       :placeholder="$t('fields.phone')"
     />
+    <AInput
+      v-model="formData.country"
+      class="column is-full"
+      :placeholder="$t('fields.country')"
+    />
     <BSelect
-      v-model="formData.role_id"
+      v-model="role"
       class="column is-full"
       expanded
       :placeholder="$t('fields.role')"
@@ -30,12 +35,13 @@
       <option
         v-for="rol in roles"
         :key="rol.id_role"
-        :value="rol.id_role"
+        :value="rol"
       >
         {{ rol.role_name }}
       </option>
     </BSelect>
     <BSelect
+      v-if="!blockedByRol"
       v-model="formData.id_group"
       class="column is-half"
       expanded
@@ -51,6 +57,7 @@
       </option>
     </BSelect>
     <BSelect
+      v-if="!blockedByRol"
       v-model="formData.id_location"
       class="column is-half"
       expanded

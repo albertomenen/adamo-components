@@ -29,5 +29,13 @@ export enum ApiRoutes {
   Patients = 'patient',
   Treatments = 'treatments',
   Location = 'location',
-  Station = 'station'
+  Station = 'station',
+  Users = 'users',
+  Device = 'device',
+  Role = 'role',
+  SysAdmin = 'system_admin',
+  Developer = 'developer',
+  PracticeManager = 'practice_manager',
+  MP = 'mp',
+  NMP = 'nmp'
 }

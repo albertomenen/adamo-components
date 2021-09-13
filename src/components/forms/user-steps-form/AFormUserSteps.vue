@@ -15,6 +15,7 @@
       :form-data="formData"
       :groups="groups"
       :roles="roles"
+      @roleSelected="roleSelected = $event"
     />
   </BStepItem>
   <BStepItem

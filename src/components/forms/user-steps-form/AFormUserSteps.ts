@@ -31,11 +31,13 @@ export default class AFormUserSteps extends Vue {
   })
   roles!: Role[]
 
+  roleSelected: Role | null = null
+
   activeStep = 0
 
   nextStep (handler: () => void): void {
     this.activeStep === 1
-      ? this.$emit('submit')
+      ? this.$emit('submit', this.roleSelected)
       : handler()
   }
 
