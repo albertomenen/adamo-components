@@ -9,7 +9,7 @@ export interface Device {
   hw_version: string
   sw_version: string
   device_name: string
-  station: StationList[]
+  station: StationList
 }
 
 export interface DeviceList {

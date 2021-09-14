@@ -1,5 +1,6 @@
 import { LocationList } from './location.model';
 import { DeviceList } from './device.model';
+import { Location } from '../../types/resources/location.model'
 
 export enum StationShowEventClass {
   Mine = 'current-user',
@@ -19,6 +20,7 @@ export interface Station {
 export interface StationList {
   id_station: string
   station_name: string
+  location: Location
 }
 
 export interface StationSchedule {
