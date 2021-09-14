@@ -59,6 +59,8 @@ export interface Treatment {
   image_thermic_height: number | null
   image_thermic_depth: number | null
   image_thermic_data: string | null
+  n_cycles: number
+  auto_type_move: string
 }
 
 /**
@@ -99,6 +101,8 @@ export interface TreatmentCreate {
   image_thermic_height: number | null
   image_thermic_depth: number | null
   image_thermic_data: string | null
+  n_cycles: number
+  auto_type_move: string
 }
 
 export interface TreatmentList {
