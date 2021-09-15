@@ -35,7 +35,7 @@
         <div
           class="has-background-blue has-text-centered label-app"
         >
-          <p class="has-text-white is-size-6 pt-1">Practice manager</p>
+          <p class="has-text-white is-size-6 pt-1">{{ getRoleName }}</p>
         </div>
       </div>
     </div>
