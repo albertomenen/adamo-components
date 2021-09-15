@@ -11,6 +11,7 @@ export interface Device {
   device_name: string
   station: StationList
   group: Group
+  station_id: string
 }
 
 export interface DeviceList {
