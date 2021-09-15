@@ -10,6 +10,7 @@ export interface Device {
   sw_version: string
   device_name: string
   station: StationList
+  group: Group
 }
 
 export interface DeviceList {
