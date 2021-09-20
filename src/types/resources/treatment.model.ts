@@ -61,7 +61,7 @@ export interface Treatment {
   image_thermic_data: string | null
   n_cycles: number
   auto_type_move: string
-  velocity: number
+  velocity?: number
 }
 
 /**
@@ -104,7 +104,7 @@ export interface TreatmentCreate {
   image_thermic_data: string | null
   n_cycles: number
   auto_type_move: string
-  velocity: number
+  velocity?: number
 }
 
 export interface TreatmentList {
