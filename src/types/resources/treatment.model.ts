@@ -76,7 +76,6 @@ export interface TreatmentCreate {
   temperature: number
   heating_duration: number
   points: Array<any>
-  ts_end: number
   width: number
   height: number
   ppx: number
@@ -89,10 +88,6 @@ export interface TreatmentCreate {
   mode: string
   extrinsics: number
   move: string
-  sessions: Session[]
-  type: TreatmentTypes
-  state: TreatmentStatus
-  last_session_date: Date | string
   injury: boolean
   injury_kind: string
   injury_cause: string
