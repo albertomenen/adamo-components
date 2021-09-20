@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Session } from './session.model'
 
 /**
@@ -29,7 +30,7 @@ export interface Treatment {
   temperature: number
   ts_creation_date: Date
   heating_duration: number
-  points: string
+  points: Array<any>
   ts_next_session: number
   ts_end: number
   width: number
@@ -74,7 +75,7 @@ export interface TreatmentCreate {
   notes: string
   temperature: number
   heating_duration: number
-  points: string
+  points: Array<any>
   ts_end: number
   width: number
   height: number
