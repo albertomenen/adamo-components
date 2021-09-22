@@ -21,6 +21,14 @@ export default class AModalThermographicImage extends Vue {
     default: () => 1
   }) currentSession!: number
 
+  get carouselSession (): number {
+    return this.currentSession - 1
+  }
+
+  set carouselSession (val: number) {
+    this.$emit('update:current-session', val + 1)
+  }
+
   formatDate (date: string): string {
     return moment(date).format('DD / MM / YYYY')
   }
