@@ -30,7 +30,7 @@ export interface Treatment {
   temperature: number
   ts_creation_date: Date
   heating_duration: number
-  points: Array<any>
+  points?: Array<any>
   ts_next_session: number
   ts_end: number
   width: number
@@ -60,8 +60,8 @@ export interface Treatment {
   image_thermic_height: number | null
   image_thermic_depth: number | null
   image_thermic_data: string | null
-  n_cycles: number
-  auto_type_move: string
+  n_cycles?: number
+  auto_type_move?: string
   velocity?: number
 }
 
@@ -75,7 +75,7 @@ export interface TreatmentCreate {
   notes: string
   temperature: number
   heating_duration: number
-  points: Array<any>
+  points?: Array<any>
   width: number
   height: number
   ppx: number
@@ -98,8 +98,8 @@ export interface TreatmentCreate {
   image_thermic_height: number | null
   image_thermic_depth: number | null
   image_thermic_data: string | null
-  n_cycles: number
-  auto_type_move: string
+  n_cycles?: number
+  auto_type_move?: string
   velocity?: number
 }
 
