@@ -39,7 +39,7 @@
                   <div class="column-left">
                     <img
                       alt=""
-                      :src="getThermic(session.thermic_image)"
+                      :src="getThermic(session.image_thermic)"
                     >
                   </div>
                   <div class="column-right p-4">

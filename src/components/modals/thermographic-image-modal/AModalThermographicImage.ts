@@ -1,7 +1,6 @@
 import { Treatment } from '../../../types/resources/treatment.model'
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Session } from '../../../types/resources/session.model'
 import moment from 'moment'
 
 @Component
@@ -39,9 +38,5 @@ export default class AModalThermographicImage extends Vue {
 
   getThermic (image: string): string {
     return `data:image/png;base64,${image}`
-  }
-
-  get currentSessionObject (): Session {
-    return this.treatment.sessions[this.carouselSession]
   }
 }
