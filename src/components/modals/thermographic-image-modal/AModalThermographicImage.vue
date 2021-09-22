@@ -24,14 +24,14 @@
       </header>
       <section class="modal-card-body has-background-light-gray py-10">
         <BCarousel
-          v-model="startSession"
+          v-model="currentSession"
           :autoplay="false"
           icon-pack="fas"
           :repeat="true"
         >
           <BCarouselItem
-            v-for="(session, index) in carousels"
-            :key="index"
+            v-for="session in treatment.sessions"
+            :key="session.id_session"
           >
             <section :class="`hero is-medium`">
               <div class="hero-body p-0 px-7">
@@ -39,7 +39,7 @@
                   <div class="column-left">
                     <img
                       alt=""
-                      src="@/assets/thermal2.png"
+                      :src="thermicImage"
                     >
                   </div>
                   <div class="column-right p-4">
@@ -55,8 +55,8 @@
                         icon="calendar-check"
                         icon-pack="far"
                         placeholder="DD / MM / AAAA"
-                        :value="formatDate(session.ts_creation_date)"
                         readonly
+                        :value="formatDate(currentSessionObject.ts_creation_date)"
                       />
                     </div>
                     <div class="mt-3">
@@ -68,8 +68,8 @@
                         icon="clock"
                         icon-pack="far"
                         :placeholder="$t('fields.hour')"
-                        :value="formatHour(session.ts_creation_date)"
                         readonly
+                        :value="formatHour(currentSessionObject.ts_creation_date)"
                       />
                     </div>
                     <div class="mt-3">
@@ -93,8 +93,8 @@
                         icon="map-pin"
                         icon-pack="fas"
                         placeholder="4"
-                        :value="formatPoint(session.points)"
                         readonly
+                        :value="treatment.points.length || 0"
                       />
                     </div>
                   </div>

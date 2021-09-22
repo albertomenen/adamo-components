@@ -1,33 +1,25 @@
-import { Treatment } from '../../../types/resources/treatment.model';
-import { PropType } from 'vue';
-import { Component, Vue } from 'vue-property-decorator'
-import { Session } from '../../../types/resources/session.model';
-import moment from 'moment';
+import { Treatment } from '../../../types/resources/treatment.model'
+import { PropType } from 'vue'
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Session } from '../../../types/resources/session.model'
+import moment from 'moment'
 
-@Component({
-  props: {
-    showModal: {
-      type: Boolean,
-      default: false
-    },
-    treatment: {
-      type: Object as () => PropType<Treatment>,
-      default: () => null
-    },
-    session: Number
-  }
-})
+@Component
 export default class AModalThermographicImage extends Vue {
+  @Prop({
+    type: Boolean,
+    default: false
+  }) showModal!: boolean
 
-  startSession = 0
+  @Prop({
+    type: Object as () => PropType<Treatment>,
+    default: () => null
+  }) treatment!: Treatment
 
-  carousels: Session[] | [] = []
-
-  created (): void {
-    this.carousels = this.$props.treatment.sessions
-    this.startSession = this.$props.treatment.sessions
-      .findIndex(s => s.session_number === this.$props.session)
-  }
+  @Prop({
+    type: Number,
+    default: () => 1
+  }) currentSession!: number
 
   formatDate (date: string): string {
     return moment(date).format('DD / MM / YYYY')
@@ -37,7 +29,11 @@ export default class AModalThermographicImage extends Vue {
     return moment(date).format('HH:mm')
   }
 
-  formatPoint (point: []): number {
-    return point.length
+  get thermicImage (): string {
+    return `data:image/png;base64,${this.currentSessionObject.image_thermic}`
+  }
+
+  get currentSessionObject (): Session {
+    return this.treatment.sessions[this.currentSession - 1]
   }
 }

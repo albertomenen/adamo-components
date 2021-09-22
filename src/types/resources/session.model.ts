@@ -10,7 +10,8 @@ export interface Session {
   heating_duration: number
   points: string
   station: Station,
-  pressure: number
+  pressure: number,
+  image_thermic: string,
 }
 
 export interface SessionList {
