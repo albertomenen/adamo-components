@@ -40,6 +40,7 @@
                     <img
                       alt=""
                       :src="getThermic(session.image_thermic)"
+                      style="width: 300px; height: 400px;"
                     >
                   </div>
                   <div class="column-right p-4">
