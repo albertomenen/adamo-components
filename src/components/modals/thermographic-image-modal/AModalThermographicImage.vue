@@ -39,7 +39,7 @@
                   <div class="column-left">
                     <img
                       alt=""
-                      :src="thermicImage"
+                      :src="getThermic(session.thermic_image)"
                     >
                   </div>
                   <div class="column-right p-4">
@@ -56,7 +56,7 @@
                         icon-pack="far"
                         placeholder="DD / MM / AAAA"
                         readonly
-                        :value="formatDate(currentSessionObject.ts_creation_date)"
+                        :value="formatDate(session.ts_creation_date)"
                       />
                     </div>
                     <div class="mt-3">
@@ -69,7 +69,7 @@
                         icon-pack="far"
                         :placeholder="$t('fields.hour')"
                         readonly
-                        :value="formatHour(currentSessionObject.ts_creation_date)"
+                        :value="formatHour(session.ts_creation_date)"
                       />
                     </div>
                     <div class="mt-3">

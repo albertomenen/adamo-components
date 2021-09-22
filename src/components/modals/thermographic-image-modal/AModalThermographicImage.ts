@@ -37,11 +37,11 @@ export default class AModalThermographicImage extends Vue {
     return moment(date).format('HH:mm')
   }
 
-  get thermicImage (): string {
-    return `data:image/png;base64,${this.currentSessionObject.image_thermic}`
+  getThermic (image: string): string {
+    return `data:image/png;base64,${image}`
   }
 
   get currentSessionObject (): Session {
-    return this.treatment.sessions[this.currentSession - 1]
+    return this.treatment.sessions[this.carouselSession]
   }
 }
