@@ -70,34 +70,34 @@ export interface Treatment {
  */
 export interface TreatmentCreate {
   name: string
-  medic: string
+  medic?: string
   sessions_number: number
   notes: string
   temperature: number
-  heating_duration: number
+  heating_duration?: number
   points?: Array<any>
-  width: number
-  height: number
-  ppx: number
-  ppy: number
-  fx: number
-  fy: number
-  model: string
-  coeff: string
-  depth_scale: number
-  mode: string
-  extrinsics: number
-  move: string
+  width?: number
+  height?: number
+  ppx?: number
+  ppy?: number
+  fx?: number
+  fy?: number
+  model?: string
+  coeff?: string
+  depth_scale?: number
+  mode?: string
+  extrinsics?: number
+  move?: string
   injury: boolean | string
   injury_kind: string
   injury_cause: string
-  image_3D_depth: string | null
-  image_3D_color: string | null
-  image_thermic: string | null
-  image_thermic_width: number | null
-  image_thermic_height: number | null
-  image_thermic_depth: number | null
-  image_thermic_data: string | null
+  image_3D_depth?: string | null
+  image_3D_color?: string | null
+  image_thermic?: string | null
+  image_thermic_width?: number | null
+  image_thermic_height?: number | null
+  image_thermic_depth?: number | null
+  image_thermic_data?: string | null
   n_cycles?: number
   auto_type_move?: string
   velocity?: number
