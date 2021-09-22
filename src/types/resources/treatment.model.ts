@@ -50,7 +50,7 @@ export interface Treatment {
   type: TreatmentTypes
   state: TreatmentStatus
   last_session_date: Date | string
-  injury: boolean
+  injury: boolean | string
   injury_kind: string
   injury_cause: string
   image_3D_depth: string | null
