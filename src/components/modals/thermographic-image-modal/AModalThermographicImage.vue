@@ -82,6 +82,7 @@
                         icon-pack="fas"
                         placeholder="Media"
                         readonly
+                        :value="getTemperature"
                       />
                     </div>
                     <div class="mt-3">

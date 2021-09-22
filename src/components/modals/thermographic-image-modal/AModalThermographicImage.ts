@@ -28,6 +28,15 @@ export default class AModalThermographicImage extends Vue {
     this.$emit('update:current-session', val + 1)
   }
 
+  get getTemperature (): string {
+    switch (this.treatment.temperature) {
+      case 0: return 'Baja'
+      case 1: return 'Media'
+      case 2: return 'Alta'
+    }
+    return '-'
+  }
+
   formatDate (date: string): string {
     return moment(date).format('DD / MM / YYYY')
   }
