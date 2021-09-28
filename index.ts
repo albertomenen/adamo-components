@@ -26,7 +26,6 @@ import AModalPatientForm from './src/components/modals/patient-form-modal/AModal
 // Forms
 import AFormUserSteps from './src/components/forms/user-steps-form/AFormUserSteps.vue'
 import AFormPatientSteps from './src/components/forms/patient-steps-form/AFormPatientSteps.vue'
-import AFormUserProfileInfo from './src/components/forms/user-profile-info/AFormUserProfileInfo.vue'
 import AFormUserRegisterInfo from './src/components/forms/user-register-info/AFormUserRegisterInfo.vue'
 import AformUserProfile from './src/components/forms/user-profile-form/AformUserProfile.vue'
 
@@ -75,7 +74,6 @@ export default {
     // Register forms
     Vue.component('AFormUserSteps', AFormUserSteps)
     Vue.component('AFormPatientSteps', AFormPatientSteps)
-    Vue.component('AFormUserProfileInfo', AFormUserProfileInfo)
     Vue.component('AFormUserRegisterInfo', AFormUserRegisterInfo)
     Vue.component('AformUserProfile', AformUserProfile)
 
