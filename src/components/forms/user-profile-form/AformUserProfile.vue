@@ -88,22 +88,6 @@
           :placeholder="$t('fields.email')"
           :readonly="!isEditing"
         />
-        <AInput
-          class="column is-half"
-          icon-pack="fas"
-          :password-reveal="true"
-          :placeholder="$t('fields.password')"
-          :readonly="!isEditing"
-          type="password"
-        />
-        <AInput
-          class="column is-half"
-          icon-pack="fas"
-          :password-reveal="true"
-          :placeholder="$t('fields.passwordConf')"
-          :readonly="!isEditing"
-          type="password"
-        />
       </div>
     </div>
   </div>
