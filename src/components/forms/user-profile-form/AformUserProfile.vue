@@ -13,9 +13,9 @@
         <BButton
           class="has-text-dark-blue"
           icon-pack="fas"
-          icon-right="pen"
+          :icon-right="isEditing ? 'save' : 'pen'"
           type="is-ghost"
-          @click="isEditing = true"
+          @click="setEditContext"
         />
       </div>
       <div class="columns is-multiline">
