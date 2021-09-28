@@ -1,6 +1,10 @@
 <template>
 <div>
-  <div class="content-wrapper mt-4">
+  <div
+    class="mt-4"
+    :class="{
+      'content-wrapper': scroll
+    }">
     <div class="is-adamo-card-dark mt-4">
       <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
         <div class="is-text-h2 has-text-dark-blue py-2">

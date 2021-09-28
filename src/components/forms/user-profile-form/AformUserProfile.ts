@@ -6,6 +6,11 @@ import { User } from '../../../types/resources/user.model'
   props: {
     user: {
       type: Object as () => PropType<User>
+    },
+
+    scroll: {
+      type: Boolean,
+      default: false
     }
   }
 })
