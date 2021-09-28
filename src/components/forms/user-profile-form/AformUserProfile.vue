@@ -15,6 +15,7 @@
           icon-pack="fas"
           icon-right="pen"
           type="is-ghost"
+          @click="isEditing = true"
         />
       </div>
       <div class="columns is-multiline">
@@ -22,13 +23,13 @@
           v-model="user.name"
           class="column is-half"
           :placeholder="$t('fields.name')"
-          readonly
+          :readonly="!isEditing"
         />
         <AInput
           v-model="user.last_name"
           class="column is-half"
           :placeholder="$tc('fields.lastNames', 2)"
-          readonly
+          :readonly="!isEditing"
         />
         <AInput
           v-model="user.phone"
@@ -36,13 +37,13 @@
           icon="phone-alt"
           icon-pack="fas"
           :placeholder="$t('fields.phone')"
-          readonly
+          :readonly="!isEditing"
         />
         <AInput
           v-model="user.role.role_name"
           class="column is-half"
           placeholder="MP"
-          readonly
+          :readonly="!isEditing"
         />
       </div>
     </div>
@@ -57,17 +58,17 @@
         <AInput
           class="column is-4"
           :placeholder="$t('fields.machine')"
-          readonly
+          :readonly="!isEditing"
         />
         <AInput
           class="column is-4"
           :placeholder="$t('fields.serial')"
-          readonly
+          :readonly="!isEditing"
         />
         <AInput
           class="column is-4"
           :placeholder="$t('fields.mac')"
-          readonly
+          :readonly="!isEditing"
         />
       </div>
     </div>
@@ -85,14 +86,14 @@
           icon="envelope"
           icon-pack="far"
           :placeholder="$t('fields.email')"
-          readonly
+          :readonly="!isEditing"
         />
         <AInput
           class="column is-half"
           icon-pack="fas"
           :password-reveal="true"
           :placeholder="$t('fields.password')"
-          readonly
+          :readonly="!isEditing"
           type="password"
         />
         <AInput
@@ -100,7 +101,7 @@
           icon-pack="fas"
           :password-reveal="true"
           :placeholder="$t('fields.passwordConf')"
-          readonly
+          :readonly="!isEditing"
           type="password"
         />
       </div>

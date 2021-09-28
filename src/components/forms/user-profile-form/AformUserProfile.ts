@@ -14,4 +14,11 @@ import { User } from '../../../types/resources/user.model'
     }
   }
 })
-export default class AformUserProfile extends Vue {}
+export default class AformUserProfile extends Vue {
+  isEditing = false
+
+  saveProfile (): void {
+    this.$emit('save')
+    this.isEditing = false
+  }
+}
