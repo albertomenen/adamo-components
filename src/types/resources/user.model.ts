@@ -17,7 +17,6 @@ export interface UserCreate {
   user_name: string
   phone: string
   email: string
-  password: string
   name: string
   last_name: string
   role_id: string | null
