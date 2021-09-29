@@ -48,31 +48,6 @@
       </div>
     </div>
 
-    <div class="is-adamo-card-dark mt-4">
-      <div class="is-flex is-justify-content-space-between is-align-items-center mb-4">
-        <div class="is-text-h2 has-text-dark-blue py-2">
-          {{ $t('users.profile.device') }}
-        </div>
-      </div>
-      <div class="columns is-multiline">
-        <AInput
-          class="column is-4"
-          :placeholder="$t('fields.machine')"
-          :readonly="!isEditing"
-        />
-        <AInput
-          class="column is-4"
-          :placeholder="$t('fields.serial')"
-          :readonly="!isEditing"
-        />
-        <AInput
-          class="column is-4"
-          :placeholder="$t('fields.mac')"
-          :readonly="!isEditing"
-        />
-      </div>
-    </div>
-
     <div class="is-adamo-card-dark my-4">
       <div  class="is-flex is-justify-content-space-between is-align-items-center mb-4">
         <div class="is-text-h2 has-text-dark-blue py-2">
