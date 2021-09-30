@@ -12,6 +12,31 @@ export interface User {
   id_location: string
 }
 
+export interface AuthRole {
+  app_detail_patient: boolean
+  app_login: boolean
+  app_select_patient: boolean
+  debug_app_hmi: boolean
+  detail_patient: boolean
+  get_patient: boolean
+  id_role: string
+  list_patient: boolean
+  login_in_station: boolean
+  manage_dev: boolean
+  manage_group: boolean
+  manage_mp: boolean
+  manage_nmp: boolean
+  manage_patient: boolean
+  manage_practice_manager: boolean
+  manage_station: boolean
+  manage_sysadmin: boolean
+  manage_treatment: boolean
+  role_code: string
+  role_name: string
+  run_sesion: boolean
+  user_logout: boolean
+}
+
 export interface UserCreate {
   id_group: string | null
   user_name: string
@@ -45,7 +70,7 @@ export interface AuthUser {
   name: string
   phone: string
   user_name: string
-  role: Role[]
+  role: AuthRole
 }
 
 export interface AuthResponse {
