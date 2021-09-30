@@ -8,4 +8,10 @@ import { Component, Vue } from 'vue-property-decorator'
     }
   }
 })
-export default class AModalRecoverPass extends Vue {}
+export default class AModalRecoverPass extends Vue {
+  email = ''
+
+  recoverPass (): void {
+    this.$emit('submit', this.email)
+  }
+}

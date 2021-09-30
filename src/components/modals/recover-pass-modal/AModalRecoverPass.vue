@@ -20,6 +20,7 @@
               </div>
               <BField class="pb-1">
                 <BInput
+                  v-model="email"
                   custom-class="is-italic"
                   icon="envelope"
                   icon-pack="far"
@@ -35,6 +36,7 @@
                   rounded
                   size="is-medium"
                   type="is-orange"
+                  @click="recoverPass"
                 >
                   {{$t('actions.send')}}
                 </BButton>
