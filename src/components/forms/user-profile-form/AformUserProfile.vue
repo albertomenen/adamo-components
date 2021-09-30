@@ -40,10 +40,10 @@
           :readonly="!isEditing"
         />
         <AInput
-          v-model="user.role.role_name"
           class="column is-half"
-          placeholder="MP"
-          :readonly="!isEditing"
+          :placeholder="$t('fields.role')"
+          readonly
+          :value="user.role.role_name"
         />
       </div>
     </div>
