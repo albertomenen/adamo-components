@@ -16,7 +16,7 @@ export interface ApiFilter {
 export interface ApiRequest {
   page?: number,
   size?: number,
-  filters: Filter[]
+  filters?: Filter[]
 }
 
 export interface PaginationInterface {
