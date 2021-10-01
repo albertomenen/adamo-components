@@ -1,4 +1,12 @@
-// type Operation = '>' | '<' | '>=' | '<='
+/* eslint-disable @typescript-eslint/no-explicit-any */
+type FilterOperation = 'equal' | '<' | '>' | '<=' | '>=' | 'contains'
+
+export interface Filter<T = any> {
+  field: keyof T,
+  op: FilterOperation,
+  value: any
+}
+
 
 export interface ApiFilter {
   field: string,
@@ -7,7 +15,8 @@ export interface ApiFilter {
 
 export interface ApiRequest {
   page?: number,
-  size?: number
+  size?: number,
+  filters: Filter[]
 }
 
 export interface PaginationInterface {
