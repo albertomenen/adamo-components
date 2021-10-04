@@ -11,6 +11,11 @@ import { User } from '../../../types/resources/user.model'
     scroll: {
       type: Boolean,
       default: false
+    },
+
+    station: {
+      type: String,
+      default: ''
     }
   }
 })
