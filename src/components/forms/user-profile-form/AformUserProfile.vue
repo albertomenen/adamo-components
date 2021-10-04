@@ -65,6 +65,22 @@
         />
       </div>
     </div>
+
+    <div class="is-adamo-card-dark my-4">
+      <div  class="is-flex is-justify-content-space-between is-align-items-center mb-4">
+        <div class="is-text-h2 has-text-dark-blue py-2">
+          {{ $t('users.profile.userData') }}
+        </div>
+      </div>
+      <div class="columns is-multiline">
+        <AInput
+          class="column is-full"
+          :placeholder="$t('fields.machineId')"
+          readonly
+          :value="station"
+        />
+      </div>
+    </div>
   </div>
 </div>
 </template>
