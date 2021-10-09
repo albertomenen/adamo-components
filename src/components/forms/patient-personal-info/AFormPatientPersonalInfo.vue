@@ -55,15 +55,9 @@
     </BSelect> -->
     <AInput
       v-model="formData.user_name"
-      class="column is-half"
+      class="column is-full"
       :placeholder="$t('fields.user')"
       type="text"
-    />
-    <AInput
-      v-model="formData.password"
-      class="column is-half"
-      :placeholder="$t('fields.password')"
-      type="password"
     />
   </div>
 </section>
