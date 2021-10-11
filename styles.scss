@@ -164,6 +164,15 @@ body, button, input, optgroup, select, textarea {
 }
 
 .is-adamo-pagination {
+
+  .pagination {
+    justify-content: center;
+  }
+
+  .pagination-list {
+    flex-grow: 0;
+  }
+
   .pagination-link {
     border: none;
 
