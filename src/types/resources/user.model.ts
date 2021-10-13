@@ -78,4 +78,5 @@ export interface AuthResponse {
   message: string
   status: string
   user: AuthUser
+  logo: string
 }
