@@ -36,12 +36,22 @@
             <section :class="`hero is-medium`">
               <div class="hero-body p-0 px-7">
                 <div class="is-flex is-justify-content-space-evenly">
-                  <div class="column-left">
+                  <div class="column-left relative">
                     <img
                       alt=""
                       :src="getThermic(session.image_thermic)"
                       style="width: 300px; height: 400px;"
                     >
+                    <div :style="coordinateBoxStyles">
+                      <div class="relative">
+                        <div
+                          v-for="(point, i) in points"
+                          :key="i"
+                          class="has-text-blue has-background-white is-flex is-align-items-center is-justify-content-center has-shadow"
+                          :style="getCoordinate(point)"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div class="column-right p-4">
                     <p class="has-text-medium-blue has-font-comfortaa">
