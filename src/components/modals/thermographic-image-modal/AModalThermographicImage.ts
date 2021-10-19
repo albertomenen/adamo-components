@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Treatment } from '../../../types/resources/treatment.model'
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import moment from 'moment'
-import { TreatmentPoint } from 'index'
 
 const minX = -0.11
 const minY = -0.95
@@ -35,9 +35,9 @@ export default class AModalThermographicImage extends Vue {
   }) showModal!: boolean
 
   @Prop({
-    type: Array as PropType<TreatmentPoint[]>,
+    type: Array,
     default: () => ([])
-  }) points!: TreatmentPoint[]
+  }) points!: any[]
 
   @Prop({
     type: Object as () => PropType<Treatment>,
@@ -86,7 +86,7 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
-  getCoordinate (point: TreatmentPoint) {
+  getCoordinate (point: any) {
     const position = getPercentage(point.x, point.y)
 
     return {
