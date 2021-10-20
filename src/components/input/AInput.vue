@@ -1,6 +1,6 @@
 <template>
 <ValidationProvider
-  v-slot="{ errors, valid }"
+  v-slot="{ errors }"
   :name="$attrs.name || $attrs.label"
   :rules="rules"
   :vid="vid">
@@ -8,9 +8,9 @@
     v-bind="$attrs"
     class="is-adamo-input"
     custom-class="is-italic"
-    :message="errors"
     rounded
-    :type="{ 'is-danger': errors[0], 'is-success': valid }"
+    :type="erorrs[0] ? 'is-danger' : ''"
+    :validation-message="errors"
     v-on="$listeners"
   />
 </ValidationProvider>
