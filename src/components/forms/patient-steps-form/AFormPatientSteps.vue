@@ -58,7 +58,7 @@
           :icon-right="activeStep !== 2 ? 'arrow-right' : ''"
           rounded
           type="is-orange"
-          @click.prevent="handleSubmit(nextStep(next.action))"
+          @click.prevent="nextStep(next.action)"
         >
           {{ $t(activeStep !== 2 ? 'actions.continue' : 'actions.create') }}
         </BButton>
