@@ -14,6 +14,8 @@ import ACalendar from './src/components/calendar/ACalendar.vue'
 import ALottie from './src/components/lottie/ALottie.vue'
 import ATreatmentConfigurationField from './src/components/treatment-configuration-field/ATreatmentConfigurationField.vue'
 import ARoundIcon from './src/components/round-icon/ARoundIcon.vue'
+import ASelectRace from './src/components/select-race/ASelectRace.vue'
+import ASelectGender from './src/components/select-gender/ASelectGender.vue'
 
 // Modals
 import AModalSchedule from './src/components/modals/schedule-modal/AModalSchedule.vue'
@@ -62,6 +64,8 @@ export default {
     Vue.component('ALottie', ALottie)
     Vue.component('ATreatmentConfigurationField', ATreatmentConfigurationField)
     Vue.component('ARoundIcon', ARoundIcon)
+    Vue.component('ASelectRace', ASelectRace)
+    Vue.component('ASelectGender', ASelectGender)
 
     // Register modals
     Vue.component('AModalSchedule', AModalSchedule)

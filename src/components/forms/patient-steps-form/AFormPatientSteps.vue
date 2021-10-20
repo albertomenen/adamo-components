@@ -1,7 +1,5 @@
 <template>
-<ValidationObserver
-  ref="observer"
-  v-slot="{ handleSubmit }">
+<ValidationObserver ref="observer">
   <BSteps
     v-model="activeStep"
     class="is-adamo-stepper"
