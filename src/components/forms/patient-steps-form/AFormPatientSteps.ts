@@ -1,10 +1,12 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import { ValidationObserver } from 'vee-validate'
 
 @Component({
   components: {
     AFormPatientPersonalInfo: () => import('../patient-personal-info/AFormPatientPersonalInfo.vue'),
     AFormPatientContactInfo: () => import('../patient-contact-info/AFormPatientContactInfo.vue'),
-    AFormPatientPhysicInfo: () => import('../patient-physic-info/AFormPatientPhysicInfo.vue')
+    AFormPatientPhysicInfo: () => import('../patient-physic-info/AFormPatientPhysicInfo.vue'),
+    ValidationObserver
   }
 })
 export default class AFormPatientSteps extends Vue {
