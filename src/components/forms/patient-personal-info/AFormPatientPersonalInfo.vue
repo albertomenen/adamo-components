@@ -4,6 +4,7 @@
     <AInput
       v-model="formData.name"
       class="column is-full"
+      name="name"
       :placeholder="$t('fields.name')"
       rules="required"
       type="text"
@@ -11,6 +12,7 @@
     <AInput
       v-model="formData.last_name"
       class="column is-full"
+      name="lastname"
       :placeholder="$tc('fields.lastNames', 2)"
       rules="required"
       type="text"
@@ -18,6 +20,7 @@
     <AInput
       v-model="formData.identification"
       class="column is-full"
+      name="identification"
       :placeholder="$t('fields.identification')"
       type="number"
     />
@@ -30,13 +33,13 @@
       :placeholder="$t('fields.birthdate')"
       position="is-top-right"
       rounded
-      rules="required"
       trap-focus
     >
     </BDatepicker>
     <AInput
       v-model="formData.profession"
       class="column is-half"
+      name="ocupation"
       :placeholder="$t('fields.ocupation')"
       type="text"
     />
@@ -45,6 +48,7 @@
       class="column is-full"
       icon="envelope"
       icon-pack="far"
+      name="email"
       :placeholder="$t('fields.email')"
       rules="required|email"
     />
