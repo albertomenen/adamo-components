@@ -1,6 +1,8 @@
 <template>
 <BSelect
   v-bind="$attrs"
+  expanded
+  rounded
   v-on="$listeners">
   <option value="asian">Asiático</option>
   <option value="american">Americano</option>

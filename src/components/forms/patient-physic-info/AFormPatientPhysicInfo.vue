@@ -1,32 +1,14 @@
 <template>
 <section>
   <div class="columns is-multiline">
-    <!-- <BSelect
+    <ASelectGender
       v-model="formData.gender"
       class="column is-half"
-      expanded
-      :placeholder="$t('fields.sex')"
-      rounded
-    >
-    </BSelect>
-    <BSelect
-      v-model="formData.race"
-      class="column is-half"
-      expanded
-      :placeholder="$t('fields.race')"
-      rounded
-    >
-    </BSelect> -->
-    <AInput
-      v-model="formData.gender"
-      class="column is-half"
-      name="sex"
       :placeholder="$t('fields.sex')"
     />
-    <AInput
+    <ASelectRace
       v-model="formData.race"
       class="column is-half"
-      name="race"
       :placeholder="$t('fields.race')"
     />
     <AInput
