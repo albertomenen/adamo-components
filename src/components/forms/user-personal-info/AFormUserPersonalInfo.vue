@@ -4,13 +4,17 @@
     <AInput
       v-model="formData.name"
       class="column is-full"
+      name="name"
       :placeholder="$t('fields.name')"
+      rules="required"
       type="text"
     />
     <AInput
       v-model="formData.last_name"
       class="column is-full"
+      name="lastName"
       :placeholder="$tc('fields.lastNames', 2)"
+      rules="required"
       type="text"
     />
     <AInput
@@ -18,11 +22,13 @@
       class="column is-full"
       icon="phone-alt"
       icon-pack="fas"
+      name="phone"
       :placeholder="$t('fields.phone')"
     />
     <AInput
       v-model="formData.country"
       class="column is-full"
+      name="country"
       :placeholder="$t('fields.country')"
     />
     <BSelect

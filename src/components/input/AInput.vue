@@ -1,13 +1,13 @@
 <template>
 <ValidationProvider
-  v-slot="{ errors, valid }"
+  v-slot="{ errors }"
   :name="$attrs.name || $attrs.label"
   :rules="rules"
   :vid="vid">
   <BField
     v-bind="$attrs"
     :message="errors"
-    :type="{ 'is-danger': errors[0], 'is-success': valid }">
+    :type="{ 'is-danger': errors[0] }">
     <BInput
       v-model="innerValue"
       v-bind="$attrs"

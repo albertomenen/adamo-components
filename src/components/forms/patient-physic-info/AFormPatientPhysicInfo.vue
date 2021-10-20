@@ -20,11 +20,13 @@
     <AInput
       v-model="formData.gender"
       class="column is-half"
+      name="sex"
       :placeholder="$t('fields.sex')"
     />
     <AInput
       v-model="formData.race"
       class="column is-half"
+      name="race"
       :placeholder="$t('fields.race')"
     />
     <AInput
@@ -32,6 +34,7 @@
       class="column is-full"
       icon="walking"
       icon-pack="fas"
+      name="complexity"
       :placeholder="$t('fields.complexity')"
       type="text"
     />
@@ -40,6 +43,7 @@
       class="column is-half"
       icon="ruler-vertical"
       icon-pack="fas"
+      name="height"
       :placeholder="$t('fields.height')"
     />
     <AInput
@@ -47,6 +51,7 @@
       class="column is-half"
       icon="weight-hanging"
       icon-pack="fas"
+      name="weight"
       :placeholder="$t('fields.weight')"
     />
     <AInput
@@ -54,6 +59,7 @@
       class="column is-full"
       icon="diagnoses"
       icon-pack="fas"
+      name="allergies"
       :placeholder="$t('fields.allergies')"
     />
     <AInput
@@ -61,6 +67,7 @@
       class="column is-full"
       icon="prescription-bottle-alt"
       icon-pack="fas"
+      name="medication"
       :placeholder="$t('fields.medication')"
     />
   </div>

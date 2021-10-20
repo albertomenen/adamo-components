@@ -65,6 +65,7 @@
                         class="input-text-centered thermographic-input"
                         icon="calendar-check"
                         icon-pack="far"
+                        name="creationDate"
                         placeholder="DD / MM / AAAA"
                         readonly
                         :value="formatDate(session.ts_creation_date)"
@@ -78,6 +79,7 @@
                         class="input-text-centered thermographic-input"
                         icon="clock"
                         icon-pack="far"
+                        name="hour"
                         :placeholder="$t('fields.hour')"
                         readonly
                         :value="formatHour(session.ts_creation_date)"
@@ -91,6 +93,7 @@
                         class="input-text-centered thermographic-input"
                         icon="thermometer-quarter"
                         icon-pack="fas"
+                        name="temperature"
                         placeholder="Media"
                         readonly
                         :value="getTemperature"
@@ -104,6 +107,7 @@
                         class="input-text-centered thermographic-input"
                         icon="map-pin"
                         icon-pack="fas"
+                        name="points"
                         placeholder="4"
                         readonly
                         :value="treatment.points.length || 0"

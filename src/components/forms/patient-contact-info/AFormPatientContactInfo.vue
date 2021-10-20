@@ -6,6 +6,7 @@
       class="column is-full"
       icon="phone-alt"
       icon-pack="fas"
+      name="contactPhone"
       :placeholder="$t('fields.contactPhone')"
       type="text"
     />
@@ -28,11 +29,13 @@
     <AInput
       v-model="formData.country"
       class="column is-half"
+      name="country"
       :placeholder="$t('fields.country')"
     />
     <AInput
       v-model="formData.city"
       class="column is-half"
+      name="city"
       :placeholder="$t('fields.city')"
     />
     <AInput
@@ -40,6 +43,7 @@
       class="column is-full"
       icon="map-marker-alt"
       icon-pack="fas"
+      name="address"
       :placeholder="$t('fields.address')"
       rules="required"
     />

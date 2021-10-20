@@ -22,25 +22,31 @@
         <AInput
           v-model="user.name"
           class="column is-half"
+          name="name"
           :placeholder="$t('fields.name')"
           :readonly="!isEditing"
+          rules="required"
         />
         <AInput
           v-model="user.last_name"
           class="column is-half"
+          name="lastName"
           :placeholder="$tc('fields.lastNames', 2)"
           :readonly="!isEditing"
+          rules="required"
         />
         <AInput
           v-model="user.phone"
           class="column is-half"
           icon="phone-alt"
           icon-pack="fas"
+          name="phone"
           :placeholder="$t('fields.phone')"
           :readonly="!isEditing"
         />
         <AInput
           class="column is-half"
+          name="role"
           :placeholder="$t('fields.role')"
           readonly
           :value="user.role.role_name"
@@ -60,8 +66,10 @@
           class="column is-full"
           icon="envelope"
           icon-pack="far"
+          name="email"
           :placeholder="$t('fields.email')"
           :readonly="!isEditing"
+          rules="required|email"
         />
       </div>
     </div>
@@ -77,6 +85,7 @@
       <div class="columns is-multiline">
         <AInput
           class="column is-full"
+          name="station"
           :placeholder="$t('fields.machineId')"
           readonly
           :value="station"
