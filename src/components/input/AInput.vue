@@ -9,8 +9,8 @@
     class="is-adamo-input"
     custom-class="is-italic"
     rounded
-    :type="erorrs[0] ? 'is-danger' : ''"
-    :validation-message="errors"
+    :type="errors[0] ? 'is-danger' : ''"
+    :validation-message="errors[0]"
     v-on="$listeners"
   />
 </ValidationProvider>
