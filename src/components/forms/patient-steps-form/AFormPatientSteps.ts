@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { ValidationObserver } from 'vee-validate'
 
@@ -20,11 +21,22 @@ export default class AFormPatientSteps extends Vue {
 
   nextStep (handler: () => void): void {
     this.activeStep === 2
-      ? this.$emit('submit')
+      ? this.validateAndSubmit()
       : handler()
   }
 
   previousStep (handler: () => void): void {
     handler()
+  }
+
+  async validateAndSubmit (): Promise<void> {
+    (this.$refs.observer as any).validate()
+
+    if (!(this.$refs.observer as any).flags.valid) {
+      this.activeStep = 0
+    }
+    else {
+      this.$emit('submit')
+    }
   }
 }
