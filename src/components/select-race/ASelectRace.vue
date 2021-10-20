@@ -1,7 +1,7 @@
 <template>
 <BSelect
   v-bind="$attrs"
-  v-on="$liseners">
+  v-on="$listeners">
   <option value="asian">Asiático</option>
   <option value="american">Americano</option>
   <option value="caucasian">Caucásico</option>
