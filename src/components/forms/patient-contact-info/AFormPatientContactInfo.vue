@@ -2,14 +2,6 @@
 <section>
   <div class="columns is-multiline">
     <AInput
-      v-model="formData.email"
-      class="column is-full"
-      icon="envelope"
-      icon-pack="far"
-      :placeholder="$t('fields.email')"
-      type="email"
-    />
-    <AInput
       v-model="formData.phone"
       class="column is-full"
       icon="phone-alt"
@@ -49,6 +41,7 @@
       icon="map-marker-alt"
       icon-pack="fas"
       :placeholder="$t('fields.address')"
+      rules="required"
     />
   </div>
 </section>

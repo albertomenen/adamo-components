@@ -4,11 +4,13 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import AFormUserPersonalInfo from '../user-personal-info/AFormUserPersonalInfo.vue'
 import AFormUserRegister from '../user-register-form/AFormUserRegister.vue'
 import { Role } from '../../../types/resources/role.model'
+import { ValidationObserver } from 'vee-validate'
 
 @Component({
   components: {
     AFormUserPersonalInfo,
-    AFormUserRegister
+    AFormUserRegister,
+    ValidationObserver
   }
 })
 export default class AFormUserSteps extends Vue {
@@ -35,9 +37,9 @@ export default class AFormUserSteps extends Vue {
 
   activeStep = 0
 
-  nextStep (handler: () => void): void {
+  nextStep (handler: () => void, handleSubmit: (fn: () => void) => void): void {
     this.activeStep === 1
-      ? this.$emit('submit', this.roleSelected)
+      ? handleSubmit(() => this.$emit('submit', this.roleSelected))
       : handler()
   }
 
