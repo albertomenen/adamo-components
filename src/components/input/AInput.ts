@@ -9,7 +9,7 @@ import { ValidationProvider } from 'vee-validate'
 export default class AInput extends Vue {
   @Prop({ type: String }) vid!: string
   @Prop({ type: [Object, String], default: '' }) rules
-  @Prop({ type: String }) value
+  @Prop({ type: [String, Number] }) value
 
     innerValue = ''
 
