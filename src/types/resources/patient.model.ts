@@ -21,8 +21,8 @@ export interface Patient {
   treatments: Treatment[] // TODO: Ver si se toma aparte o dentro del request de paciente
   id_type: string
   country: string
-  gender: string
-  race: string
+  gender: string | null
+  race: string | null
   complexity: string
   height: number
   weight: number
@@ -47,8 +47,8 @@ export interface PatientCreate {
   // TODO: Back
   id_type: string
   country: string
-  gender: string
-  race: string
+  gender: string | null
+  race: string | null
   complexity: string
   height: number | string
   weight: number | string
