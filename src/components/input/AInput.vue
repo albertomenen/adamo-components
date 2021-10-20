@@ -1,6 +1,6 @@
 <template>
 <ValidationProvider
-  v-slot="{ errors }"
+  v-slot="{ errors, valid }"
   :name="$attrs.name || $attrs.label"
   :rules="rules"
   :vid="vid">
