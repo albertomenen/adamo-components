@@ -49,6 +49,7 @@ import PortalVue from 'portal-vue'
 export default {
   install (Vue: typeof _Vue) {
     // Register plugins
+    require('./src/utils/vee-validate')
     NotificationPlugin(Vue)
     ModalPlugin(Vue)
 
