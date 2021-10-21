@@ -2,6 +2,7 @@ import { Treatment, TreatmentStatus } from '../../../types/resources/treatment.m
 import moment from 'moment'
 import { PropType } from 'vue'
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { AuthRole } from '../../../types/resources/user.model'
 
 @Component
 export default class ATableTreatments extends Vue {
@@ -12,6 +13,10 @@ export default class ATableTreatments extends Vue {
     type: Array as () => PropType<Treatment[]>,
     default: () => []
   }) private readonly data!: Treatment[]
+
+  @Prop({
+    type: Object
+  }) private readonly permissions!: AuthRole
 
   /**
    * Bandera para ocultar funcionalidades en el manager

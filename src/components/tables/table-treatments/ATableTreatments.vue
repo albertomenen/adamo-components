@@ -71,6 +71,7 @@
     v-slot="props"
     centered>
     <ATableMenu
+      v-if="permissions.manage_treatment"
       @click.native.stop>
       <template>
         <ADropdownItem

@@ -1,6 +1,7 @@
 import { PropType } from 'vue'
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Patient } from '../../../types/resources/patient.model'
+import { AuthRole } from '../../../types/resources/user.model'
 
 @Component
 export default class ATablePatients extends Vue {
@@ -11,6 +12,10 @@ export default class ATablePatients extends Vue {
     type: Array as () => PropType<Patient[]>,
     default: () => []
   }) private readonly data!: Patient[]
+
+  @Prop({
+    type: Object
+  }) private readonly permissions!: AuthRole
 
   /**
    * Emite evento de vista de paciente

@@ -41,16 +41,19 @@
     centered>
     <ATableMenu @click.native.stop>
       <ADropdownItem
+        v-if="permissions.manage_patient || permissions.manage_treatment || permissions.detail_patient"
         icon="eye"
         :label="$t('actions.see')"
         @click="showPatient(props.row)"
       />
       <ADropdownItem
+        v-if="permissions.manage_patient"
         icon="pen"
         :label="$t('actions.edit')"
         @click="editPatient(props.row)"
       />
       <ADropdownItem
+        v-if="permissions.manage_patient"
         icon="eye"
         :label="$t('actions.delete')"
         @click="deletePatient(props.row)"
