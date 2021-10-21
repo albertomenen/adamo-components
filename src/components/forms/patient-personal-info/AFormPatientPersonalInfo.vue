@@ -29,6 +29,7 @@
       class="column is-half"
       icon-pack="fas"
       :locale="$i18n.locale"
+      :max-date="maxDate"
       :mobile-native="false"
       :placeholder="$t('fields.birthdate')"
       position="is-top-right"

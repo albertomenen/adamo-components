@@ -22,6 +22,8 @@ export default class AModalSchedule extends Vue {
 
   years: Year[] = []
 
+  minDate = new Date()
+
   unselectableDates (day: Date): boolean {
     switch (day.getDate()) {
       case 18:
@@ -33,49 +35,6 @@ export default class AModalSchedule extends Vue {
       default: return true
     }
   }
-
-  // events = [
-  //   new Date(2017, thisMonth, 2),
-  //   new Date(2017, thisMonth, 6),
-  //   {
-  //     date: new Date(2021, thisMonth, 6),
-  //     type: 'is-info'
-  //   },
-  //   {
-  //     date: new Date(2021, thisMonth, 8),
-  //     type: 'is-danger'
-  //   },
-  //   {
-  //     date: new Date(2021, thisMonth, 10),
-  //     type: 'is-success'
-  //   },
-  //   {
-  //     date: new Date(2021, thisMonth, 10),
-  //     type: 'is-link'
-  //   },
-  //   new Date(2021, thisMonth, 12),
-  //   {
-  //     date: new Date(2021, thisMonth, 12),
-  //     type: 'is-warning'
-  //   },
-  //   {
-  //     date: new Date(2021, thisMonth, 16),
-  //     type: 'is-danger'
-  //   },
-  //   new Date(2021, thisMonth, 20),
-  //   {
-  //     date: new Date(2021, thisMonth, 29),
-  //     type: 'is-success'
-  //   },
-  //   {
-  //     date: new Date(2021, thisMonth, 29),
-  //     type: 'is-warning'
-  //   },
-  //   {
-  //     date: new Date(2021, thisMonth, 29),
-  //     type: 'is-info'
-  //   }
-  // ]
 
   created (): void {
     moment.locale(this.$i18n.locale)

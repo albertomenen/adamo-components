@@ -7,4 +7,6 @@ export default class AFormPatientPersonalInfo extends Vue {
     type: Object,
     default: () => ({})
   }) formData!: PatientCreate
+
+  maxDate = new Date()
 }

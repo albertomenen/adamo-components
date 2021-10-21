@@ -27,6 +27,7 @@
             icon-pack="fas"
             inline
             :locale="$i18n.locale"
+            :min-date="minDate"
             :unselectable-dates="unselectableDates"
           >
             <template #header>
