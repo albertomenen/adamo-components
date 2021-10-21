@@ -9,5 +9,6 @@ export default class ASelectLanguage extends Vue {
 
   handleChangeLocale (locale: string): void {
     this.$i18n.locale = locale
+    localStorage.appLocale = locale
   }
 }
