@@ -13,10 +13,10 @@ export interface ApiFilter {
   op: string
 }
 
-export interface ApiRequest {
+export interface ApiRequest<T = any> {
   page?: number,
   size?: number,
-  filters?: Filter[]
+  filters?: Filter<T>[]
 }
 
 export interface PaginationInterface {
