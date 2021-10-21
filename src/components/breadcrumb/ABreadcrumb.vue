@@ -6,13 +6,14 @@
       :key="path.label"
       :class="{'is-active': !path.link}"
     >
-      <RouterLink
+      <Component
+        :is="disabled ? 'span' : 'router-link'"
         v-if="path.link"
         :class="textColor"
         :to="path.link"
       >
         {{ path.label }}
-      </RouterLink>
+      </Component>
       <a
         v-else
         aria-current="page"
