@@ -5,25 +5,30 @@ import ANotification from '../components/notification/ANotification.vue'
 import { mutations } from '../store'
 import { NotificationMessage } from '../types'
 
+const DEFAULT_TIMEOUT = 5000
+
 const hideNotification = () => (mutations.notification.setActive(false))
 
-let notificationTimeout = setTimeout(hideNotification, 5000)
+let notificationTimeout = setTimeout(hideNotification, DEFAULT_TIMEOUT)
 
-const showNotification = (): void => {
+const showNotification = (timeout?: number): void => {
   clearTimeout(notificationTimeout)
   mutations.notification.setActive(true)
-  notificationTimeout = setTimeout(hideNotification, 5000)
+  if (timeout && timeout > 0) {
+    notificationTimeout = setTimeout(hideNotification, DEFAULT_TIMEOUT)
+  }
 }
 
 interface Notification {
   message: NotificationMessage,
-  icon: string
+  icon: string,
+  timeout?: number
 }
 
-const sendNotification = ({ message, icon }: Notification): void => {
+const sendNotification = ({ message, icon, timeout = DEFAULT_TIMEOUT }: Notification): void => {
   mutations.notification.setMessage(message)
   mutations.notification.setIcon(icon)
-  showNotification()
+  showNotification(timeout)
 }
 
 const NotificationPlugin = (Vue: typeof _Vue): void => {
@@ -32,32 +37,37 @@ const NotificationPlugin = (Vue: typeof _Vue): void => {
   Vue.prototype.$notify = {
 
     show: sendNotification,
+    hide: hideNotification,
 
-    success: (message: NotificationMessage) => {
+    success: (message: NotificationMessage, timeout?: number) => {
       sendNotification({
         message,
-        icon: 'check-circle'
+        icon: 'check-circle',
+        timeout
       })
     },
 
-    error: (message: NotificationMessage) => {
+    error: (message: NotificationMessage, timeout?: number) => {
       sendNotification({
         message,
-        icon: 'exclamation-triangle'
+        icon: 'exclamation-triangle',
+        timeout
       })
     },
 
-    warning: (message: NotificationMessage) => {
+    warning: (message: NotificationMessage, timeout?: number) => {
       sendNotification({
         message,
-        icon: 'exclamation-triangle'
+        icon: 'exclamation-triangle',
+        timeout
       })
     },
 
-    loading: (message: NotificationMessage) => {
+    loading: (message: NotificationMessage, timeout?: number) => {
       sendNotification({
         message,
-        icon: 'spinner'
+        icon: 'spinner',
+        timeout
       })
     }
   }
