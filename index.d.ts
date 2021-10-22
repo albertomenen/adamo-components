@@ -6,10 +6,10 @@ import { NotificationInterface, NotificationMessage } from './src/types/notifica
 
 interface Notify {
   show: (notification: NotificationInterface) => void;
-  success: (message: NotificationMessage) => void;
-  error: (message: NotificationMessage) => void;
-  warning: (message: NotificationMessage) => void;
-  loading: (message: NotificationMessage) => void;
+  success: (message: NotificationMessage, timeout?: number) => void;
+  error: (message: NotificationMessage, timeout?: number) => void;
+  warning: (message: NotificationMessage, timeout?: number) => void;
+  loading: (message: NotificationMessage, timeout?: number) => void;
 }
 
 type Modal = (data: ModalInterface) => void
