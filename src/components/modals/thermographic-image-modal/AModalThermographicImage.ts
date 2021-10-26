@@ -34,11 +34,6 @@ export default class AModalThermographicImage extends Vue {
   }) showModal!: boolean
 
   @Prop({
-    type: Array,
-    default: () => ([])
-  }) points!: any[]
-
-  @Prop({
     type: Object as () => PropType<Treatment>,
     default: () => null
   }) treatment!: Treatment
