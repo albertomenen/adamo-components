@@ -31,7 +31,7 @@ export default class AMenuUser extends Vue {
   }
 
   get getRoleName (): string {
-    return this.getUser.role.role_name
+    return this.getUser?.role.role_name
   }
 
   async handleLogout (): Promise<void> {
