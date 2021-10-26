@@ -6,122 +6,114 @@
   has-modal-card
   trap-focus
 >
-  <template #default="">
-    <div
-      class="modal-card"
-      style="width: 700px"
-    >
-      <header class="modal-card-head has-background-medium-blue has-text-centered">
-        <p class="modal-card-title has-text-white has-font-comfortaa">
-          {{ $t('thermographicImage') }}
-        </p>
-        <BButton
-          icon-pack="fas"
-          icon-right="times"
-          type="is-medium-blue"
-          @click="$emit('cancel')"
-        />
-      </header>
-      <section class="modal-card-body has-background-light-gray py-10">
-        <BCarousel
-          v-model="carouselSession"
-          :autoplay="false"
-          icon-pack="fas"
-          :repeat="true"
+  <div
+    class="modal-card"
+    style="width: 700px"
+  >
+    <header class="modal-card-head has-background-medium-blue has-text-centered">
+      <p class="modal-card-title has-text-white has-font-comfortaa">
+        {{ $t('thermographicImage') }}
+      </p>
+      <BButton
+        icon-pack="fas"
+        icon-right="times"
+        type="is-medium-blue"
+        @click="$emit('cancel')"
+      />
+    </header>
+    <section class="modal-card-body has-background-light-gray py-10">
+      <BCarousel
+        v-model="carouselSession"
+        :autoplay="false"
+        icon-pack="fas"
+        :repeat="true"
+      >
+        <BCarouselItem
+          v-for="session in treatment.sessions"
+          :key="session.id_session"
         >
-          <BCarouselItem
-            v-for="session in treatment.sessions"
-            :key="session.id_session"
-          >
-            <section :class="`hero is-medium`">
-              <div class="hero-body p-0 px-7">
-                <div class="is-flex is-justify-content-space-evenly">
-                  <div class="column-left relative">
-                    <img
-                      alt=""
-                      :src="getThermic(session.image_thermic)"
-                      style="width: 300px; height: 400px;"
-                    >
-                    <div :style="coordinateBoxStyles">
-                      <div class="relative">
-                        <div
-                          v-for="(point, i) in points"
-                          :key="i"
-                          class="has-text-blue has-background-white is-flex is-align-items-center is-justify-content-center has-shadow"
-                          :style="getCoordinate(point)"
-                        />
-                      </div>
-                    </div>
+          <section :class="`hero is-medium`">
+            <div class="hero-body p-0 px-7">
+              <div class="is-flex is-justify-content-space-evenly">
+                <div class="column-left is-relative">
+                  <img
+                    alt=""
+                    :src="getThermic(session.image_thermic)"
+                    style="width: 300px; height: 400px;"
+                  >
+                  <div :style="coordinateBoxStyles">
+                    <div
+                      v-for="(point, i) in points"
+                      :key="i"
+                      class="has-text-blue has-background-white is-flex is-align-items-center is-justify-content-center has-shadow"
+                      :style="getCoordinate(point)"
+                    >{{i}}</div>
                   </div>
-                  <div class="column-right p-4">
-                    <p class="has-text-medium-blue has-font-comfortaa">
-                      {{ $t('session') }} {{ session.session_number }} {{ $t('prepositions.of') }} {{ treatment.sessions_number }}
+                </div>
+                <div class="column-right p-4">
+                  <p class="has-text-medium-blue has-font-comfortaa">
+                    {{ $t('session') }} {{ session.session_number }} {{ $t('prepositions.of') }} {{ treatment.sessions_number }}
+                  </p>
+                  <div class="mt-5">
+                    <p class="has-text-medium-blue has-font-comfortaa mb-1">
+                      {{ $t('date') }}
                     </p>
-                    <div class="mt-5">
-                      <p class="has-text-medium-blue has-font-comfortaa mb-1">
-                        {{ $t('date') }}
-                      </p>
-                      <AInput
-                        class="input-text-centered thermographic-input"
-                        icon="calendar-check"
-                        icon-pack="far"
-                        name="creationDate"
-                        placeholder="DD / MM / AAAA"
-                        readonly
-                        :value="formatDate(session.ts_creation_date)"
-                      />
-                    </div>
-                    <div class="mt-3">
-                      <p class="has-text-medium-blue has-font-comfortaa mb-1">
-                        {{ $t('hour') }}
-                      </p>
-                      <AInput
-                        class="input-text-centered thermographic-input"
-                        icon="clock"
-                        icon-pack="far"
-                        name="hour"
-                        :placeholder="$t('fields.hour')"
-                        readonly
-                        :value="formatHour(session.ts_creation_date)"
-                      />
-                    </div>
-                    <div class="mt-3">
-                      <p class="has-text-medium-blue has-font-comfortaa mb-1">
-                        {{ $t('fields.temperature') }}
-                      </p>
-                      <AInput
-                        class="input-text-centered thermographic-input"
-                        icon="thermometer-quarter"
-                        icon-pack="fas"
-                        name="temperature"
-                        placeholder="Media"
-                        readonly
-                        :value="getTemperature"
-                      />
-                    </div>
-                    <div class="mt-3">
-                      <p class="has-text-medium-blue has-font-comfortaa mb-1">
-                        {{ $t('fields.pointsNumber') }}
-                      </p>
-                      <AInput
-                        class="input-text-centered thermographic-input"
-                        icon="map-pin"
-                        icon-pack="fas"
-                        name="points"
-                        placeholder="4"
-                        readonly
-                        :value="treatment.points.length || 0"
-                      />
-                    </div>
+                    <AInput
+                      class="input-text-centered thermographic-input"
+                      icon="calendar-check"
+                      icon-pack="far"
+                      placeholder="DD / MM / AAAA"
+                      readonly
+                      :value="formatDate(session.ts_creation_date)"
+                    />
+                  </div>
+                  <div class="mt-3">
+                    <p class="has-text-medium-blue has-font-comfortaa mb-1">
+                      {{ $t('hour') }}
+                    </p>
+                    <AInput
+                      class="input-text-centered thermographic-input"
+                      icon="clock"
+                      icon-pack="far"
+                      :placeholder="$t('fields.hour')"
+                      readonly
+                      :value="formatHour(session.ts_creation_date)"
+                    />
+                  </div>
+                  <div class="mt-3">
+                    <p class="has-text-medium-blue has-font-comfortaa mb-1">
+                      {{ $t('fields.temperature') }}
+                    </p>
+                    <AInput
+                      class="input-text-centered thermographic-input"
+                      icon="thermometer-quarter"
+                      icon-pack="fas"
+                      placeholder="Media"
+                      readonly
+                      :value="getTemperature"
+                    />
+                  </div>
+                  <div class="mt-3">
+                    <p class="has-text-medium-blue has-font-comfortaa mb-1">
+                      {{ $t('fields.pointsNumber') }}
+                    </p>
+                    <AInput
+                      class="input-text-centered thermographic-input"
+                      icon="map-pin"
+                      icon-pack="fas"
+                      placeholder="4"
+                      readonly
+                      :value="treatment.points.length || 0"
+                    />
                   </div>
                 </div>
               </div>
-            </section>
-          </BCarouselItem>
-        </BCarousel>
-      </section>
-    </div>
-  </template>
+            </div>
+          </section>
+        </BCarouselItem>
+      </BCarousel>
+    </section>
+  </div>
 </BModal>
 </template>
 

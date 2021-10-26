@@ -1,28 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { Treatment } from '../../../types/resources/treatment.model'
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Treatment } from '../../../types/resources/treatment.model'
 import moment from 'moment'
 
-const minX = -0.11
-const minY = -0.95
+const minX = -0.12
+const minY = -0.93
 
-const coordinateOffset = 0.52
-const percentageOffset = 100 / coordinateOffset // 192.3076923076923
-
-const offsetTop = 56
-const offsetLeft = 18
+const coordinateOffsetX = 0.44 // 0.52 Originalmente
+const coordinateOffsetY = 0.48 // 0.52 Originalmente
+const percentageOffsetX = 100 / coordinateOffsetX // 192.3076923076923
+const percentageOffsetY = 100 / coordinateOffsetY // 192.3076923076923
 
 const imageHeight = 400
 const imageWidth = 300
 
-const boxHeight = imageHeight * 0.4
+const boxHeight = imageHeight * 0.7
 const boxWidth = imageWidth * 0.8
 
 const getPercentage = (_y, _x) => {
-  const x = (_x + Math.abs(minX)) * percentageOffset
-  const y = ( _y + Math.abs(minY)) * percentageOffset
+  const x = 100 - ((_x + Math.abs(minX)) * percentageOffsetX)
+  const y = 100 - (( _y + Math.abs(minY)) * percentageOffsetY)
 
   return { x, y }
 }
@@ -80,8 +79,10 @@ export default class AModalThermographicImage extends Vue {
 
   coordinateBoxStyles = {
     position: 'absolute',
-    top: `${offsetTop + 150}px`,
-    left: `${offsetLeft + 30}px`,
+    bottom: '0',
+    left: `0`,
+    right: '0',
+    margin: 'auto',
     height: `${boxHeight}px`,
     width: `${boxWidth}px`
   }
@@ -91,8 +92,8 @@ export default class AModalThermographicImage extends Vue {
 
     return {
       position: 'absolute',
-      top: `calc(${position.y}% - 20px)`,
-      left: `calc(${position.x}% - 20px)`,
+      top: `calc(${position.y}% - 10px)`,
+      left: `calc(${position.x}% - 10px)`,
       width: '20px',
       height: '20px',
       borderRadius: '100%'
