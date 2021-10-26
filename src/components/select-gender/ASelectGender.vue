@@ -5,9 +5,34 @@
     expanded
     rounded
     v-on="$listeners">
-    <option value="male">Hombre</option>
-    <option value="female">Mujer</option>
-    <option value="other">Otro</option>
+    <option
+      v-for="(label, value) in values"
+      :key="value"
+      :value="value">{{label}}</option>
   </BSelect>
 </BField>
 </template>
+<script>
+export default {
+  data: () => ({
+    locales: {
+      es: {
+        male: 'Hombre',
+        female: 'Mujer',
+        other: 'Otro'
+      },
+      en: {
+        male: 'Male',
+        female: 'Female',
+        other: 'Other'
+      }
+    }
+  }),
+
+  computed: {
+    values () {
+      return this.locales[this.$i18n.locale]
+    }
+  }
+}
+</script>
