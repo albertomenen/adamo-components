@@ -101,7 +101,7 @@
                       class="input-text-centered thermographic-input"
                       icon="map-pin"
                       icon-pack="fas"
-                      placeholder="4"
+                      placeholder="0"
                       readonly
                       :value="treatment.points ? treatment.points.length : 0"
                     />
