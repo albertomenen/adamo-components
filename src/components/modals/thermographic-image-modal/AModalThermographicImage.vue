@@ -103,7 +103,7 @@
                       icon-pack="fas"
                       placeholder="4"
                       readonly
-                      :value="treatment.points.length || 0"
+                      :value="treatment.points ? treatment.points.length : 0"
                     />
                   </div>
                 </div>
