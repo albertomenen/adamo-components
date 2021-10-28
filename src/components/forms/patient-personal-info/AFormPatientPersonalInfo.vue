@@ -35,6 +35,7 @@
       position="is-top-right"
       rounded
       trap-focus
+      rules="required"
     >
     </BDatepicker>
     <AInput
