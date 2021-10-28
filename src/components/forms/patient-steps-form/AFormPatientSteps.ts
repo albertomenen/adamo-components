@@ -32,7 +32,7 @@ export default class AFormPatientSteps extends Vue {
   async validateAndSubmit (): Promise<void> {
     (this.$refs.observer as any).validate()
 
-    if (!(this.$refs.observer as any).flags.valid) {
+    if (!(this.$refs.observer as any).flags.valid || !this.formData.birthdate ||this.formData.birthdate == '') {
       this.activeStep = 0
     }
     else {

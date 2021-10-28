@@ -24,20 +24,21 @@
       :placeholder="$t('fields.identification')"
       type="number"
     />
-    <BDatepicker
-      v-model="formData.birthdate"
-      class="column is-half"
-      icon-pack="fas"
-      :locale="$i18n.locale"
-      :max-date="maxDate"
-      :mobile-native="false"
-      :placeholder="$t('fields.birthdate')"
-      position="is-top-right"
-      rounded
-      trap-focus
-      rules="required"
-    >
-    </BDatepicker>
+    <BField class="column is-half">
+      <BDatepicker
+        v-model="formData.birthdate"
+        icon-pack="fas"
+        :locale="$i18n.locale"
+        :max-date="maxDate"
+        :mobile-native="false"
+        :placeholder="$t('fields.birthdate')"
+        position="is-top-right"
+        rounded
+        trap-focus
+        editable
+        required
+      />
+    </BField>
     <AInput
       v-model="formData.profession"
       class="column is-half"
