@@ -151,6 +151,6 @@ export default class AModalThermographicImage extends Vue {
   installDOM() {
     const dom = new JSDOM()
     global.document = dom.window.document
-    global.HTMLImageElement = Image
+    global.HTMLImageElement = Image as HTMLImageElement
   }
 }
