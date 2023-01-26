@@ -6,7 +6,8 @@ import { Treatment } from '../../../types/resources/treatment.model'
 import moment from 'moment'
 import Jimp from 'jimp'
 import cv from '@techstark/opencv-js'
-import { loadImage } from 'canvas'
+import { Image, loadImage } from 'canvas'
+import { JSDOM } from 'jsdom'
 
 const minX = -0.12
 const minY = -0.93
@@ -105,6 +106,7 @@ export default class AModalThermographicImage extends Vue {
       const y = event.y
 
       // using node-canvas, we an image file to an object compatible with HTML DOM Image and therefore with cv.imread()
+      this.installDOM()
       const image = await loadImage( this.getThermic(imagepath) )
       //const image = this.getThermic(imagepath)
 
@@ -143,5 +145,12 @@ export default class AModalThermographicImage extends Vue {
     const imgY = ( Math.floor(domY * ratioY) ) - 256
 
     return { x: imgX, y: imgY }
+  }
+
+  // Using jsdom and node-canvas we define some global variables to emulate HTML DOM. Although a complete emulation can be archived, here we only define those globals used by cv.imread() and cv.imshow().
+  installDOM() {
+    const dom = new JSDOM()
+    global.document = dom.window.document
+    global.HTMLImageElement = Image
   }
 }
