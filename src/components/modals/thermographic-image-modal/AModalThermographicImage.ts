@@ -110,7 +110,7 @@ export default class AModalThermographicImage extends Vue {
       //const image = await loadImage(this.thermicGrayscale)
       const image = this.getThermic(imagepath)
 
-      const gray16_image = cv.imread(image, -1)
+      const gray16_image = cv.imread(image)
       //const pixel_gray16 = gray16_image.ushortAt(x, y)
       const pixel_gray16 = gray16_image.ushortPtr(y, x)[0]
 
@@ -125,7 +125,7 @@ export default class AModalThermographicImage extends Vue {
       gray16_image.delete()
 
       Jimp.read(image, function (err, img) {
-        const hex = img.getPixelColor(x, y) //Cambiamos los valores porque la imagen esta volteada
+        const hex = img.getPixelColor(x, y)
         console.log( 'pixel color hex ', hex)
       })
 
