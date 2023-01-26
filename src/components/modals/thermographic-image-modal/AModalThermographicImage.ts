@@ -6,6 +6,7 @@ import { Treatment } from '../../../types/resources/treatment.model'
 import moment from 'moment'
 import Jimp from 'jimp'
 import cv from '@techstark/opencv-js'
+import { loadImage } from 'canvas'
 
 const minX = -0.12
 const minY = -0.93
@@ -103,12 +104,9 @@ export default class AModalThermographicImage extends Vue {
       const x = event.x
       const y = event.y
 
-      // before loading opencv.js we emulate a minimal HTML DOM. See the function declaration below.
-      //installDOM()
-
       // using node-canvas, we an image file to an object compatible with HTML DOM Image and therefore with cv.imread()
-      //const image = await loadImage(this.thermicGrayscale)
-      const image = this.getThermic(imagepath)
+      const image = await loadImage( this.getThermic(imagepath) )
+      //const image = this.getThermic(imagepath)
 
       const gray16_image = cv.imread(image)
       //const pixel_gray16 = gray16_image.ushortAt(x, y)
@@ -145,9 +143,5 @@ export default class AModalThermographicImage extends Vue {
     const imgY = ( Math.floor(domY * ratioY) ) - 256
 
     return { x: imgX, y: imgY }
-  }
-
-  hola () {
-    console.log('hola mundo')
   }
 }
