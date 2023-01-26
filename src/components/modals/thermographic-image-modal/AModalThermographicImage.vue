@@ -40,14 +40,14 @@
                     alt=""
                     :src="getThermic(session.image_thermic)"
                     style="width: 300px; height: 400px;"
-                    @click="hola"
+                    @click="(e) => { getPixels(e, session.image_thermic) }"
                   >
                   <div :style="coordinateBoxStyles">
                     <div
                       v-for="(point, i) in treatment.points"
                       :key="i"
                       class="has-text-blue has-background-white is-flex is-align-items-center is-justify-content-center has-shadow"
-                      :style="getCoordinate(point)"
+                      :style="getCoordinate(point)" 
                     >{{i+1}}</div>
                   </div>
                 </div>
