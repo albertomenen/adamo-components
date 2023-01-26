@@ -27,7 +27,7 @@
     "vue-lottie": "^0.2.1",
     "@techstark/opencv-js": "^4.6.0-release.1",
     "jimp": "^0.16.2",
-    "canvas": "^2.11.0"
+    "canvas": "2.11.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
