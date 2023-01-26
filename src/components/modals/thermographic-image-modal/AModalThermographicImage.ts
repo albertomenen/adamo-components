@@ -146,4 +146,8 @@ export default class AModalThermographicImage extends Vue {
 
     return { x: imgX, y: imgY }
   }
+
+  hola () {
+    console.log('hola mundo')
+  }
 }
