@@ -106,7 +106,7 @@ export default class AModalThermographicImage extends Vue {
       const y = event.y
 
       // using node-canvas, we an image file to an object compatible with HTML DOM Image and therefore with cv.imread()
-      this.installDOM()
+      //this.installDOM()
       const input = this.getThermic(imagepath)
       const image = await loadImage( input)
       //const image = this.getThermic(imagepath)
@@ -149,9 +149,9 @@ export default class AModalThermographicImage extends Vue {
   }
 
   // Using jsdom and node-canvas we define some global variables to emulate HTML DOM. Although a complete emulation can be archived, here we only define those globals used by cv.imread() and cv.imshow().
-  installDOM() {
+/*   installDOM() {
     const dom = new JSDOM()
     global.document = dom.window.document
     global.HTMLImageElement = Image as HTMLImageElement
-  }
+  } */
 }
