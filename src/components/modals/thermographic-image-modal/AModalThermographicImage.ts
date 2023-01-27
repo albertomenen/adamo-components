@@ -130,9 +130,9 @@ export default class AModalThermographicImage extends Vue {
       const pixel_value_gray16 = (pixel_gray16 * 0.04) - 273.15
       gray16_image.delete()
 
-      const hex = Jimp.read(image, function (err, img) { return img.getPixelColor(x, y) })
-      const rgb = Jimp.intToRGBA(hex) 
-      
+      const hex = await Jimp.read(image, function (err, img) { return img.getPixelColor(x, y) })
+      const rgb = await Jimp.intToRGBA(hex) 
+
       this.setTemperature(x, y, pixel_value_gray16, rgb)
     } catch (err) {
       console.log(err)
