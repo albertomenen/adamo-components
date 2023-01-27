@@ -44,6 +44,12 @@
                   >
                   <div :style="coordinateBoxStyles">
                     <div
+                      class="is-flex is-align-items-center is-justify-content-center has-shadow"
+                      :style="temperatureStyles" 
+                    >{{temperatureValue}}</div>
+                  </div>
+                  <div :style="coordinateBoxStyles">
+                    <div
                       v-for="(point, i) in treatment.points"
                       :key="i"
                       class="has-text-blue has-background-white is-flex is-align-items-center is-justify-content-center has-shadow"

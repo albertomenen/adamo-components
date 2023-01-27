@@ -6,8 +6,6 @@ import { Treatment } from '../../../types/resources/treatment.model'
 import moment from 'moment'
 import Jimp from 'jimp'
 import cv from '@techstark/opencv-js'
-import { Image, loadImage } from 'canvas'
-import { JSDOM } from 'jsdom'
 
 const minX = -0.12
 const minY = -0.93
@@ -86,6 +84,26 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
+  temperatureStyles = {
+    position: 'absolute',
+    top: `0`,
+    left: `0`,
+    width: '100px',
+    height: '100px',
+    borderRadius: '100%',
+    backgroundColor: '',
+    color: 'white'
+  }
+
+  temperatureValue = 0
+
+  setTemperature (x, y, value, color) {
+    this.temperatureStyles.top = `calc(${y}% - 10px)`
+    this.temperatureStyles.left = `calc(${x}% - 10px)`
+    this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
+    this.temperatureValue = value
+  }
+
   getCoordinate (point: any) {
     const position = getPercentage(point.x, point.y)
 
@@ -101,57 +119,23 @@ export default class AModalThermographicImage extends Vue {
 
   async getPixels (event, imagepath: string): Promise<void> {
     try {
-      //const { x, y } = this.getPixelsCoordinates( event.target, event.x, event.y )
       const x = event.x
       const y = event.y
-
-      // using node-canvas, we an image file to an object compatible with HTML DOM Image and therefore with cv.imread()
-      //this.installDOM()
-      //const input = this.getThermic(imagepath)
-      //const image = await loadImage( input)
       const image = this.getThermic(imagepath)
 
       const gray16_image = cv.imread(event.target)
-      //const pixel_gray16 = gray16_image.ushortAt(x, y)
       const pixel_gray16 = gray16_image.ushortPtr(y, x)[0]
 
       //calculate temperature value in ° C
       const pixel_value_gray16 = (pixel_gray16 * 0.04) - 273.15
-      //const pixel_value_gray16 = (pixel_gray16 * 0.01) - 273.15
-
-      console.log(`pixel coordinates x/y ${y}/${x}`)
-      console.log('pixel value: ', pixel_gray16)
-      console.log('pixel temp: ', pixel_value_gray16)
-
       gray16_image.delete()
 
-      Jimp.read(image, function (err, img) {
-        const hex = img.getPixelColor(x, y)
-        console.log( 'pixel color hex ', hex)
-      })
-
+      const hex = Jimp.read(image, function (err, img) { return img.getPixelColor(x, y) })
+      const rgb = Jimp.intToRGBA(hex) 
+      
+      this.setTemperature(x, y, pixel_value_gray16, rgb)
     } catch (err) {
       console.log(err)
     }
   }
-
-  getPixelsCoordinates (img, x: number, y: number) {
-    const ratioX = img.naturalWidth / img.offsetWidth
-    const ratioY = img.naturalHeight / img.offsetHeight
-
-    const domX = x + window.pageXOffset - img.offsetLeft
-    const domY = y + window.pageYOffset - img.offsetTop
-
-    const imgX = ( Math.floor(domX * ratioX) ) - 640
-    const imgY = ( Math.floor(domY * ratioY) ) - 256
-
-    return { x: imgX, y: imgY }
-  }
-
-  // Using jsdom and node-canvas we define some global variables to emulate HTML DOM. Although a complete emulation can be archived, here we only define those globals used by cv.imread() and cv.imshow().
-/*   installDOM() {
-    const dom = new JSDOM()
-    global.document = dom.window.document
-    global.HTMLImageElement = Image as HTMLImageElement
-  } */
 }
