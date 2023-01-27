@@ -109,7 +109,7 @@ export default class AModalThermographicImage extends Vue {
       //this.installDOM()
       //const input = this.getThermic(imagepath)
       //const image = await loadImage( input)
-      //const image = this.getThermic(imagepath)
+      const image = this.getThermic(imagepath)
 
       const gray16_image = cv.imread(event.target)
       //const pixel_gray16 = gray16_image.ushortAt(x, y)
