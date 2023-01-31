@@ -4,8 +4,6 @@ import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
 import moment from 'moment'
-/* import Jimp from 'jimp'
-import cv from '@techstark/opencv-js' */
 
 const minX = -0.12
 const minY = -0.93
@@ -84,26 +82,6 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
-/*   temperatureStyles = {
-    position: 'absolute',
-    top: `0`,
-    left: `0`,
-    width: '100px',
-    height: '100px',
-    borderRadius: '100%',
-    backgroundColor: '',
-    color: 'white'
-  }
-
-  temperatureValue = 0
-
-  setTemperature (x, y, value, color) {
-    this.temperatureStyles.top = `calc(${y}% - 10px)`
-    this.temperatureStyles.left = `calc(${x}% - 10px)`
-    this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
-    this.temperatureValue = value
-  } */
-
   getCoordinate (point: any) {
     const position = getPercentage(point.x, point.y)
 
@@ -116,26 +94,4 @@ export default class AModalThermographicImage extends Vue {
       borderRadius: '100%'
     }
   }
-
-/*   async getPixels (event, imagepath: string): Promise<void> {
-    try {
-      const x = event.x
-      const y = event.y
-      const image = this.getThermic(imagepath)
-
-      const gray16_image = cv.imread(event.target)
-      const pixel_gray16 = gray16_image.ushortPtr(y, x)[0]
-
-      //calculate temperature value in ° C
-      const pixel_value_gray16 = (pixel_gray16 * 0.04) - 273.15
-      gray16_image.delete()
-
-      const hex = await Jimp.read(image, function (err, img) { return img.getPixelColor(x, y) })
-      const rgb = await Jimp.intToRGBA(hex) 
-
-      this.setTemperature(x, y, pixel_value_gray16, rgb)
-    } catch (err) {
-      console.log(err)
-    }
-  } */
 }

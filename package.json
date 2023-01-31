@@ -24,9 +24,7 @@
     "portal-vue": "2.1.7",
     "vee-validate": "^3.4.13",
     "vue": "^2.6.11",
-    "vue-lottie": "^0.2.1",
-    "@techstark/opencv-js": "^4.6.0-release.1",
-    "jimp": "^0.16.2"
+    "vue-lottie": "^0.2.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
