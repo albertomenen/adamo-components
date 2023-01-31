@@ -42,10 +42,10 @@
                     style="width: 300px; height: 400px;"
                   >
                   <div :style="coordinateBoxStyles">
-                    <!-- <div
+                    <div
                       class="is-flex is-align-items-center is-justify-content-center has-shadow"
                       :style="temperatureStyles" 
-                    >{{temperatureValue}}</div> -->
+                    >{{temperatureValue}}</div>
                   </div>
                   <div :style="coordinateBoxStyles">
                     <div

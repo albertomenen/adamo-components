@@ -4,8 +4,8 @@ import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
 import moment from 'moment'
-/* import Jimp from 'jimp'
-import cv from '@techstark/opencv-js' */
+import Jimp from 'jimp'
+import cv from '@techstark/opencv-js'
 
 const minX = -0.12
 const minY = -0.93
@@ -84,7 +84,7 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
-/*   temperatureStyles = {
+  temperatureStyles = {
     position: 'absolute',
     top: `0`,
     left: `0`,
@@ -102,7 +102,7 @@ export default class AModalThermographicImage extends Vue {
     this.temperatureStyles.left = `calc(${x}% - 10px)`
     this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
     this.temperatureValue = value
-  } */
+  }
 
   getCoordinate (point: any) {
     const position = getPercentage(point.x, point.y)
@@ -117,7 +117,7 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-/*   async getPixels (event, imagepath: string): Promise<void> {
+  async getPixels (event, imagepath: string): Promise<void> {
     try {
       const x = event.x
       const y = event.y
@@ -137,5 +137,5 @@ export default class AModalThermographicImage extends Vue {
     } catch (err) {
       console.log(err)
     }
-  } */
+  }
 }
