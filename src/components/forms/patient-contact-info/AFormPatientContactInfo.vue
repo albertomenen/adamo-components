@@ -45,7 +45,6 @@
       icon-pack="fas"
       name="address"
       :placeholder="$t('fields.address')"
-      rules="required"
     />
   </div>
 </section>

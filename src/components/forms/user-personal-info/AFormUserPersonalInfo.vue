@@ -14,7 +14,6 @@
       class="column is-full"
       name="lastName"
       :placeholder="$tc('fields.lastNames', 2)"
-      rules="required"
       type="text"
     />
     <AInput

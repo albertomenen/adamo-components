@@ -33,7 +33,6 @@
           name="lastName"
           :placeholder="$tc('fields.lastNames', 2)"
           :readonly="!isEditing"
-          rules="required"
         />
         <AInput
           v-model="user.phone"

@@ -5,6 +5,7 @@
       v-model="formData.gender"
       class="column is-half"
       :placeholder="$t('fields.sex')"
+      rules="required"
     />
     <ASelectRace
       v-model="formData.race"
