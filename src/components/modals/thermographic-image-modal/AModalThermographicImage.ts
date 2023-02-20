@@ -45,6 +45,11 @@ export default class AModalThermographicImage extends Vue {
     default: () => 1
   }) currentSession!: number
 
+  @Prop({
+    type: Function,
+    default: () => 1
+  }) getThermal
+
   get carouselSession (): number {
     return this.currentSession - 1
   }
@@ -117,13 +122,16 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  async getPixels (event, imagepath: string): Promise<void> {
+  async getPixels (event): Promise<void> {
     try {
       const x = event.x
       const y = event.y
-      const image = this.getThermic(imagepath)
+      const image = this.treatment.image_thermic_data
 
-      const gray16_image = cv.imread(event.target)
+      const thermicData = await this.getThermal({image, x, y})
+      console.log(thermicData)
+
+      /* const gray16_image = cv.imread(event.target)
       const pixel_gray16 = gray16_image.ushortPtr(y, x)[0]
 
       //calculate temperature value in ° C
@@ -133,7 +141,7 @@ export default class AModalThermographicImage extends Vue {
       const hex = await Jimp.read(image, function (err, img) { return img.getPixelColor(x, y) })
       const rgb = await Jimp.intToRGBA(hex) 
 
-      this.setTemperature(x, y, pixel_value_gray16, rgb)
+      this.setTemperature(x, y, pixel_value_gray16, rgb) */
     } catch (err) {
       console.log(err)
     }
