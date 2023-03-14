@@ -3,11 +3,12 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
+import getThermicData from '../../../utils/hex'
 import moment from 'moment'
-import Jimp from 'jimp'
-import cv from '@techstark/opencv-js'
+/* import Jimp from 'jimp'
+import cv from '@techstark/opencv-js' */
 
-const minX = -0.12
+/* const minX = -0.12
 const minY = -0.93
 
 const coordinateOffsetX = 0.44 // 0.52 Originalmente
@@ -26,7 +27,7 @@ const getPercentage = (_y, _x) => {
   const y = 100 - (( _y + Math.abs(minY)) * percentageOffsetY)
 
   return { x, y }
-}
+} */
 
 @Component
 export default class AModalThermographicImage extends Vue {
@@ -44,11 +45,6 @@ export default class AModalThermographicImage extends Vue {
     type: Number,
     default: () => 1
   }) currentSession!: number
-
-  @Prop({
-    type: Function,
-    default: () => 1
-  }) getThermal
 
   get carouselSession (): number {
     return this.currentSession - 1
@@ -79,7 +75,10 @@ export default class AModalThermographicImage extends Vue {
     return `data:image/png;base64,${image}`
   }
 
-  coordinateBoxStyles = {
+  currentImageData: string | null = ''
+  ImageDataArr: string[][] = [[]]
+
+/*   coordinateBoxStyles = {
     position: 'absolute',
     bottom: '0',
     left: `0`,
@@ -100,16 +99,16 @@ export default class AModalThermographicImage extends Vue {
     color: 'white'
   }
 
-  temperatureValue = 0
+  temperatureValue = 0 */
 
-  setTemperature (x, y, value, color) {
+/*   setTemperature (x, y, value, color) {
     this.temperatureStyles.top = `calc(${y}% - 10px)`
     this.temperatureStyles.left = `calc(${x}% - 10px)`
     this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
     this.temperatureValue = value
-  }
+  } */
 
-  getCoordinate (point: any) {
+/*   getCoordinate (point: any) {
     const position = getPercentage(point.x, point.y)
 
     return {
@@ -120,16 +119,25 @@ export default class AModalThermographicImage extends Vue {
       height: '20px',
       borderRadius: '100%'
     }
+  } */
+
+  async getDataImage (): Promise<void> {
+    this.ImageDataArr = getThermicData(this.treatment?.image_thermic_data)
   }
 
   async getPixels (event): Promise<void> {
+
+    if(this.currentImageData != this.treatment.image_thermic_data){
+      this.currentImageData = this.treatment?.image_thermic_data
+      this.getDataImage()
+    } 
+
     try {
       const x = event.x
       const y = event.y
       const image = this.treatment.image_thermic_data
 
-      const thermicData = await this.getThermal({image, x, y})
-      console.log(thermicData)
+      console.log(this.ImageDataArr)
 
       /* const gray16_image = cv.imread(event.target)
       const pixel_gray16 = gray16_image.ushortPtr(y, x)[0]
