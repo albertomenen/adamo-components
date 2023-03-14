@@ -8,7 +8,7 @@ import moment from 'moment'
 /* import Jimp from 'jimp'
 import cv from '@techstark/opencv-js' */
 
-/* const minX = -0.12
+const minX = -0.12
 const minY = -0.93
 
 const coordinateOffsetX = 0.44 // 0.52 Originalmente
@@ -27,7 +27,7 @@ const getPercentage = (_y, _x) => {
   const y = 100 - (( _y + Math.abs(minY)) * percentageOffsetY)
 
   return { x, y }
-} */
+}
 
 @Component
 export default class AModalThermographicImage extends Vue {
@@ -78,7 +78,7 @@ export default class AModalThermographicImage extends Vue {
   currentImageData: string | null = ''
   ImageDataArr: string[][] = [[]]
 
-/*   coordinateBoxStyles = {
+  coordinateBoxStyles = {
     position: 'absolute',
     bottom: '0',
     left: `0`,
@@ -88,7 +88,7 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
-  temperatureStyles = {
+/*   temperatureStyles = {
     position: 'absolute',
     top: `0`,
     left: `0`,
@@ -108,7 +108,7 @@ export default class AModalThermographicImage extends Vue {
     this.temperatureValue = value
   } */
 
-/*   getCoordinate (point: any) {
+  getCoordinate (point: any) {
     const position = getPercentage(point.x, point.y)
 
     return {
@@ -119,7 +119,7 @@ export default class AModalThermographicImage extends Vue {
       height: '20px',
       borderRadius: '100%'
     }
-  } */
+  }
 
   async getDataImage (): Promise<void> {
     this.ImageDataArr = getThermicData(this.treatment?.image_thermic_data)
