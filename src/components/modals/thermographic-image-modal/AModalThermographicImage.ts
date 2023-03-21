@@ -121,22 +121,20 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  getDataImage (): void {
-    this.ImageDataArr = getThermicData(this.treatment?.image_thermic_data)
+  getDataImage (sessionNumber): void {
+    this.ImageDataArr = getThermicData(this.treatment.sessions[sessionNumber].image_thermic_data)
     console.log(this.ImageDataArr)
   }
 
-  getPixels (event): void {
+  getPixels (event, sessionNumber): void {
 
-    console.log(this.treatment)
+    console.log(this.currentImageData)
+    console.log(this.treatment.sessions[sessionNumber].image_thermic_data)
 
-    /* console.log(this.currentImageData)
-    console.log(this.treatment.image_thermic_data)
-
-    if(this.currentImageData != this.treatment.image_thermic_data){
-      this.currentImageData = this.treatment?.image_thermic_data
-      this.getDataImage()
-    }  */
+    if(this.currentImageData != this.treatment.sessions[sessionNumber].image_thermic_data){
+      this.currentImageData = this.treatment.sessions[sessionNumber].image_thermic_data
+      this.getDataImage(sessionNumber)
+    }
 
 /*     try {
       const x = event.x
