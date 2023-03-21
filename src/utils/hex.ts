@@ -9,25 +9,23 @@ const base64ToHex = (str) => {
 }
 
 const HexToArray = (data: string): Array<Array<string>> => {
-    const tempArray: [string[]] = [[]]
+    const tempArray: string[][] = [[]]
     let count = 0
     console.log(typeof data)
     for (let i = 0; i < 320; i += 4) {
-      const y: string[] = []
       for (let j = 0; j < 256; j += 4) {
-        y[j] = data.slice(count, count + 3)
+        tempArray[i][j] =  data.slice(count, count + 3)
         count += 4
       }
-      tempArray[i] = y
     }
     console.log(tempArray)
 
     return tempArray
 }
 
-export default function getThermicData(thermicImage): Array<Array<string>> {
+export function getThermicData(thermicImage) {
     const bufString = base64ToHex(thermicImage)
-    console.log(typeof bufString)
-    const BufArray = HexToArray(bufString)
-    return BufArray
+    return bufString
+    /* const BufArray = HexToArray(bufString)
+    return BufArray */
 }

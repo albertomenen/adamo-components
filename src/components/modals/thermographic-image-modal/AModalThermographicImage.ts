@@ -3,7 +3,7 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
-import getThermicData from '../../../utils/hex'
+import { getThermicData } from '../../../utils/hex'
 import moment from 'moment'
 /* import Jimp from 'jimp'
 import cv from '@techstark/opencv-js' */
@@ -76,7 +76,7 @@ export default class AModalThermographicImage extends Vue {
   }
 
   currentImageData: string | null = ''
-  ImageDataArr: string[][] = [[]]
+  ImageDataArr
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -121,25 +121,27 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  async getDataImage (): Promise<void> {
+  getDataImage (): void {
     this.ImageDataArr = getThermicData(this.treatment?.image_thermic_data)
+    console.log(this.ImageDataArr)
   }
 
-  async getPixels (event): Promise<void> {
+  getPixels (event): void {
+
+    console.log(this.currentImageData)
+    console.log(this.treatment.image_thermic_data)
 
     if(this.currentImageData != this.treatment.image_thermic_data){
       this.currentImageData = this.treatment?.image_thermic_data
       this.getDataImage()
     } 
 
-    try {
+/*     try {
       const x = event.x
       const y = event.y
       const image = this.treatment.image_thermic_data
 
-      console.log(this.ImageDataArr)
-
-      /* const gray16_image = cv.imread(event.target)
+      const gray16_image = cv.imread(event.target)
       const pixel_gray16 = gray16_image.ushortPtr(y, x)[0]
 
       //calculate temperature value in ° C
@@ -149,9 +151,9 @@ export default class AModalThermographicImage extends Vue {
       const hex = await Jimp.read(image, function (err, img) { return img.getPixelColor(x, y) })
       const rgb = await Jimp.intToRGBA(hex) 
 
-      this.setTemperature(x, y, pixel_value_gray16, rgb) */
+      this.setTemperature(x, y, pixel_value_gray16, rgb)
     } catch (err) {
       console.log(err)
-    }
+    } */
   }
 }
