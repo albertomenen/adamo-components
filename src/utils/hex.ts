@@ -12,9 +12,9 @@ const HexToArray = (data: string): Array<Array<string>> => {
     let tempArray: string[][] = []
     let count = 0
     console.log(typeof data)
-    for (let i = 0; i < 320; i += 4) {
+    for (let i = 0; i < 320; i++) {
       let y: string[] = []
-      for (let j = 0; j < 256; j += 4) {
+      for (let j = 0; j < 256; j++) {
         y.push(data.slice(count, count + 3)) 
         count += 4
       }
