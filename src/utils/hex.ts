@@ -18,14 +18,11 @@ const HexToArray = (data: string): Array<Array<string>> => {
         count += 4
       }
     }
-    console.log(tempArray)
-
     return tempArray
 }
 
 export function getThermicData(thermicImage) {
     const bufString = base64ToHex(thermicImage)
-    return bufString
-    /* const BufArray = HexToArray(bufString)
-    return BufArray */
+    const BufArray = HexToArray(bufString)
+    return BufArray
 }
