@@ -35,11 +35,12 @@
           <section :class="`hero is-medium`">
             <div class="hero-body p-0 px-7">
               <div class="is-flex is-justify-content-space-evenly">
-                <div class="column-left is-relative" @click="getPixels" >
+                <div class="column-left is-relative">
                   <img
                     alt=""
                     :src="getThermic(session.image_thermic)"
                     style="width: 300px; height: 400px;"
+                    @click="getPixels($event, session.session_number)"
                   >
                   <!-- <div :style="coordinateBoxStyles">
                     <div
