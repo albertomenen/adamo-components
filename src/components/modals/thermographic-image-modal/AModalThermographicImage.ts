@@ -44,6 +44,13 @@ export default class AModalThermographicImage extends Vue {
     default: () => 1
   }) currentSession!: number
 
+  mounted() {
+    for (const session of this.treatment.sessions) {
+      const thermicData = getThermicData(session.image_thermic_data)
+      this.dataMatrix.push(thermicData)
+    }
+  }
+
   get carouselSession (): number {
     return this.currentSession - 1
   }
@@ -119,11 +126,6 @@ export default class AModalThermographicImage extends Vue {
   } */
 
   getPixels (event, thermicImage): void {
-
-    if(this.currentImage != thermicImage){
-      this.currentImage = thermicImage
-      this.dataMatrix = getThermicData(thermicImage)
-    }
 
     if(this.dataMatrix) {
       const x = event.x
