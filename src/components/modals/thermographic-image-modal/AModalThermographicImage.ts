@@ -81,7 +81,7 @@ export default class AModalThermographicImage extends Vue {
   }
 
   currentImage: string | null = ''
-  dataMatrix
+  dataMatrix: any[] = []
   /* temperatureValue = 0  */
 
   coordinateBoxStyles = {
