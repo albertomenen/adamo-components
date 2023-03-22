@@ -40,7 +40,7 @@
                     alt=""
                     :src="getThermic(session.image_thermic)"
                     style="width: 300px; height: 400px;"
-                    @click="getPixels($event, session.session_number)"
+                    @click="getPixels"
                   >
                   <!-- <div :style="coordinateBoxStyles">
                     <div

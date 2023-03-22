@@ -125,7 +125,7 @@ export default class AModalThermographicImage extends Vue {
     this.temperatureValue = value
   } */
 
-  getPixels (event, session): void {
+  getPixels (event): void {
 
     if(this.dataMatrix.length > 0) {
       console.log(event.x)
