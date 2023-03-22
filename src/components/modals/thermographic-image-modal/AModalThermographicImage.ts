@@ -3,10 +3,8 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
-import { getThermicData } from '../../../utils/hex'
+import { getThermicData } from '../../../utils/thermic'
 import moment from 'moment'
-/* import Jimp from 'jimp'
-import cv from '@techstark/opencv-js' */
 
 const minX = -0.12
 const minY = -0.93
@@ -75,8 +73,9 @@ export default class AModalThermographicImage extends Vue {
     return `data:image/png;base64,${image}`
   }
 
-  currentImageData: string | null = ''
-  ImageDataArr
+  currentImage: string | null = ''
+  dataMatrix
+  /* temperatureValue = 0  */
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -88,7 +87,7 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
-/*   temperatureStyles = {
+  /*   temperatureStyles = {
     position: 'absolute',
     top: `0`,
     left: `0`,
@@ -97,15 +96,6 @@ export default class AModalThermographicImage extends Vue {
     borderRadius: '100%',
     backgroundColor: '',
     color: 'white'
-  }
-
-  temperatureValue = 0 */
-
-/*   setTemperature (x, y, value, color) {
-    this.temperatureStyles.top = `calc(${y}% - 10px)`
-    this.temperatureStyles.left = `calc(${x}% - 10px)`
-    this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
-    this.temperatureValue = value
   } */
 
   getCoordinate (point: any) {
@@ -121,11 +111,26 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  getPixels (event, sessionNumber, thermicData): void {
+/*   setTemperature (x, y, value, color) {
+    this.temperatureStyles.top = `calc(${y}% - 10px)`
+    this.temperatureStyles.left = `calc(${x}% - 10px)`
+    this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
+    this.temperatureValue = value
+  } */
 
-    if(this.currentImageData != thermicData){
-      this.currentImageData = thermicData
-      this.ImageDataArr = getThermicData(thermicData)
+  getPixels (event, thermicImage): void {
+
+    if(this.currentImage != thermicImage){
+      this.currentImage = thermicImage
+      this.dataMatrix = getThermicData(thermicImage)
+    }
+
+    if(this.dataMatrix) {
+      const x = event.x
+      const y = event.y
+
+      const pixelValue = this.dataMatrix[y][x]
+      console.log(pixelValue)
     }
 
 /*     try {
