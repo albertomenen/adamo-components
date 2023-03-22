@@ -26,5 +26,9 @@ const HexToArray = (data: string): Array<Array<string>> => {
 export function getThermicData(thermicImage) {
     const bufString = base64ToHex(thermicImage)
     const BufArray = HexToArray(bufString)
+
+    console.log(bufString)
+    console.log(BufArray)
+    
     return BufArray
 }
