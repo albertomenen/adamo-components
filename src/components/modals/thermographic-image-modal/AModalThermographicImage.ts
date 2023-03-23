@@ -134,36 +134,22 @@ export default class AModalThermographicImage extends Vue {
         const height = event.currentTarget.offsetHeight
         const width = event.currentTarget.offsetWidth
 
-        const percentX = ((x - 314) * 100) / height
-        const percentY = ((y - 284) * 100) / width
+        const percentX = (x * 100) / height
+        const percentY = (y * 100) / width
 
-        const resizeX = Math.round( (percentX * 320) / 100 )
-        const resizeY = Math.round( (percentY * 256) / 100 )
+        const resizeX = Math.round((percentX * 320) / 100)
+        const resizeY = Math.round((percentY * 256) / 100)
 
         const matrix = this.dataMatrix[session-1]
         const pixelValue = matrix[resizeX][resizeY]
-        console.log(pixelValue)
+        
+        const temperatureValue = this.hexToTemperature(pixelValue)
+        console.log(temperatureValue)
       }
     }
+  }
 
-/*     try {
-      const x = event.x
-      const y = event.y
-      const image = this.treatment.image_thermic_data
-
-      const gray16_image = cv.imread(event.target)
-      const pixel_gray16 = gray16_image.ushortPtr(y, x)[0]
-
-      //calculate temperature value in ° C
-      const pixel_value_gray16 = (pixel_gray16 * 0.04) - 273.15
-      gray16_image.delete()
-
-      const hex = await Jimp.read(image, function (err, img) { return img.getPixelColor(x, y) })
-      const rgb = await Jimp.intToRGBA(hex) 
-
-      this.setTemperature(x, y, pixel_value_gray16, rgb)
-    } catch (err) {
-      console.log(err)
-    } */
+  hexToTemperature (hex): number {
+    return parseInt(hex, 16)
   }
 }
