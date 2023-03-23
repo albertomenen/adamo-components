@@ -82,7 +82,7 @@ export default class AModalThermographicImage extends Vue {
 
   currentImage: string | null = ''
   dataMatrix: any[] = []
-  /* temperatureValue = 0  */
+  temperatureValue = 0
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -94,16 +94,16 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
-  /*   temperatureStyles = {
+  temperatureStyles = {
     position: 'absolute',
     top: `0`,
     left: `0`,
     width: '100px',
     height: '100px',
     borderRadius: '100%',
-    backgroundColor: '',
+    backgroundColor: 'black',
     color: 'white'
-  } */
+  }
 
   getCoordinate (point: any) {
     const position = getPercentage(point.x, point.y)
@@ -118,12 +118,12 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-/*   setTemperature (x, y, value, color) {
+  setTemperature (x, y, value, color) {
     this.temperatureStyles.top = `calc(${y}% - 10px)`
     this.temperatureStyles.left = `calc(${x}% - 10px)`
     this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
     this.temperatureValue = value
-  } */
+  }
 
   getPixels (event, session): void {
     const x = event.y - 314
@@ -143,13 +143,14 @@ export default class AModalThermographicImage extends Vue {
         const matrix = this.dataMatrix[session-1]
         const pixelValue = matrix[resizeX][resizeY]
         
-        const temperatureValue = this.hexToTemperature(pixelValue)
-        console.log(temperatureValue)
+        const temperature = this.hexToTemperature(pixelValue)
+        this.temperatureValue = temperature
       }
     }
   }
 
   hexToTemperature (hex): number {
-    return parseInt(hex, 16)
+    const num = parseInt(hex, 16)
+    return (num * 0.04) - 273.13
   }
 }
