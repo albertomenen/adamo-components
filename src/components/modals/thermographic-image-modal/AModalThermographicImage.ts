@@ -129,15 +129,28 @@ export default class AModalThermographicImage extends Vue {
 
     if(this.dataMatrix.length > 0) {
       if(event.y > 0 && event.x > 0) {
+
+        console.log(event.y)
+        console.log(event.x)
+
         const x = (event.y*100) / event.target.height
         const y = (event.x*100) / event.target.width
+
+        console.log(x)
+        console.log(y)
 
         const resizeX = (x * 320) / 100
         const resizeY = (y * 256) / 100
 
-        const matrix = this.dataMatrix[session-1]
+        console.log(resizeX)
+        console.log(resizeY)
+
+        console.log(Math.round(resizeX))
+        console.log(Math.round(resizeY))
+
+        /* const matrix = this.dataMatrix[session-1]
         const pixelValue = matrix[resizeX][resizeY]
-        console.log(pixelValue)
+        console.log(pixelValue) */
       }
     }
 
