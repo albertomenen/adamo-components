@@ -128,13 +128,15 @@ export default class AModalThermographicImage extends Vue {
   getPixels (event, session): void {
 
     if(this.dataMatrix.length > 0) {
-      const x = event.y - 314
-      const y = event.x - 284
+      if(event.y > 0 && event.x > 0) {
+        const x = (event.y*100) / event.target.height
+        const y = (event.x*100) / event.target.width
 
-      const matrix = this.dataMatrix[session-1]
-      
-      if(x > 0 && y > 0) {
-        const pixelValue = matrix[x][y]
+        const resizeX = (x * 320) / 100
+        const resizeY = (y * 256) / 100
+
+        const matrix = this.dataMatrix[session-1]
+        const pixelValue = matrix[resizeX][resizeY]
         console.log(pixelValue)
       }
     }

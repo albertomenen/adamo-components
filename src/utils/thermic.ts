@@ -11,9 +11,9 @@ const base64ToHex = (str) => {
 const HexToArray = (data: string): Array<Array<string>> => {
     const tempArray: string[][] = []
     let count = 0
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 320; i++) {
       const y: string[] = []
-      for (let j = 0; j < 300; j++) {
+      for (let j = 0; j < 256; j++) {
         y.push(data.slice(count, count + 4)) 
         count += 4
       }
