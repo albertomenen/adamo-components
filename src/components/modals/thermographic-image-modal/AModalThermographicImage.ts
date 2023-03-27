@@ -130,6 +130,9 @@ export default class AModalThermographicImage extends Vue {
     const x = event.y - 314
     const y = event.x - 284
 
+    console.log(x)
+    console.log(y)
+
     if(this.dataMatrix.length > 0) {
       if(x > 0 && y > 0) {
         const height = event.currentTarget.offsetHeight
