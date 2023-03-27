@@ -127,13 +127,17 @@ export default class AModalThermographicImage extends Vue {
 
   getPixels (event, session): void {
     // la imagen esta volteada, por lo que debemos cambiar las coordenadas
-    const x = event.y - 314
-    const y = event.x - 284
+    
+    var x = event.pageY - event.offsetTop;
+    var y = event.pageX - event.offsetLeft;
+    
+    /* const x = event.y - 314
+    const y = event.x - 284 */
 
     console.log(x)
     console.log(y)
 
-    if(this.dataMatrix.length > 0) {
+    /* if(this.dataMatrix.length > 0) {
       if(x > 0 && y > 0) {
         const height = event.currentTarget.offsetHeight
         const width = event.currentTarget.offsetWidth
@@ -149,7 +153,7 @@ export default class AModalThermographicImage extends Vue {
 
         this.temperatureValue = this.hexToTemperature(pixelValue)
       }
-    }
+    } */
   }
 
   hexToTemperature (hex): number {
