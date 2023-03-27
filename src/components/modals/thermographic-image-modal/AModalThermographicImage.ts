@@ -126,34 +126,25 @@ export default class AModalThermographicImage extends Vue {
   }
 
   getPixels (event, session): void {
-    // la imagen esta volteada, por lo que debemos cambiar las coordenadas
-    
-    var x = event.offsetY;
-    var y = event.offsetX;
-    
-    /* const x = event.y - 314
-    const y = event.x - 284 */
+    // la imagen esta volteada, por lo que debemos cambiar las coordenadas    
+    const x = event.offsetY;
+    const y = event.offsetX;
 
-    console.log(x)
-    console.log(y)
+    if((this.dataMatrix.length > 0) && (x > 0 && y > 0)) {
+      const height = event.currentTarget.offsetHeight
+      const width = event.currentTarget.offsetWidth
 
-    /* if(this.dataMatrix.length > 0) {
-      if(x > 0 && y > 0) {
-        const height = event.currentTarget.offsetHeight
-        const width = event.currentTarget.offsetWidth
+      const percentX = (x * 100) / height
+      const percentY = (y * 100) / width
 
-        const percentX = (x * 100) / height
-        const percentY = (y * 100) / width
+      const resizeX = Math.round((percentX * 320) / 100)
+      const resizeY = Math.round((percentY * 256) / 100)
 
-        const resizeX = Math.round((percentX * 320) / 100)
-        const resizeY = Math.round((percentY * 256) / 100)
+      const matrix = this.dataMatrix[session-1]
+      const pixelValue = matrix[resizeX][resizeY]
 
-        const matrix = this.dataMatrix[session-1]
-        const pixelValue = matrix[resizeX][resizeY]
-
-        this.temperatureValue = this.hexToTemperature(pixelValue)
-      }
-    } */
+      this.temperatureValue = this.hexToTemperature(pixelValue)
+    }
   }
 
   hexToTemperature (hex): number {
