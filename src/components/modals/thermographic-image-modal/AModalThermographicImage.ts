@@ -82,7 +82,7 @@ export default class AModalThermographicImage extends Vue {
 
   currentImage: string | null = ''
   dataMatrix: any[] = []
-  temperatureValue = 0
+  temperatureValue: number = 0
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -126,6 +126,7 @@ export default class AModalThermographicImage extends Vue {
   }
 
   getPixels (event, session): void {
+    // la imagen esta volteada, por lo que debemos cambiar las coordenadas
     const x = event.y - 314
     const y = event.x - 284
 
@@ -142,15 +143,15 @@ export default class AModalThermographicImage extends Vue {
 
         const matrix = this.dataMatrix[session-1]
         const pixelValue = matrix[resizeX][resizeY]
-        
-        const temperature = this.hexToTemperature(pixelValue)
-        this.temperatureValue = temperature
+
+        this.temperatureValue = this.hexToTemperature(pixelValue)
       }
     }
   }
 
   hexToTemperature (hex): number {
     const num = parseInt(hex, 16)
-    return (num * 0.04) - 273.13
+    const fixedNum = (num * 0.04) - 273.15
+    return Math.round( fixedNum * 1e2 ) / 1e2;
   }
 }

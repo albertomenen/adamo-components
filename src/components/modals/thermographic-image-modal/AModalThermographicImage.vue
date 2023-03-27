@@ -44,12 +44,12 @@
                     :src="getThermic(session.image_thermic)"
                     style="width: 300px; height: 400px;"
                   >
-                  <div :style="coordinateBoxStyles">
+                  <!-- <div :style="coordinateBoxStyles">
                     <div
                       class="is-flex is-align-items-center is-justify-content-center has-shadow"
                       :style="temperatureStyles" 
                     >{{temperatureValue}}</div>
-                  </div>
+                  </div> -->
                   <div :style="coordinateBoxStyles">
                     <div
                       v-for="(point, i) in treatment.points"
@@ -113,6 +113,19 @@
                       placeholder="0"
                       readonly
                       :value="treatment.points ? treatment.points.length : 0"
+                    />
+                  </div>
+                  <div class="mt-3">
+                    <p class="has-text-medium-blue has-font-comfortaa mb-1">
+                      temperatura
+                    </p>
+                    <AInput
+                      class="input-text-centered thermographic-input"
+                      icon="map-pin"
+                      icon-pack="fas"
+                      placeholder="0"
+                      readonly
+                      :value="temperatureValue"
                     />
                   </div>
                 </div>
