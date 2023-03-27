@@ -128,8 +128,8 @@ export default class AModalThermographicImage extends Vue {
   getPixels (event, session): void {
     // la imagen esta volteada, por lo que debemos cambiar las coordenadas
     
-    var x = event.pageY - event.offsetTop;
-    var y = event.pageX - event.offsetLeft;
+    var x = event.offsetY;
+    var y = event.offsetX;
     
     /* const x = event.y - 314
     const y = event.x - 284 */
