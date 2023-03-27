@@ -99,7 +99,7 @@
                       icon-pack="fas"
                       placeholder="Media"
                       readonly
-                      :value="getTemperature"
+                      :value="temperatureValue"
                     />
                   </div>
                   <div class="mt-3">
@@ -113,19 +113,6 @@
                       placeholder="0"
                       readonly
                       :value="treatment.points ? treatment.points.length : 0"
-                    />
-                  </div>
-                  <div class="mt-3">
-                    <p class="has-text-medium-blue has-font-comfortaa mb-1">
-                      temperatura
-                    </p>
-                    <AInput
-                      class="input-text-centered thermographic-input"
-                      icon="map-pin"
-                      icon-pack="fas"
-                      placeholder="0"
-                      readonly
-                      :value="temperatureValue"
                     />
                   </div>
                 </div>
