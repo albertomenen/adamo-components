@@ -97,7 +97,7 @@
                       class="input-text-centered thermographic-input"
                       icon="thermometer-quarter"
                       icon-pack="fas"
-                      placeholder="Media"
+                      placeholder="0"
                       readonly
                       :value="temperatureValue"
                     />
