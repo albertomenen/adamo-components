@@ -83,6 +83,13 @@ export default class AModalThermographicImage extends Vue {
   currentImage: string | null = ''
   dataMatrix: any[] = []
   temperatureValue: number = 0
+  rectangle = 0  
+  rectanglePath = {
+    clx: 0,
+    cly: 0,
+    ulx: 0,
+    uly: 0
+  }
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -147,9 +154,24 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  setArea (event): void {
-    console.log(event.offsetX)
-    console.log(event.offsetY)
+  setArea (event, session): void {
+    const reference = `thermicImg${session}`
+    const ctx = this.$refs[reference].getContext('2d') 
+
+    if(!this.rectangle) {
+      this.rectanglePath.clx = event.clientX - event.offsetLeft;
+      this.rectanglePath.cly = event.clientY - event.offsetTop;
+      ctx.moveTo(this.rectanglePath.clx, this.rectanglePath.cly);
+      this.rectangle = 1
+    } else {
+      this.rectanglePath.ulx = event.clientX - event.offsetLeft;
+      this.rectanglePath.uly = event.clientY - event.offsetTop;
+      ctx.beginPath();
+      ctx.moveTo(this.rectanglePath.ulx, this.rectanglePath.uly);
+      ctx.strokeRect(this.rectanglePath.clx, this.rectanglePath.cly, this.rectanglePath.ulx - this.rectanglePath.clx, this.rectanglePath.uly - this.rectanglePath.cly);
+      ctx.stroke();
+      this.rectangle = 0
+    }
   }
 
   hexToTemperature (hex): number {
