@@ -156,7 +156,7 @@ export default class AModalThermographicImage extends Vue {
 
   setArea (event, ref): void {
     const reference = this.$refs[ref]
-    const ctx = reference.getContext('2d') 
+    const ctx = reference[0].getContext('2d') 
 
     if(!this.rectangle) {
       this.rectanglePath.clx = event.clientX - event.offsetLeft;
