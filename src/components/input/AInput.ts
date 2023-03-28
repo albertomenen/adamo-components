@@ -18,10 +18,10 @@ export default class AInput extends Vue {
       this.$emit('input', val)
     }
 
-    @Watch('innerValue')
+    /* @Watch('innerValue')
     onValueChange (val: string): void {
       this.innerValue = val
-    }
+    } */
 
     @Watch('value')
     onValueValueChange (val: string | number): void {
