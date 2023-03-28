@@ -39,8 +39,8 @@
                   class="column-left is-relative"
                   ref="`thermicImg${session.session_number}`"
                   @click="getPixels($event, session.session_number)"
-                  @mouseDown="setArea($event, session.session_number)"
-                  @mouseUp="setArea($event, session.session_number)"
+                  @mousedown="setArea($event, session.session_number)"
+                  @mouseup="setArea($event, session.session_number)"
                 >
                   <img
                     alt=""
