@@ -37,15 +37,15 @@
               <div class="is-flex is-justify-content-space-evenly">
                 <div 
                   class="column-left is-relative"
-                  :ref="`thermicImg${session.session_number}`"
                   @click="getPixels($event, session.session_number)"
-                  @mousedown="setArea($event, `thermicImg${session.session_number}`)"
-                  @mouseup="setArea($event, `thermicImg${session.session_number}`)"
                 >
                   <img
                     alt=""
                     :src="getThermic(session.image_thermic)"
+                    :ref="`thermicImg${session.session_number}`"
                     style="width: 300px; height: 400px;"
+                    @mousedown="setArea($event, `thermicImg${session.session_number}`)"
+                    @mouseup="setArea($event, `thermicImg${session.session_number}`)"
                   >
                   <!-- <div :style="coordinateBoxStyles">
                     <div
