@@ -38,6 +38,8 @@
                 <div 
                   class="column-left is-relative"
                   @click="getPixels($event, session.session_number)"
+                  @mouseDown="setArea"
+                  @mouseUp="setArea"
                 >
                   <img
                     alt=""

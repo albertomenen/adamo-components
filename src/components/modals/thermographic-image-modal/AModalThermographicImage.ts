@@ -147,6 +147,11 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
+  setArea (event): void {
+    console.log(event.offsetX)
+    console.log(event.offsetY)
+  }
+
   hexToTemperature (hex): number {
     const num = parseInt(hex, 16)
     const fixedNum = (num * 0.04) - 273.15
