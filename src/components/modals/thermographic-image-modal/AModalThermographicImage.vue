@@ -37,17 +37,15 @@
               <div class="is-flex is-justify-content-space-evenly">
                 <div 
                   class="column-left is-relative"
-                  @click="getPixels($event, session.session_number)"
+                  @click="setArea($event, `thermicImg${session.session_number}`)"
                 >
                   <img
                     alt=""
                     :src="getThermic(session.image_thermic)"
                     style="width: 300px; height: 400px;"
-                    @mousedown="setArea($event, `thermicImg${session.session_number}`)"
-                    @mouseup="setArea($event, `thermicImg${session.session_number}`)"
                   >
                   <canvas 
-                    style="width: 300px; height: 400px;"
+                    :style="canvasOverlay"
                     :ref="`thermicImg${session.session_number}`"
                   >
                   </canvas>

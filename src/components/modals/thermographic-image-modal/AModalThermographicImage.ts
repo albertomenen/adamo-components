@@ -101,15 +101,15 @@ export default class AModalThermographicImage extends Vue {
     width: `${boxWidth}px`
   }
 
-  temperatureStyles = {
+  canvasOverlay = {
     position: 'absolute',
-    top: `0`,
-    left: `0`,
-    width: '100px',
-    height: '100px',
-    borderRadius: '100%',
-    backgroundColor: 'black',
-    color: 'white'
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    pointerEvent: 'none',
+    height: `100%`,
+    width: `100%`
   }
 
   getCoordinate (point: any) {
@@ -132,7 +132,7 @@ export default class AModalThermographicImage extends Vue {
     this.temperatureValue = value
   }
 
-  getPixels (event, session): void {
+/*   getPixels (event, session): void {
     // la imagen esta volteada, por lo que debemos cambiar las coordenadas    
     const x = event.offsetY;
     const y = event.offsetX;
@@ -152,25 +152,16 @@ export default class AModalThermographicImage extends Vue {
 
       this.temperatureValue = this.hexToTemperature(pixelValue)
     }
-  }
+  } */
 
   setArea (event, ref): void {
-    const res = this.$refs[ref]
+      let c = this.$refs[ref]
+      const canvas = c.getContext('2d')
+      canvas.beginPath()
+      canvas.rect(20, 20, 150, 100)
+      canvas.stroke()
 
-    if (!res ) {
-      throw new Error('Failed to get reference element');
-    }
-
-    const reference: HTMLCanvasElement = res[0]
-    const temp = reference.getContext('2d')
-    
-    if (!temp ) {
-      throw new Error('Failed to get 2D context');
-    }
-
-    const ctx: CanvasRenderingContext2D  = temp
-
-    if(!this.rectangle) {
+   /*  if(!this.rectangle) {
       this.rectanglePath.clx = event.clientX - event.offsetLeft;
       this.rectanglePath.cly = event.clientY - event.offsetTop;
       ctx.moveTo(this.rectanglePath.clx, this.rectanglePath.cly);
@@ -183,7 +174,7 @@ export default class AModalThermographicImage extends Vue {
       ctx.strokeRect(this.rectanglePath.clx, this.rectanglePath.cly, this.rectanglePath.ulx - this.rectanglePath.clx, this.rectanglePath.uly - this.rectanglePath.cly);
       ctx.stroke();
       this.rectangle = 0
-    } 
+    }  */
   }
 
   hexToTemperature (hex): number {
