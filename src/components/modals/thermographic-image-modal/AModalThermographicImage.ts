@@ -155,11 +155,26 @@ export default class AModalThermographicImage extends Vue {
   } */
 
   setArea (event, ref): void {
-      let c = this.$refs[ref]
-      const canvas = c.getContext('2d')
-      canvas.beginPath()
-      canvas.rect(20, 20, 150, 100)
-      canvas.stroke()
+/*     const res = this.$refs[ref]
+
+    if (!res ) {
+      throw new Error('Failed to get reference element');
+    }
+
+    const reference: HTMLCanvasElement = res[0]
+    const temp = reference.getContext('2d')
+    
+    if (!temp ) {
+      throw new Error('Failed to get 2D context');
+    }
+
+    const ctx: CanvasRenderingContext2D  = temp */
+
+    let c = this.$refs[ref]
+    const canvas = c[0].getContext('2d')
+    canvas.beginPath()
+    canvas.rect(20, 20, 150, 100)
+    canvas.stroke()
 
    /*  if(!this.rectangle) {
       this.rectanglePath.clx = event.clientX - event.offsetLeft;
