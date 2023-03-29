@@ -155,10 +155,16 @@ export default class AModalThermographicImage extends Vue {
   }
 
   setArea (event, ref): void {
-    const reference = this.$refs[ref]
-    const ctx = reference[0].getContext('2d') 
+    const reference: HTMLCanvasElement = this.$refs[ref]
+    const temp = reference.getContext('2d')
+    
+    if (!temp ) {
+      throw new Error('Failed to get 2D context');
+    }
 
-   /*  if(!this.rectangle) {
+    const ctx: CanvasRenderingContext2D  = temp
+
+    if(!this.rectangle) {
       this.rectanglePath.clx = event.clientX - event.offsetLeft;
       this.rectanglePath.cly = event.clientY - event.offsetTop;
       ctx.moveTo(this.rectanglePath.clx, this.rectanglePath.cly);
@@ -171,7 +177,7 @@ export default class AModalThermographicImage extends Vue {
       ctx.strokeRect(this.rectanglePath.clx, this.rectanglePath.cly, this.rectanglePath.ulx - this.rectanglePath.clx, this.rectanglePath.uly - this.rectanglePath.cly);
       ctx.stroke();
       this.rectangle = 0
-    }  */
+    } 
   }
 
   hexToTemperature (hex): number {

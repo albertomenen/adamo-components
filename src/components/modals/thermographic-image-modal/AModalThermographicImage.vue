@@ -42,17 +42,15 @@
                   <img
                     alt=""
                     :src="getThermic(session.image_thermic)"
-                    :ref="`thermicImg${session.session_number}`"
                     style="width: 300px; height: 400px;"
                     @mousedown="setArea($event, `thermicImg${session.session_number}`)"
                     @mouseup="setArea($event, `thermicImg${session.session_number}`)"
                   >
-                  <!-- <div :style="coordinateBoxStyles">
-                    <div
-                      class="is-flex is-align-items-center is-justify-content-center has-shadow"
-                      :style="temperatureStyles" 
-                    >{{temperatureValue}}</div>
-                  </div> -->
+                  <canvas 
+                    style="width: 300px; height: 400px;"
+                    :ref="`thermicImg${session.session_number}`"
+                  >
+                  </canvas>
                   <div :style="coordinateBoxStyles">
                     <div
                       v-for="(point, i) in treatment.points"
