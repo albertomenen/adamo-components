@@ -155,9 +155,9 @@ export default class AModalThermographicImage extends Vue {
   }
 
   setArea (event, ref): void {
-    const reference: HTMLCanvasElement = this.$refs[ref]
+    const reference = this.$refs[ref]
     const temp = reference.getContext('2d')
-    
+
     if (!temp ) {
       throw new Error('Failed to get 2D context');
     }
