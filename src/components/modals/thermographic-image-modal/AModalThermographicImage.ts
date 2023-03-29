@@ -108,8 +108,8 @@ export default class AModalThermographicImage extends Vue {
     right: '0',
     bottom: '0',
     pointerEvent: 'none',
-    height: `100%`,
-    width: `100%`
+    height: `${imageHeight}px`,
+    width: `${imageWidth}px`
   }
 
   getCoordinate (point: any) {
