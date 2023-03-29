@@ -125,12 +125,12 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  setTemperature (x, y, value, color) {
+  /* setTemperature (x, y, value, color) {
     this.temperatureStyles.top = `calc(${y}% - 10px)`
     this.temperatureStyles.left = `calc(${x}% - 10px)`
     this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
     this.temperatureValue = value
-  }
+  } */
 
 /*   getPixels (event, session): void {
     // la imagen esta volteada, por lo que debemos cambiar las coordenadas    
@@ -155,23 +155,21 @@ export default class AModalThermographicImage extends Vue {
   } */
 
   setArea (event, ref): void {
-/*     const res = this.$refs[ref]
+    let c = this.$refs[ref]
 
-    if (!res ) {
+    if (!c) {
       throw new Error('Failed to get reference element');
     }
 
-    const reference: HTMLCanvasElement = res[0]
-    const temp = reference.getContext('2d')
+    const reference: HTMLCanvasElement = c[0]
+    const ctx = reference.getContext('2d')
     
-    if (!temp ) {
+    if (!ctx ) {
       throw new Error('Failed to get 2D context');
     }
 
-    const ctx: CanvasRenderingContext2D  = temp */
+    const canvas: CanvasRenderingContext2D  = ctx
 
-    let c = this.$refs[ref]
-    const canvas = c[0].getContext('2d')
     canvas.beginPath()
     canvas.rect(20, 20, 150, 100)
     canvas.stroke()
