@@ -45,10 +45,16 @@ export default class AModalThermographicImage extends Vue {
   }) currentSession!: number
 
   mounted() {
-    for (const session of this.treatment.sessions) {
-      const thermicData = getThermicData(session.image_thermic_data)
-      this.dataMatrix.push(thermicData)
-    }
+    this.dataMatrix = this.treatment.sessions.map( session => {
+      return getThermicData(session.image_thermic_data)
+    })
+    this.squares = this.treatment.sessions.map( session => {
+      return {
+        'x': 0,
+        'y': 0,
+        'show': false
+      }
+    })
   }
 
   get carouselSession (): number {
@@ -82,14 +88,10 @@ export default class AModalThermographicImage extends Vue {
 
   currentImage: string | null = ''
   dataMatrix: any[] = []
+  squares: any[] = []
+  squareWidth: number = 15
+  squareHeight: number = 15
   temperatureValue: number = 0
-  rectangle = 0  
-  rectanglePath = {
-    clx: 0,
-    cly: 0,
-    ulx: 0,
-    uly: 0
-  }
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -154,7 +156,18 @@ export default class AModalThermographicImage extends Vue {
     }
   } */
 
-  setArea (event, ref): void {
+  draw (event, session): void {
+    const x = event.evt.x - 30 / 2;
+    const y = event.evt.y - 30 / 2;
+
+    this.squares[session-1].x = x
+    this.squares[session-1].y = y
+    if (!this.squares[session-1].show) {
+      this.squares[session-1].show = true 
+    }
+  }
+
+/*   setArea (event, ref): void {
     let c = this.$refs[ref]
 
     if (!c) {
@@ -176,7 +189,7 @@ export default class AModalThermographicImage extends Vue {
     canvas.rect(x, y, 30, 30);
     canvas.stroke()
 
-   /*  if(!this.rectangle) {
+    if(!this.rectangle) {
       this.rectanglePath.clx = event.clientX - event.offsetLeft;
       this.rectanglePath.cly = event.clientY - event.offsetTop;
       ctx.moveTo(this.rectanglePath.clx, this.rectanglePath.cly);
@@ -189,8 +202,8 @@ export default class AModalThermographicImage extends Vue {
       ctx.strokeRect(this.rectanglePath.clx, this.rectanglePath.cly, this.rectanglePath.ulx - this.rectanglePath.clx, this.rectanglePath.uly - this.rectanglePath.cly);
       ctx.stroke();
       this.rectangle = 0
-    }  */
-  }
+    } 
+  } */
 
   hexToTemperature (hex): number {
     const num = parseInt(hex, 16)

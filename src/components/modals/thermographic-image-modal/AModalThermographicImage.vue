@@ -37,18 +37,30 @@
               <div class="is-flex is-justify-content-space-evenly">
                 <div 
                   class="column-left is-relative"
+                  @click="draw($event, `thermicImg${session.session_number}`)"
                 >
                   <img
                     alt=""
                     :src="getThermic(session.image_thermic)"
                     style="width: 300px; height: 400px;"
                   >
-                  <canvas 
+                  <v-rect
+                    v-if="squares[session.session_number-1].show"
+                    :config="{
+                      x: squares[session.session_number-1].x,
+                      y: squares[session.session_number-1].y,
+                      width: squareWidth,
+                      height: squareHeight,
+                      fill: 'red',
+                      shadowBlur: 10,
+                    }"
+                  />
+                  <!-- <canvas 
                     :style="canvasOverlay"
                     :ref="`thermicImg${session.session_number}`"
                     @click="setArea($event, `thermicImg${session.session_number}`)"
                   >
-                  </canvas>
+                  </canvas> -->
                   <div :style="coordinateBoxStyles">
                     <div
                       v-for="(point, i) in treatment.points"
