@@ -37,7 +37,7 @@
               <div class="is-flex is-justify-content-space-evenly">
                 <div 
                   class="column-left is-relative"
-                  @click="draw($event, `thermicImg${session.session_number}`)"
+                  @click="draw($event, session.session_number-1)"
                 >
                   <img
                     alt=""

@@ -160,10 +160,10 @@ export default class AModalThermographicImage extends Vue {
     const x = event.evt.x - 30 / 2;
     const y = event.evt.y - 30 / 2;
 
-    this.squares[session-1].x = x
-    this.squares[session-1].y = y
-    if (!this.squares[session-1].show) {
-      this.squares[session-1].show = true 
+    this.squares[session].x = x
+    this.squares[session].y = y
+    if (!this.squares[session].show) {
+      this.squares[session].show = true 
     }
   }
 
