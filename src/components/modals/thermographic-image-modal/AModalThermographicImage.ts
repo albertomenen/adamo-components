@@ -110,8 +110,8 @@ export default class AModalThermographicImage extends Vue {
     right: '0',
     bottom: '0',
     pointerEvent: 'none',
-    height: `${imageHeight}px`,
-    width: `${imageWidth}px`
+    height: `100%`,
+    width: `100%`
   }
 
   getCoordinate (point: any) {
@@ -168,9 +168,9 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  getSquareValue (session, val): any {
+  getSquareValue (session, val): number {
     const square = this.squares[session-1]
-    return square[val]
+    return square[val] ? square[val] : false
   }
 
 /*   setArea (event, ref): void {
