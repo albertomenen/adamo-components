@@ -169,11 +169,11 @@ export default class AModalThermographicImage extends Vue {
     }
 
     const canvas: CanvasRenderingContext2D  = ctx
-    const x = event.offsetX - 15 / 2
-    const y = event.offsetY - 15 / 2
+    const x = event.offsetX - 30 / 2
+    const y = event.offsetY - 30 / 2
 
     canvas.beginPath()
-    canvas.rect(x - 15 / 2, y - 15 / 2, 15, 15);
+    canvas.rect(x, y, 30, 30);
     canvas.stroke()
 
    /*  if(!this.rectangle) {
