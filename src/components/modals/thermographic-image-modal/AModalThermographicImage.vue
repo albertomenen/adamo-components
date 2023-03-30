@@ -37,7 +37,6 @@
               <div class="is-flex is-justify-content-space-evenly">
                 <div 
                   class="column-left is-relative"
-                  @click="setArea($event, `thermicImg${session.session_number}`)"
                 >
                   <img
                     alt=""
@@ -47,6 +46,7 @@
                   <canvas 
                     :style="canvasOverlay"
                     :ref="`thermicImg${session.session_number}`"
+                    @click="setArea($event, `thermicImg${session.session_number}`)"
                   >
                   </canvas>
                   <div :style="coordinateBoxStyles">
