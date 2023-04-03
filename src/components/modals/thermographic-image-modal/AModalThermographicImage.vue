@@ -44,24 +44,26 @@
                     :src="getThermic(session.image_thermic)"
                     style="width: 300px; height: 400px;"
                   >
-                  <v-stage
-                    ref="stage"
-                    :config="canvasOverlay"
-                  >
-                    <v-layer>
-                      <v-rect
-                        v-if="getSquareValue(session.session_number, 'show')"
-                        :config="{
-                          x: getSquareValue(session.session_number, 'x'),
-                          y: getSquareValue(session.session_number, 'y'),
-                          width: squareWidth,
-                          height: squareHeight,
-                          fill: 'red',
-                          shadowBlur: 10,
-                        }"
-                      />
-                    </v-layer>
-                  </v-stage>
+                  <div :style="canvasOverlay">
+                    <v-stage
+                      ref="stage"
+                      :config="stageConfig"
+                    >
+                      <v-layer>
+                        <v-rect
+                          v-if="getSquareValue(session.session_number, 'show')"
+                          :config="{
+                            x: getSquareValue(session.session_number, 'x'),
+                            y: getSquareValue(session.session_number, 'y'),
+                            width: squareWidth,
+                            height: squareHeight,
+                            fill: 'red',
+                            shadowBlur: 10,
+                          }"
+                        />
+                      </v-layer>
+                    </v-stage>
+                  </div>
                   <!-- <canvas 
                     :style="canvasOverlay"
                     :ref="`thermicImg${session.session_number}`"
