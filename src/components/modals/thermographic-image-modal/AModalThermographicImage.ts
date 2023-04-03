@@ -48,7 +48,7 @@ export default class AModalThermographicImage extends Vue {
     for (const session of this.treatment.sessions) {
       this.dataMatrix.push(getThermicData(session.image_thermic_data))
       this.squares.push({'x': 0, 'y': 0, 'show': false})
-      this.temperatureValue.push(0)
+      this.temperatureValues.push(0)
     }
   }
 
@@ -81,9 +81,8 @@ export default class AModalThermographicImage extends Vue {
     return `data:image/png;base64,${image}`
   }
 
-  currentImage: string | null = ''
   dataMatrix: any[] = []
-  temperatureValue: any[] = []
+  temperatureValues: any[] = []
   squares: any[] = []
   squareWidth: number = 15
   squareHeight: number = 15
@@ -138,7 +137,7 @@ export default class AModalThermographicImage extends Vue {
       const matrix = this.dataMatrix[session-1]
       const pixelValue = matrix[resizeX][resizeY]
 
-      this.temperatureValue[session-1].push(this.hexToTemperature(pixelValue))
+      this.temperatureValues[session-1].push(this.hexToTemperature(pixelValue))
     }
   }
 

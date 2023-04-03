@@ -119,7 +119,7 @@
                       icon-pack="fas"
                       placeholder="0"
                       readonly
-                      :value="temperatureValue"
+                      :value="temperatureValues[session.session_number-1]"
                     />
                   </div>
                   <div class="mt-3">
