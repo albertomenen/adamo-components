@@ -137,7 +137,7 @@ export default class AModalThermographicImage extends Vue {
       const matrix = this.dataMatrix[session-1]
       const pixelValue = matrix[resizeX][resizeY]
 
-      this.temperatureValues[session-1].push(this.hexToTemperature(pixelValue))
+      this.temperatureValues[session-1] = this.hexToTemperature(pixelValue)
     }
   }
 
