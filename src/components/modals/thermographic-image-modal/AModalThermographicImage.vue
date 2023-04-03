@@ -46,15 +46,15 @@
                   >
                   <div :style="canvasOverlay">
                     <v-stage
-                      ref="stage"
+                      :ref="`stage${session.session_number}`"
                       :config="stageConfig"
                     >
                       <v-layer>
                         <v-rect
-                          v-if="getSquareValue(session.session_number, 'show')"
+                          v-if="squares[session.session_number-1].show"
                           :config="{
-                            x: getSquareValue(session.session_number, 'x'),
-                            y: getSquareValue(session.session_number, 'y'),
+                            x: squares[session.session_number-1].x,
+                            y: squares[session.session_number-1].y,
                             width: squareWidth,
                             height: squareHeight,
                             fill: 'red',

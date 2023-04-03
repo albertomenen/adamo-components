@@ -44,17 +44,26 @@ export default class AModalThermographicImage extends Vue {
     default: () => 1
   }) currentSession!: number
 
-  mounted() {
+  beforeMount() {
     this.dataMatrix = this.treatment.sessions.map( session => {
       return getThermicData(session.image_thermic_data)
     })
-    this.squares = this.treatment.sessions.map( session => {
+    
+    for (let i = 0; i < this.treatment.sessions.length; i++) {
+      this.squares.push({
+        'x': 0,
+        'y': 0,
+        'show': false
+      })
+    }
+
+/*     this.squares = this.treatment.sessions.map( session => {
       return {
         'x': 0,
         'y': 0,
         'show': false
       }
-    })
+    }) */
   }
 
   get carouselSession (): number {
