@@ -37,11 +37,11 @@
               <div class="is-flex is-justify-content-space-evenly">
                 <div 
                   class="column-left is-relative"
-                  @click="draw($event, session.session_number)"
+                  @click="handleClick($event, session.session_number)"
                 >
                   <img
                     alt=""
-                    :src="getThermic(session.image_thermic)"
+                    :src="getThermicImg(session.image_thermic)"
                     style="width: 300px; height: 400px;"
                   >
                   <div :style="canvasOverlay">
@@ -51,14 +51,14 @@
                     >
                       <v-layer>
                         <v-rect
-                          v-if="squares[session.session_number-1].show"
+                          v-if="getSquareValue(session.session_number, 'show')"
                           :config="{
-                            x: squares[session.session_number-1].x,
-                            y: squares[session.session_number-1].y,
+                            x: getSquareValue(session.session_number, 'x'),
+                            y: getSquareValue(session.session_number, 'y'),
                             width: squareWidth,
                             height: squareHeight,
-                            fill: 'red',
-                            shadowBlur: 10,
+                            stroke: 'white',
+                            strokeWidth: 1
                           }"
                         />
                       </v-layer>

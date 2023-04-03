@@ -45,25 +45,11 @@ export default class AModalThermographicImage extends Vue {
   }) currentSession!: number
 
   beforeMount() {
-    this.dataMatrix = this.treatment.sessions.map( session => {
-      return getThermicData(session.image_thermic_data)
-    })
-    
-    for (let i = 0; i < this.treatment.sessions.length; i++) {
-      this.squares.push({
-        'x': 0,
-        'y': 0,
-        'show': false
-      })
+    for (const session of this.treatment.sessions) {
+      this.dataMatrix.push(getThermicData(session.image_thermic_data))
+      this.squares.push({'x': 0, 'y': 0, 'show': false})
+      this.temperatureValue.push(0)
     }
-
-/*     this.squares = this.treatment.sessions.map( session => {
-      return {
-        'x': 0,
-        'y': 0,
-        'show': false
-      }
-    }) */
   }
 
   get carouselSession (): number {
@@ -91,16 +77,16 @@ export default class AModalThermographicImage extends Vue {
     return moment(date).format('HH:mm')
   }
 
-  getThermic (image: string): string {
+  getThermicImg (image: string): string {
     return `data:image/png;base64,${image}`
   }
 
   currentImage: string | null = ''
   dataMatrix: any[] = []
+  temperatureValue: any[] = []
   squares: any[] = []
   squareWidth: number = 15
   squareHeight: number = 15
-  temperatureValue: number = 0
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -141,22 +127,8 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  /* setTemperature (x, y, value, color) {
-    this.temperatureStyles.top = `calc(${y}% - 10px)`
-    this.temperatureStyles.left = `calc(${x}% - 10px)`
-    this.temperatureStyles.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`
-    this.temperatureValue = value
-  } */
-
-/*   getPixels (event, session): void {
-    // la imagen esta volteada, por lo que debemos cambiar las coordenadas    
-    const x = event.offsetY;
-    const y = event.offsetX;
-
+  getThermicValue ({x, y, height, width, session}): void {
     if((this.dataMatrix.length > 0) && (x > 0 && y > 0)) {
-      const height = event.currentTarget.offsetHeight
-      const width = event.currentTarget.offsetWidth
-
       const percentX = (x * 100) / height
       const percentY = (y * 100) / width
 
@@ -166,64 +138,43 @@ export default class AModalThermographicImage extends Vue {
       const matrix = this.dataMatrix[session-1]
       const pixelValue = matrix[resizeX][resizeY]
 
-      this.temperatureValue = this.hexToTemperature(pixelValue)
+      this.temperatureValue[session-1].push(this.hexToTemperature(pixelValue))
     }
-  } */
+  }
 
-  draw (event, session): void {
-    const x = event.offsetX - 30 / 2;
-    const y = event.offsetY - 30 / 2;
+  draw (x, y, session): void {
+    const resizeX = x - this.squareHeight / 2;
+    const resizeY = y - this.squareHeight / 2;
     const square = this.squares[session-1]
 
-    square.x = x
-    square.y = y
+    square.x = resizeX
+    square.y = resizeY
     if (!square.show) {
       square.show = true 
     }
   }
 
-  getSquareValue (session, val): number {
-    const square = this.squares[session-1]
-    return square[val] !== undefined ? square[val] : false
+  handleClick (event, session): void {
+    const x = event.offsetX
+    const y = event.offsetY
+
+    //La imagen esta volteada, por lo que cambiaremos los ejes para que las coordenadas sean las correctas.
+    const thermicObj = {
+      x: y,
+      y: x,
+      height: event.currentTarget.offsetHeight,
+      width: event.currentTarget.offsetWidth,
+      session
+    }
+
+    this.getThermicValue(thermicObj)
+    this.draw(x, y, session)
   }
 
-/*   setArea (event, ref): void {
-    let c = this.$refs[ref]
-
-    if (!c) {
-      throw new Error('Failed to get reference element');
-    }
-
-    const reference: HTMLCanvasElement = c[0]
-    const ctx = reference.getContext('2d')
-    
-    if (!ctx ) {
-      throw new Error('Failed to get 2D context');
-    }
-
-    const canvas: CanvasRenderingContext2D  = ctx
-    const x = event.offsetX - 30 / 2
-    const y = event.offsetY - 30 / 2
-
-    canvas.beginPath()
-    canvas.rect(x, y, 30, 30);
-    canvas.stroke()
-
-    if(!this.rectangle) {
-      this.rectanglePath.clx = event.clientX - event.offsetLeft;
-      this.rectanglePath.cly = event.clientY - event.offsetTop;
-      ctx.moveTo(this.rectanglePath.clx, this.rectanglePath.cly);
-      this.rectangle = 1
-    } else {
-      this.rectanglePath.ulx = event.clientX - event.offsetLeft;
-      this.rectanglePath.uly = event.clientY - event.offsetTop;
-      ctx.beginPath();
-      ctx.moveTo(this.rectanglePath.ulx, this.rectanglePath.uly);
-      ctx.strokeRect(this.rectanglePath.clx, this.rectanglePath.cly, this.rectanglePath.ulx - this.rectanglePath.clx, this.rectanglePath.uly - this.rectanglePath.cly);
-      ctx.stroke();
-      this.rectangle = 0
-    } 
-  } */
+  getSquareValue (session, val): number {
+    const square = this.squares[session-1]
+    return square[val]
+  }
 
   hexToTemperature (hex): number {
     const num = parseInt(hex, 16)
