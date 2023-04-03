@@ -170,7 +170,7 @@ export default class AModalThermographicImage extends Vue {
 
   getSquareValue (session, val): number {
     const square = this.squares[session-1]
-    return square[val] ? square[val] : false
+    return square[val] !== undefined ? square[val] : false
   }
 
 /*   setArea (event, ref): void {
