@@ -55,10 +55,10 @@
                           :config="{
                             x: getSquareValue(session.session_number, 'x'),
                             y: getSquareValue(session.session_number, 'y'),
-                            width: squareWidth,
-                            height: squareHeight,
+                            width: 15,
+                            height: 15,
                             stroke: 'white',
-                            strokeWidth: 1
+                            strokeWidth: 2
                           }"
                         />
                       </v-layer>

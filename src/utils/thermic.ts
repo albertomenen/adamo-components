@@ -27,3 +27,9 @@ export function getThermicData(thermicImage) {
     const BufArray = HexToArray(bufString)
     return BufArray
 }
+
+export function hexToTemperature (hex): number {
+  const num = parseInt(hex, 16)
+  const fixedNum = (num * 0.04) - 273.15
+  return Math.round( fixedNum * 1e2 ) / 1e2;
+}

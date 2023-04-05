@@ -3,7 +3,7 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
-import { getThermicData } from '../../../utils/thermic'
+import { getThermicData, hexToTemperature } from '../../../utils/thermic'
 import moment from 'moment'
 
 const minX = -0.12
@@ -16,9 +16,11 @@ const percentageOffsetY = 100 / coordinateOffsetY // 192.3076923076923
 
 const imageHeight = 400
 const imageWidth = 300
+const squareSize = 15
 
 const boxHeight = imageHeight * 0.7
 const boxWidth = imageWidth * 0.8
+
 
 const getPercentage = (_y, _x) => {
   const x = 100 - ((_x + Math.abs(minX)) * percentageOffsetX)
@@ -46,9 +48,10 @@ export default class AModalThermographicImage extends Vue {
 
   beforeMount() {
     for (const session of this.treatment.sessions) {
-      this.dataMatrix.push(getThermicData(session.image_thermic_data))
-      this.squares.push({'x': 0, 'y': 0, 'show': false})
-      this.temperatureValues.push(0)
+      this.thermicMatrix.push(getThermicData(session.image_thermic_data))
+      this.thermicSensor.push(
+        { 'x': 0, 'y': 0, 'temperature': 0, 'show': false }
+      )
     }
   }
 
@@ -81,11 +84,8 @@ export default class AModalThermographicImage extends Vue {
     return `data:image/png;base64,${image}`
   }
 
-  dataMatrix: any[] = []
-  temperatureValues: any[] = []
-  squares: any[] = []
-  squareWidth: number = 15
-  squareHeight: number = 15
+  thermicMatrix: any[] = []
+  thermicSensor: any[] = []
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -127,27 +127,26 @@ export default class AModalThermographicImage extends Vue {
   }
 
   getThermicValue ({x, y, height, width, session}): void {
-    if((this.dataMatrix.length > 0) && (x > 0 && y > 0)) {
+    if((this.thermicMatrix.length > 0) && (x > 0 && y > 0)) {
       const percentX = (x * 100) / height
       const percentY = (y * 100) / width
 
       const resizeX = Math.round((percentX * 320) / 100)
       const resizeY = Math.round((percentY * 256) / 100)
 
-      const matrix = this.dataMatrix[session-1]
+      const matrix = this.thermicMatrix[session-1]
       const pixelValue = matrix[resizeX][resizeY]
 
-      this.temperatureValues[session-1] = this.hexToTemperature(pixelValue)
+      this.thermicSensor[session-1].temperature = hexToTemperature(pixelValue)
     }
   }
 
   draw (x, y, session): void {
-    const resizeX = x - this.squareHeight / 2;
-    const resizeY = y - this.squareHeight / 2;
-    const square = this.squares[session-1]
+    const square = this.thermicSensor[session-1]
 
-    square.x = resizeX
-    square.y = resizeY
+    square.x = x - squareSize / 2;
+    square.y = y - squareSize / 2;
+
     if (!square.show) {
       square.show = true 
     }
@@ -171,13 +170,7 @@ export default class AModalThermographicImage extends Vue {
   }
 
   getSquareValue (session, val): number {
-    const square = this.squares[session-1]
+    const square = this.thermicSensor[session-1]
     return square[val]
-  }
-
-  hexToTemperature (hex): number {
-    const num = parseInt(hex, 16)
-    const fixedNum = (num * 0.04) - 273.15
-    return Math.round( fixedNum * 1e2 ) / 1e2;
   }
 }
