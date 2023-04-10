@@ -3,7 +3,6 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
-import { Session } from 'src/types/resources/session.model'
 import { getThermicData, hexToTemperature } from '../../../utils/thermic'
 import moment from 'moment'
 
