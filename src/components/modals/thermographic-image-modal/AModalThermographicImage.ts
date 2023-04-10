@@ -94,7 +94,8 @@ export default class AModalThermographicImage extends Vue {
     right: '0',
     margin: 'auto',
     height: `${boxHeight}px`,
-    width: `${boxWidth}px`
+    width: `${boxWidth}px`,
+    'z-index': '0'
   }
 
   canvasOverlay = {
@@ -106,6 +107,7 @@ export default class AModalThermographicImage extends Vue {
     right: '0',
     bottom: '0',
     pointerEvent: 'none',
+    'z-index': '1'
   }
 
   stageConfig = {

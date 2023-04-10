@@ -49,7 +49,7 @@
                       :ref="`stage${session.session_number}`"
                       :config="stageConfig"
                     >
-                      <v-layer>
+                      <v-layer style="{z-index: ;}">
                         <v-rect
                           v-if="getSquareValue(session.session_number, 'show')"
                           :config="{
@@ -64,12 +64,6 @@
                       </v-layer>
                     </v-stage>
                   </div>
-                  <!-- <canvas 
-                    :style="canvasOverlay"
-                    :ref="`thermicImg${session.session_number}`"
-                    @click="setArea($event, `thermicImg${session.session_number}`)"
-                  >
-                  </canvas> -->
                   <div :style="coordinateBoxStyles">
                     <div
                       v-for="(point, i) in treatment.points"
