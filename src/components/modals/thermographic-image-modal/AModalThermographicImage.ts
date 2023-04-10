@@ -151,7 +151,7 @@ export default class AModalThermographicImage extends Vue {
       for (let j = y; j < (y+squareSize); j++) {
         const tempValue = matrix[i][j]
         if(tempValue>0) {
-          tempArray.push(hexToTemperature(tempValue))
+          tempArray.push(Math.round( tempValue * 1e2 ) / 1e2)
         }
       }
     }
