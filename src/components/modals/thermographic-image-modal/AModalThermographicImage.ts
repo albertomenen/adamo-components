@@ -135,7 +135,20 @@ export default class AModalThermographicImage extends Vue {
       const resizeY = Math.round((percentY * 256) / 100)
 
       const matrix = this.thermicMatrix[session-1]
-      const pixelValue = matrix[resizeX][resizeY]
+      const tempArray: number[] = []
+
+      for (let i = resizeX; i < (resizeX+squareSize); i++) {
+        for (let j = 0; j < (resizeY+squareSize); j++) {
+          const tempValue = matrix[i][j]
+          if(tempValue>0) {
+            tempArray.push(tempValue)
+          }
+        }
+      }
+
+      console.log(tempArray)
+      const total = tempArray.reduce((a, b) => a + b, 0)
+      const pixelValue = total / tempArray.length
 
       this.thermicSensor[session-1].temperature = hexToTemperature(pixelValue)
     }
@@ -144,8 +157,8 @@ export default class AModalThermographicImage extends Vue {
   draw (x, y, session): void {
     const square = this.thermicSensor[session-1]
 
-    square.x = x - squareSize / 2;
-    square.y = y - squareSize / 2;
+    square.x = x
+    square.y = y
 
     if (!square.show) {
       square.show = true 
@@ -153,8 +166,8 @@ export default class AModalThermographicImage extends Vue {
   }
 
   handleClick (event, session): void {
-    const x = event.offsetX
-    const y = event.offsetY
+    const x = event.offsetX - squareSize / 2
+    const y = event.offsetY - squareSize / 2
 
     //La imagen esta volteada, por lo que cambiaremos los ejes para que las coordenadas sean las correctas.
     const thermicObj = {
