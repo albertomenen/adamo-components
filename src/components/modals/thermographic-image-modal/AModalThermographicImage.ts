@@ -3,7 +3,7 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
-import { getThermicData, hexToTemperature } from '../../../utils/thermic'
+import { getThermicData } from '../../../utils/thermic'
 import moment from 'moment'
 
 const minX = -0.12
@@ -148,9 +148,7 @@ export default class AModalThermographicImage extends Vue {
 
       console.log(tempArray)
       const total = tempArray.reduce((a, b) => a + b, 0)
-      const pixelValue = total / tempArray.length
-
-      this.thermicSensor[session-1].temperature = hexToTemperature(pixelValue)
+      this.thermicSensor[session-1].temperature = total / tempArray.length
     }
   }
 

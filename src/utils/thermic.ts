@@ -8,13 +8,14 @@ const base64ToHex = (str) => {
     return result.toUpperCase()
 }
 
-const HexToArray = (data: string): Array<Array<string>> => {
-    const tempArray: string[][] = []
+const HexToArray = (data: string): Array<Array<number>> => {
+    const tempArray: number[][] = []
     let count = 0
     for (let i = 0; i < 320; i++) {
-      const y: string[] = []
+      const y: number[] = []
       for (let j = 0; j < 256; j++) {
-        y.push(data.slice(count, count + 4)) 
+        const hex = data.slice(count, count + 4)
+        y.push(hexToTemperature(hex)) 
         count += 4
       }
       tempArray.push(y)
