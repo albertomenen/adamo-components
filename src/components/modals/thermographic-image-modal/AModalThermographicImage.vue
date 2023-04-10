@@ -119,7 +119,7 @@
                       icon-pack="fas"
                       placeholder="0"
                       readonly
-                      :value="temperatureValues[session.session_number-1]"
+                      :value="getSquareValue(session.session_number, 'temperature')"
                     />
                   </div>
                   <div class="mt-3">
