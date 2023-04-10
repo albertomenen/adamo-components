@@ -3,7 +3,8 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
-import { getThermicData } from '../../../utils/thermic'
+import { Session } from 'src/types/resources/session.model'
+import { getThermicData, hexToTemperature } from '../../../utils/thermic'
 import moment from 'moment'
 
 const minX = -0.12
@@ -126,6 +127,11 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
+  getSquareValue (session: number, val: string): number {
+    const square = this.thermicSensor[session-1]
+    return square[val]
+  }
+
   getThermicValue ({x, y, height, width, session}): void {
     if((this.thermicMatrix.length > 0) && (x > 0 && y > 0)) {
       const percentX = (x * 100) / height
@@ -133,28 +139,30 @@ export default class AModalThermographicImage extends Vue {
 
       const resizeX = Math.round((percentX * 320) / 100)
       const resizeY = Math.round((percentY * 256) / 100)
-
       const matrix = this.thermicMatrix[session-1]
-      const tempArray: number[] = []
-
-      for (let i = resizeX; i < (resizeX+squareSize); i++) {
-        for (let j = resizeY; j < (resizeY+squareSize); j++) {
-          const tempValue = matrix[i][j]
-          if(tempValue>0) {
-            tempArray.push(tempValue)
-          }
-        }
-      }
-
-      console.log(tempArray)
-      const total = tempArray.reduce((a, b) => a + b, 0)
-      this.thermicSensor[session-1].temperature = total / tempArray.length
+      
+      this.thermicSensor[session-1].temperature = this.getThermicArea(resizeX, resizeY, matrix)
     }
   }
 
-  draw (x, y, session): void {
-    const square = this.thermicSensor[session-1]
+  getThermicArea (x: number, y: number, matrix: number): number {
+    const tempArray: number[] = []
 
+    for (let i = x; i < (x+squareSize); i++) {
+      for (let j = y; j < (y+squareSize); j++) {
+        const tempValue = matrix[i][j]
+        if(tempValue>0) {
+          tempArray.push(hexToTemperature(tempValue))
+        }
+      }
+    }
+
+    const total = tempArray.reduce((a, b) => a + b, 0)
+    return total / tempArray.length
+  }
+
+  draw (x: number, y: number, session: number): void {
+    const square = this.thermicSensor[session-1]
     square.x = x
     square.y = y
 
@@ -163,7 +171,7 @@ export default class AModalThermographicImage extends Vue {
     }
   }
 
-  handleClick (event, session): void {
+  handleClick (event, session: number): void {
     const x = event.offsetX - squareSize / 2
     const y = event.offsetY - squareSize / 2
 
@@ -178,10 +186,5 @@ export default class AModalThermographicImage extends Vue {
 
     this.getThermicValue(thermicObj)
     this.draw(x, y, session)
-  }
-
-  getSquareValue (session, val): number {
-    const square = this.thermicSensor[session-1]
-    return square[val]
   }
 }

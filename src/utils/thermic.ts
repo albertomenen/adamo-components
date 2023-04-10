@@ -1,4 +1,4 @@
-const base64ToHex = (str) => {
+function base64ToHex (str: string): string {
     const raw = atob(str)
     let result = ''
     for (let i = 0; i < raw.length; i++) {
@@ -8,7 +8,7 @@ const base64ToHex = (str) => {
     return result.toUpperCase()
 }
 
-const HexToArray = (data: string): Array<Array<number>> => {
+function HexToArray (data: string): Array<Array<number>> {
     const tempArray: number[][] = []
     let count = 0
     for (let i = 0; i < 320; i++) {
@@ -23,13 +23,13 @@ const HexToArray = (data: string): Array<Array<number>> => {
     return tempArray
 }
 
-export function getThermicData(thermicImage) {
+export function getThermicData(thermicImage: string): Array<Array<number>> {
     const bufString = base64ToHex(thermicImage)
     const BufArray = HexToArray(bufString)
     return BufArray
 }
 
-export function hexToTemperature (hex): number {
+export function hexToTemperature (hex: string): number {
   const num = parseInt(hex, 16)
   const fixedNum = (num * 0.04) - 273.15
   return Math.round( fixedNum * 1e2 ) / 1e2;
