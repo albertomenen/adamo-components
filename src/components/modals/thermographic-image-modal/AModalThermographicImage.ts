@@ -151,13 +151,13 @@ export default class AModalThermographicImage extends Vue {
       for (let j = y; j < (y+squareSize); j++) {
         const tempValue = matrix[i][j]
         if(tempValue>0) {
-          tempArray.push(Math.round( tempValue * 1e2 ) / 1e2)
+          tempArray.push(tempValue)
         }
       }
     }
 
     const total = tempArray.reduce((a, b) => a + b, 0)
-    return total / tempArray.length
+    return ((total / tempArray.length) * 1e2) / 1e2
   }
 
   draw (x: number, y: number, session: number): void {
