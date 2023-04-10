@@ -138,7 +138,7 @@ export default class AModalThermographicImage extends Vue {
       const tempArray: number[] = []
 
       for (let i = resizeX; i < (resizeX+squareSize); i++) {
-        for (let j = 0; j < (resizeY+squareSize); j++) {
+        for (let j = resizeY; j < (resizeY+squareSize); j++) {
           const tempValue = matrix[i][j]
           if(tempValue>0) {
             tempArray.push(tempValue)
