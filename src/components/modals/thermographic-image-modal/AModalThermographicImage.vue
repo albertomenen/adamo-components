@@ -49,7 +49,7 @@
                       :ref="`stage${session.session_number}`"
                       :config="stageConfig"
                     >
-                      <v-layer style="{z-index: ;}">
+                      <v-layer>
                         <v-rect
                           v-if="getSquareValue(session.session_number, 'show')"
                           :config="{

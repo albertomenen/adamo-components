@@ -3,7 +3,7 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
-import { getThermicData, hexToTemperature } from '../../../utils/thermic'
+import { getThermicMatrix, getTemperature } from '../../../utils/thermic'
 import moment from 'moment'
 
 const minX = -0.12
@@ -48,7 +48,7 @@ export default class AModalThermographicImage extends Vue {
 
   beforeMount() {
     for (const session of this.treatment.sessions) {
-      this.thermicMatrix.push(getThermicData(session.image_thermic_data))
+      this.thermicMatrix.push(getThermicMatrix(session.image_thermic_data))
       this.thermicSensor.push(
         { 'x': 0, 'y': 0, 'temperature': 0, 'show': false }
       )
@@ -133,35 +133,6 @@ export default class AModalThermographicImage extends Vue {
     return square[val]
   }
 
-  getThermicValue ({x, y, height, width, session}): void {
-    if((this.thermicMatrix.length > 0) && (x > 0 && y > 0)) {
-      const percentX = (x * 100) / height
-      const percentY = (y * 100) / width
-
-      const resizeX = Math.round((percentX * 320) / 100)
-      const resizeY = Math.round((percentY * 256) / 100)
-      const matrix = this.thermicMatrix[session-1]
-      
-      this.thermicSensor[session-1].temperature = this.getThermicArea(resizeX, resizeY, matrix)
-    }
-  }
-
-  getThermicArea (x: number, y: number, matrix: number): number {
-    const tempArray: number[] = []
-
-    for (let i = x; i < (x+squareSize); i++) {
-      for (let j = y; j < (y+squareSize); j++) {
-        const tempValue = matrix[i][j]
-        if(tempValue>0) {
-          tempArray.push(tempValue)
-        }
-      }
-    }
-
-    const total = tempArray.reduce((a, b) => a + b, 0)
-    return Math.round((total / tempArray.length) * 1e2) / 1e2
-  }
-
   draw (x: number, y: number, session: number): void {
     const square = this.thermicSensor[session-1]
     square.x = x
@@ -177,15 +148,14 @@ export default class AModalThermographicImage extends Vue {
     const y = event.offsetY - squareSize / 2
 
     //La imagen esta volteada, por lo que cambiaremos los ejes para que las coordenadas sean las correctas.
-    const thermicObj = {
+    this.thermicSensor[session-1].temperature = getTemperature({
       x: y,
       y: x,
       height: event.currentTarget.offsetHeight,
       width: event.currentTarget.offsetWidth,
-      session
-    }
-
-    this.getThermicValue(thermicObj)
+      matrix: this.thermicMatrix[session-1],
+      squareSize
+    })
     this.draw(x, y, session)
   }
 }
