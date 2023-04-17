@@ -133,17 +133,6 @@ export default class AModalThermographicImage extends Vue {
     return square[val]
   }
 
-  getRectConfig (session): any {
-    return {
-      x: this.getSquareValue(session, 'x'),
-      y: this.getSquareValue(session, 'y'),
-      width: squareSize,
-      height: squareSize,
-      stroke: 'white',
-      strokeWidth: 2
-    }
-  }
-
   draw (x: number, y: number, session: number): void {
     const square = this.thermicSensor[session-1]
     square.x = x

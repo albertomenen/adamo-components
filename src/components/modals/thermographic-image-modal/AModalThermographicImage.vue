@@ -52,7 +52,14 @@
                       <v-layer>
                         <v-rect
                           v-if="getSquareValue(session.session_number, 'show')"
-                          :config="getRectConfig"
+                          :config="{
+                            x: getSquareValue(session.session_number, 'x'),
+                            y: getSquareValue(session.session_number, 'y'),
+                            width: 15,
+                            height: 15,
+                            stroke: 'white',
+                            strokeWidth: 2
+                          }"
                         />
                       </v-layer>
                     </v-stage>
