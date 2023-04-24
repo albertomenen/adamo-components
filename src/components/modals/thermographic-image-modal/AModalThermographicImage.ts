@@ -133,8 +133,7 @@ export default class AModalThermographicImage extends Vue {
     return square[val]
   }
 
-  draw (x: number, y: number, session: number): void {
-    const square = this.thermicSensor[session-1]
+  draw (x: number, y: number, square): void {
     square.x = x
     square.y = y
 
@@ -146,16 +145,17 @@ export default class AModalThermographicImage extends Vue {
   handleClick (event, session: number): void {
     const x = event.offsetX - squareSize / 2
     const y = event.offsetY - squareSize / 2
+    const sensor = this.thermicSensor[session-1]
 
     //La imagen esta volteada, por lo que cambiaremos los ejes para que las coordenadas sean las correctas.
-    this.thermicSensor[session-1].temperature = getTemperature({
-      x: y,
-      y: x,
-      height: event.currentTarget.offsetHeight,
-      width: event.currentTarget.offsetWidth,
-      matrix: this.thermicMatrix[session-1],
-      squareSize
-    })
-    this.draw(x, y, session)
+    sensor.temperature = getTemperature(
+      y,
+      x,
+      event.currentTarget.offsetHeight,
+      event.currentTarget.offsetWidth,
+      squareSize,
+      this.thermicMatrix[session-1]
+    )
+    this.draw(x, y, sensor)
   }
 }

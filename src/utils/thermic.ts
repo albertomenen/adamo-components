@@ -1,3 +1,6 @@
+const imgWidth = 320
+const imgHeight = 256
+
 function base64ToHex (str: string): string {
     const raw = atob(str)
     let result = ''
@@ -11,37 +14,25 @@ function base64ToHex (str: string): string {
 function HexToArray (data: string): Array<Array<number>> {
     const tempArray: number[][] = []
     let count = 0
-    for (let i = 0; i < 320; i++) {
-      const y: number[] = []
-      for (let j = 0; j < 256; j++) {
+    for (let i = 0; i < imgWidth; i++) {
+      tempArray[i] = []
+    }
+    for (let i = 0; i < imgHeight; i++) {
+      for (let j = 0; j < imgWidth; j++) {
         const hex = data.slice(count, count + 4)
-        y.push(hexToTemperature(hex)) 
+        tempArray[j][i] = hexToTemperature(hex)
         count += 4
       }
-      tempArray.push(y)
     }
     return tempArray
 }
 
 export function getThermicMatrix(thermicImage: string): Array<Array<number>> {
     const bufString = base64ToHex(thermicImage)
-    const BufArray = HexToArray(bufString)
-    return BufArray
+    return HexToArray(bufString)
 }
 
-export function getTemperature ({x, y, height, width, matrix, squareSize}): number {
-  if((matrix.length > 0) && (x > 0 && y > 0)) {
-    const percentX = (x * 100) / height
-    const percentY = (y * 100) / width
-    const resizeX = Math.round((percentX * 320) / 100)
-    const resizeY = Math.round((percentY * 256) / 100)
-    return getThermicArea(resizeX, resizeY, matrix, squareSize)
-  } else {
-    return 0
-  }
-}
-
-function getThermicArea (x: number, y: number, matrix: number, squareSize: number): number {
+function getThermicArea (x: number, y: number, squareSize: number, matrix: Array<Array<number>>): number {
   const tempArray: number[] = []
   for (let i = x; i < (x+squareSize); i++) {
     for (let j = y; j < (y+squareSize); j++) {
@@ -53,6 +44,18 @@ function getThermicArea (x: number, y: number, matrix: number, squareSize: numbe
   }
   const total = tempArray.reduce((a, b) => a + b, 0)
   return Math.round((total / tempArray.length) * 1e2) / 1e2
+}
+
+export function getTemperature (x: number, y: number, height: number, width: number, squareSize: number, matrix: Array<Array<number>>): number {
+  if ((matrix.length > 0) && (x > 0 && y > 0)) {
+    const percentX = (x * 100) / height
+    const percentY = (y * 100) / width
+    const resizeX = Math.round((percentX * imgWidth) / 100)
+    const resizeY = Math.round((percentY * imgHeight) / 100)
+    return getThermicArea(resizeX, resizeY, squareSize, matrix)
+  } else {
+    return 0
+  }
 }
 
 function hexToTemperature (hex: string): number {
