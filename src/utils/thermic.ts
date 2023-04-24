@@ -35,7 +35,7 @@ export function getThermicMatrix(thermicImage: string): Array<Array<number>> {
 function getThermicArea (x: number, y: number, squareSize: number, matrix: Array<Array<number>>): number {
   const tempArray: number[] = []
   for (let i = x; i < (x+squareSize); i++) {
-    for (let j = y; j < (y+squareSize); j++) {
+    for (let j = y; j > (y+squareSize); j--) {
       const tempValue = matrix[i][j]
       if(tempValue>0) {
         tempArray.push(tempValue)

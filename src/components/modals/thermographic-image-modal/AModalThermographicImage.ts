@@ -150,7 +150,7 @@ export default class AModalThermographicImage extends Vue {
     //La imagen esta volteada, por lo que cambiaremos los ejes para que las coordenadas sean las correctas.
     sensor.temperature = getTemperature(
       y,
-      x,
+      (event.currentTarget.offsetWidth - x),
       event.currentTarget.offsetHeight,
       event.currentTarget.offsetWidth,
       squareSize,
