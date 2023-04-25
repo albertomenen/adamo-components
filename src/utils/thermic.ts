@@ -1,9 +1,9 @@
 const imgSize = {
-  'AR50': {
+  'A50': {
     'width': 464,
     'height': 348
   },
-  'AR35': {
+  'A35': {
     'width': 320,
     'height': 256
   }
@@ -28,7 +28,7 @@ function HexToArray (data: string, imgConfig): Array<Array<number>> {
     for (let i = 0; i < imgSize[imgConfig].height; i++) {
       for (let j = 0; j < imgSize[imgConfig].width; j++) {
         const hex = data.slice(count, count + 4)
-        tempArray[j][i] = hexToTemperature(hex)
+        tempArray[j][i] = hexToTemperature(hex, imgConfig)
         count += 4
       }
     }
@@ -66,8 +66,9 @@ export function getTemperature (x: number, y: number, height: number, width: num
   }
 }
 
-function hexToTemperature (hex: string): number {
+function hexToTemperature (hex: string, imgConfig): number {
   const num = parseInt(hex, 16)
-  const fixedNum = (num * 0.04) - 273.15
+  const factor = imgConfig == 'A50' ?  0.01 : 0.04
+  const fixedNum = (num * factor) - 273.15
   return Math.round( fixedNum * 1e2 ) / 1e2;
 }
