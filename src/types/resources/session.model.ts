@@ -12,6 +12,7 @@ export interface Session {
   station: Station,
   pressure: number,
   image_thermic: string,
+  image_thermic_data: string
 }
 
 export interface SessionList {

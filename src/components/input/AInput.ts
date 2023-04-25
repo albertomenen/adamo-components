@@ -11,15 +11,15 @@ export default class AInput extends Vue {
   @Prop({ type: [Object, String], default: '' }) rules
   @Prop({ type: [String, Number] }) value
 
-    innerValue = ''
+    innerValue: string | number = ''
 
     @Watch('innerValue')
     onInnerValueChange (val: string): void {
       this.$emit('input', val)
     }
 
-    @Watch('innerValue')
-    onValueChange (val: string): void {
+    @Watch('value')
+    onValueChange (val: string | number): void {
       this.innerValue = val
     }
 

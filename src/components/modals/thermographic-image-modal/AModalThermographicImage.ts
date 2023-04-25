@@ -3,7 +3,9 @@
 import { PropType } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
+import { getThermicMatrix, getTemperature } from '../../../utils/thermic'
 import moment from 'moment'
+import Jimp from 'jimp'
 
 const minX = -0.12
 const minY = -0.93
@@ -15,9 +17,11 @@ const percentageOffsetY = 100 / coordinateOffsetY // 192.3076923076923
 
 const imageHeight = 400
 const imageWidth = 300
+const squareSize = 15
 
 const boxHeight = imageHeight * 0.7
 const boxWidth = imageWidth * 0.8
+
 
 const getPercentage = (_y, _x) => {
   const x = 100 - ((_x + Math.abs(minX)) * percentageOffsetX)
@@ -42,6 +46,17 @@ export default class AModalThermographicImage extends Vue {
     type: Number,
     default: () => 1
   }) currentSession!: number
+
+  async beforeMount() {
+    for (const session of this.treatment.sessions) {
+      const img = await Jimp.read(this.getThermicImg(session.image_thermic))
+      const imgConfig = img.bitmap.height > 320 ? 'A50' : 'A35'
+      this.thermicMatrix.push(getThermicMatrix(session.image_thermic_data, imgConfig))
+      this.thermicSensor.push(
+        { 'x': 0, 'y': 0, 'temperature': 0, 'show': false, imgConfig}
+      )
+    }
+  }
 
   get carouselSession (): number {
     return this.currentSession - 1
@@ -68,9 +83,12 @@ export default class AModalThermographicImage extends Vue {
     return moment(date).format('HH:mm')
   }
 
-  getThermic (image: string): string {
+  getThermicImg (image: string): string {
     return `data:image/png;base64,${image}`
   }
+
+  thermicMatrix: any[] = []
+  thermicSensor: any[] = []
 
   coordinateBoxStyles = {
     position: 'absolute',
@@ -79,7 +97,25 @@ export default class AModalThermographicImage extends Vue {
     right: '0',
     margin: 'auto',
     height: `${boxHeight}px`,
-    width: `${boxWidth}px`
+    width: `${boxWidth}px`,
+    'z-index': '0'
+  }
+
+  canvasOverlay = {
+    height: `100%`,
+    width: `100%`,
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    pointerEvent: 'none',
+    'z-index': '1'
+  }
+
+  stageConfig = {
+    height: `400`,
+    width: `300`
   }
 
   getCoordinate (point: any) {
@@ -93,5 +129,37 @@ export default class AModalThermographicImage extends Vue {
       height: '20px',
       borderRadius: '100%'
     }
+  }
+
+  getSquareValue (session: number, val: string): number {
+    const square = this.thermicSensor[session-1]
+    return square[val]
+  }
+
+  draw (x: number, y: number, square): void {
+    square.x = x
+    square.y = y
+
+    if (!square.show) {
+      square.show = true 
+    }
+  }
+
+  handleClick (event, session: number): void {
+    const x = event.offsetX - squareSize / 2
+    const y = event.offsetY - squareSize / 2
+    const sensor = this.thermicSensor[session-1]
+
+    //La imagen esta volteada, por lo que cambiaremos los ejes para que las coordenadas sean las correctas.
+    sensor.temperature = getTemperature(
+      y,
+      (event.currentTarget.offsetWidth - x),
+      event.currentTarget.offsetHeight,
+      event.currentTarget.offsetWidth,
+      sensor.imgConfig,
+      squareSize,
+      this.thermicMatrix[session-1]
+    )
+    this.draw(x, y, sensor)
   }
 }

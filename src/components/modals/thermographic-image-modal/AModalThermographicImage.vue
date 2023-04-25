@@ -35,12 +35,35 @@
           <section :class="`hero is-medium`">
             <div class="hero-body p-0 px-7">
               <div class="is-flex is-justify-content-space-evenly">
-                <div class="column-left is-relative">
+                <div 
+                  class="column-left is-relative"
+                  @click="handleClick($event, session.session_number)"
+                >
                   <img
                     alt=""
-                    :src="getThermic(session.image_thermic)"
+                    :src="getThermicImg(session.image_thermic)"
                     style="width: 300px; height: 400px;"
                   >
+                  <div :style="canvasOverlay">
+                    <v-stage
+                      :ref="`stage${session.session_number}`"
+                      :config="stageConfig"
+                    >
+                      <v-layer>
+                        <v-rect
+                          v-if="getSquareValue(session.session_number, 'show')"
+                          :config="{
+                            x: getSquareValue(session.session_number, 'x'),
+                            y: getSquareValue(session.session_number, 'y'),
+                            width: 15,
+                            height: 15,
+                            stroke: 'white',
+                            strokeWidth: 2
+                          }"
+                        />
+                      </v-layer>
+                    </v-stage>
+                  </div>
                   <div :style="coordinateBoxStyles">
                     <div
                       v-for="(point, i) in treatment.points"
@@ -88,9 +111,9 @@
                       class="input-text-centered thermographic-input"
                       icon="thermometer-quarter"
                       icon-pack="fas"
-                      placeholder="Media"
+                      placeholder="0"
                       readonly
-                      :value="getTemperature"
+                      :value="getSquareValue(session.session_number, 'temperature')"
                     />
                   </div>
                   <div class="mt-3">
