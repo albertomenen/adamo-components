@@ -1,5 +1,13 @@
-const imgWidth = 320
-const imgHeight = 256
+const imgSize = {
+  'AR50': {
+    'width': 464,
+    'height': 348
+  },
+  'AR35': {
+    'width': 320,
+    'height': 256
+  }
+}
 
 function base64ToHex (str: string): string {
     const raw = atob(str)
@@ -11,14 +19,14 @@ function base64ToHex (str: string): string {
     return result.toUpperCase()
 }
 
-function HexToArray (data: string): Array<Array<number>> {
+function HexToArray (data: string, imgConfig): Array<Array<number>> {
     const tempArray: number[][] = []
     let count = 0
-    for (let i = 0; i < imgWidth; i++) {
+    for (let i = 0; i < imgSize[imgConfig].width; i++) {
       tempArray[i] = []
     }
-    for (let i = 0; i < imgHeight; i++) {
-      for (let j = 0; j < imgWidth; j++) {
+    for (let i = 0; i < imgSize[imgConfig].height; i++) {
+      for (let j = 0; j < imgSize[imgConfig].width; j++) {
         const hex = data.slice(count, count + 4)
         tempArray[j][i] = hexToTemperature(hex)
         count += 4
@@ -27,9 +35,9 @@ function HexToArray (data: string): Array<Array<number>> {
     return tempArray
 }
 
-export function getThermicMatrix(thermicImage: string): Array<Array<number>> {
+export function getThermicMatrix(thermicImage: string, imgConfig: string): Array<Array<number>> {
     const bufString = base64ToHex(thermicImage)
-    return HexToArray(bufString)
+    return HexToArray(bufString, imgConfig)
 }
 
 function getThermicArea (x: number, y: number, squareSize: number, matrix: Array<Array<number>>): number {
@@ -46,12 +54,12 @@ function getThermicArea (x: number, y: number, squareSize: number, matrix: Array
   return Math.round((total / tempArray.length) * 1e2) / 1e2
 }
 
-export function getTemperature (x: number, y: number, height: number, width: number, squareSize: number, matrix: Array<Array<number>>): number {
+export function getTemperature (x: number, y: number, height: number, width: number, imgConfig: string = '', squareSize: number, matrix: Array<Array<number>>): number {
   if ((matrix.length > 0) && (x > 0 && y > 0)) {
     const percentX = (x * 100) / height
     const percentY = (y * 100) / width
-    const resizeX = Math.round((percentX * imgWidth) / 100)
-    const resizeY = Math.round((percentY * imgHeight) / 100)
+    const resizeX = Math.round((percentX * imgSize[imgConfig].width) / 100)
+    const resizeY = Math.round((percentY * imgSize[imgConfig].height) / 100)
     return getThermicArea(resizeX, resizeY, squareSize, matrix)
   } else {
     return 0

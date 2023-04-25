@@ -5,6 +5,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Treatment } from '../../../types/resources/treatment.model'
 import { getThermicMatrix, getTemperature } from '../../../utils/thermic'
 import moment from 'moment'
+import Jimp from 'jimp'
 
 const minX = -0.12
 const minY = -0.93
@@ -46,11 +47,13 @@ export default class AModalThermographicImage extends Vue {
     default: () => 1
   }) currentSession!: number
 
-  beforeMount() {
+  async beforeMount() {
     for (const session of this.treatment.sessions) {
-      this.thermicMatrix.push(getThermicMatrix(session.image_thermic_data))
+      const img = await Jimp.read(this.getThermicImg(session.image_thermic))
+      const imgConfig = img.bitmap.width > 320 ? 'AR50' : 'AR35'
+      this.thermicMatrix.push(getThermicMatrix(session.image_thermic_data, imgConfig))
       this.thermicSensor.push(
-        { 'x': 0, 'y': 0, 'temperature': 0, 'show': false }
+        { 'x': 0, 'y': 0, 'temperature': 0, 'show': false, imgConfig}
       )
     }
   }
@@ -153,6 +156,7 @@ export default class AModalThermographicImage extends Vue {
       (event.currentTarget.offsetWidth - x),
       event.currentTarget.offsetHeight,
       event.currentTarget.offsetWidth,
+      sensor.imgConfig,
       squareSize,
       this.thermicMatrix[session-1]
     )
