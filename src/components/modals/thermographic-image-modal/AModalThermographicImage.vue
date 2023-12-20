@@ -65,12 +65,12 @@
                     </v-stage>
                   </div>
                   <div :style="coordinateBoxStyles">
-                    <div
+                    <!-- <div
                       v-for="(point, i) in treatment.points"
                       :key="i"
                       class="has-text-blue has-background-white is-flex is-align-items-center is-justify-content-center has-shadow"
                       :style="getCoordinate(point)" 
-                    >{{i+1}}</div>
+                    >{{i+1}}</div> -->
                   </div>
                 </div>
                 <div class="column-right p-4">
