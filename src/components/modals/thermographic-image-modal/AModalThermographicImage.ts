@@ -110,7 +110,7 @@ export default class AModalThermographicImage extends Vue {
     right: '0',
     bottom: '0',
     pointerEvent: 'none',
-    'z-index': '1'
+    'z-index': 1
   }
 
   stageConfig = {
