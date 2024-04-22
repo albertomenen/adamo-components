@@ -44,7 +44,7 @@
                     :src="getThermicImg(session.image_thermic)"
                     style="width: 300px; height: 400px;"
                   >
-                  <div :style="canvasOverlay">
+                  <div :StyleValue="canvasOverlay">
                     <v-stage
                       :ref="`stage${session.session_number}`"
                       :config="stageConfig"
@@ -64,7 +64,7 @@
                       </v-layer>
                     </v-stage>
                   </div>
-                  <div :style="coordinateBoxStyles">
+                  <div :StyleValue="coordinateBoxStyles">
                     <!-- <div
                       v-for="(point, i) in treatment.points"
                       :key="i"
