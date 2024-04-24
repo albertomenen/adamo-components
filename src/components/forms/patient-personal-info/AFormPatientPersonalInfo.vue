@@ -33,9 +33,9 @@
         :placeholder="$t('fields.birthdate')"
         position="is-top-right"
         rounded
-        trap-focus
         editable
-        required
+        rules="required"
+        trap-focus
       />
     </BField>
     <AInput
