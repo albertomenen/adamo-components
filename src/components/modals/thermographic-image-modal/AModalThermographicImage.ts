@@ -50,7 +50,7 @@ export default class AModalThermographicImage extends Vue {
   async beforeMount() {
     for (const session of this.treatment.sessions) {
       const img = await Jimp.read(this.getThermicImg(session.image_thermic))
-      const imgConfig = img.bitmap.height > 320 ? 'AR50' : 'AR35'
+      const imgConfig = img.bitmap.height > 320 ? 'A50' : 'A35'
       this.thermicMatrix.push(getThermicMatrix(session.image_thermic_data, imgConfig))
       this.thermicSensor.push(
         { 'x': 0, 'y': 0, 'temperature': 0, 'show': false, imgConfig}
