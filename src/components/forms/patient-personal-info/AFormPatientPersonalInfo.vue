@@ -52,7 +52,7 @@
       icon-pack="far"
       name="email"
       :placeholder="$t('fields.email')"
-      rules="required|email"
+      
     />
   </div>
 </section>
