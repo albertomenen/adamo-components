@@ -34,7 +34,6 @@
         position="is-top-right"
         rounded
         editable
-        rules="required"
         trap-focus
       />
     </BField>
