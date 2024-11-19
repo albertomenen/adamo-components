@@ -62,10 +62,10 @@
   <BTableColumn
     v-slot="props"
     centered
-    field="next_session_date"
+    field="ts_creation_date"
     :label="$t('treatments.nextSession')"
   >
-    {{ getDate(props.row.next_session_date) }}
+    {{ getDate(props.row.ts_creation_date) }}
   </BTableColumn>
   <BTableColumn
     v-slot="props"
