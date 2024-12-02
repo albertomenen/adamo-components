@@ -59,14 +59,7 @@
       </div>
     </div>
   </BTableColumn>
-  <BTableColumn
-    v-slot="props"
-    centered
-    field="ts_creation_date"
-    :label="$t('treatments.nextSession')"
-  >
-    {{ getDate(props.row.ts_creation_date) }}
-  </BTableColumn>
+  
   <BTableColumn
     v-slot="props"
     centered>

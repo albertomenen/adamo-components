@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/squadmakers/adamo/adamo-components.git"
+    "url": "git+ssh://git@gitlab.com/adamo-external/adamo-components.git"
   },
   "keywords": [],
   "author": "Isidro Gonzalez",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/squadmakers/adamo/adamo-components/issues"
+    "url": "https://gitlab.com/adamo-external/adamo-components/issues"
   },
-  "homepage": "https://gitlab.com/squadmakers/adamo/adamo-components#readme",
+  "homepage": "https://gitlab.com/adamo-external/adamo-components#readme",
   "dependencies": {
     "kalendar-vue": "^2.1.1",
     "moment": "^2.29.1",
